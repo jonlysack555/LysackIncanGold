@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="ChooseGame.css">
+		<title>Choose Game</title>
+	</head>
+	
+	<body>
+		<div onmouseover="clearBold()", id="banner">
+			<p onmouseover="clearBold()", id="title">Lysack Board Games</p>
+			<p onmouseover="clearBold()", id="riskTitle">Risk</p>
+			<p onmouseover="clearBold()", id="incanGoldTitle">Incan Gold</p>
+		</div>
+		<div id="risk", class="halfOption">
+			<img onclick="openRisk()", onmouseover="boldRisk()", src="riskPhoto.jpg", alt="riskPhoto", id="riskPhoto">
+		</div>
+		<div id="incanGold", class="halfOption">
+			<img onclick="openIncanGold()", onmouseover="boldIncanGold()", src="incanGoldPhoto.jpg", alt="incanGoldPhoto", id="incanGoldPhoto">
+		</div>
+		<script src="ChooseGame.js"></script>
+	</body>
+</html>

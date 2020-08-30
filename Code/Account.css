@@ -1,0 +1,689 @@
+#tableSpace {
+	position: relative;
+	height: 764px;
+	width: 1575px;
+}
+
+#tableTop {
+	z-index: -1;
+	height: 100%;
+	width: 100%;
+}
+
+#heading {
+	position: absolute;
+	top: -50px;
+	left: 8px;
+	font-size: 75px;
+	color: white;
+	width: 1575px;
+	text-align: center;
+}
+
+#propics, #titles {
+	position: absolute;
+	bottom: 30px;
+	height: 550px;
+	width: 380px;
+	border: solid;
+	border-width: 7px;
+	border-color: white;
+	border-radius: 40px;
+	padding: 20px;
+	background-color: white;
+}
+
+#propics {
+	left: 100px;
+}
+
+#titles {
+	left: 1050px;
+}
+
+#playerTab {
+	position: absolute;
+	top: 310px;
+	left: 584px;
+	width: 414px;
+	height: 200px;
+	border: solid;
+	border-width: 3px;
+	border-radius: 40px;
+	background-color: #e7eef1;
+}
+
+#hostAvatar {
+	position: absolute;
+	left: 65px;
+	top: 50px;
+	height: 80px;
+	width: 80px;
+	border-radius: 40px;
+	border: solid;
+	border-width: 1px;
+	overflow: hidden;
+	background-color: white;
+}
+
+#hostAvatarPic {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	bottom: 0px;
+}
+
+.title {
+	text-align: center;
+	position: relative;
+	bottom: 6px;
+	left: 40px;
+}
+
+.name {
+	text-align: center;
+	font-size: 35px;
+	font-weight: bold;
+	position: relative;
+	top: 24px;
+	left: 40px;
+}
+
+#avatarsHeading {
+	position: absolute;
+	top: 20px;
+	left: 250px;
+	font-size: 45px;
+	color: white;
+}
+
+#titlesHeading {
+	position: absolute;
+	top: 20px;
+	left: 1215px;
+	font-size: 45px;
+	color: white;
+}
+
+.unlock {
+	position: absolute;
+	width: 143px;
+	text-align: center;
+	opacity: 0.7;
+	bottom: -5px;
+	font-size: 14px;
+}
+
+#unlockFour {
+	bottom: -15px;
+}
+
+#unlockSeven {
+	left: -15px;
+}
+
+.sharethis-inline-follow-buttons {
+	position: relative;
+	top: 115px;
+	left: 25px;
+} 
+
+.propicChoice {
+	position: absolute;
+	width: 143px;
+	height: 149px;
+	border: solid;
+	border-width: 2px;
+	background-color: gray;
+	opacity: 0.7;
+	transition: opacity 0.4s;
+}
+
+#propicChoiceOne {
+	border-top-left-radius: 40px;
+	left: -8px;
+	top: -8px;
+}
+
+#propicChoiceTwo {
+	top: -8px;
+	left: 137px;
+}
+
+#propicChoiceThree {
+	border-top-right-radius: 40px;
+	top: -8px;
+	left: 282px;
+}
+
+#propicChoiceFour {
+	left: -8px;
+	top: 143px;
+}
+
+#propicChoiceFive {
+	left: 137px;
+	top: 143px;
+}
+
+#propicChoiceSix {
+	left: 282px;
+	top: 143px;
+}
+
+#propicChoiceSeven {
+	left: -8px;
+	top: 294px;
+}
+
+#propicChoiceEight {
+	left: 137px;
+	top: 294px;
+}
+
+#propicChoiceNine {
+	left: 282px;
+	top: 294px;	
+}
+
+#propicChoiceTen {
+	border-bottom-left-radius: 40px;
+	left: -8px;
+	top: 445px;
+}
+
+#propicChoiceEleven {
+	left: 137px;
+	top: 445px;
+}
+
+#propicChoiceTwelve {
+	border-bottom-right-radius: 40px;
+	left: 282px;
+	top: 445px;
+}
+
+.propicPic {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.picHolder {
+	position: absolute;
+	left: 31.5px;
+	top: 34.5px;
+	height: 80px;
+	width: 80px;
+	border-radius: 40px;
+	border: solid;
+	overflow: hidden;
+	background-color: white;
+	transition: opacity 0.4s;
+}
+
+#picHolderOne {
+	opacity: 0.6;
+	border-width: 1px;
+}
+
+#picHolderTwo {
+	opacity: 0.6;
+	border-width: 1px;
+}
+
+#picHolderThree {
+	opacity: 0.6;
+	border-width: 1px;
+}
+
+#picHolderFour {
+	opacity: 0.6;
+	border-width: 1px;
+}
+
+#picHolderFive {
+	opacity: 0.6;
+	border-width: 1px;
+}
+
+#picHolderSix {
+	opacity: 0.6;
+	border-width: 1px;
+}
+
+#picHolderSeven {
+	opacity: 0.6;
+	border-width: 1px;
+}
+
+#picHolderEight {
+	opacity: 0.6;
+	border-width: 1px;
+}
+
+#picHolderNine {
+	opacity: 0.6;
+	border-width: 1px;
+}
+
+#picHolderTen {
+	opacity: 0.6;
+	border-width: 1px;
+}
+
+#picHolderEleven {
+	opacity: 0.6;
+	border-width: 1px;
+}
+
+#picHolderTwelve {
+	opacity: 0.6;
+	border-width: 1px;
+}
+
+#propicOne {
+	bottom: 8px;
+}
+
+#propicTwo {
+	bottom: 2px;
+	width: 200%;
+	left: -40px;
+	height: 120%;
+}
+
+#propicThree {
+	height: 130%;
+	width: 140%;
+	left: -18px;
+	bottom: 15px;
+}
+
+#propicFour {
+	bottom: 13px;
+	height: 130%;
+	width: 110%;
+	left: -3px;
+}
+
+#propicFive {
+	width: 130%;
+}
+
+#propicSix {
+	width: 150%;
+	height: 120%;
+	left: -20px;
+}
+
+#propicSeven {
+}
+
+#propicEight {
+	bottom: 28px;
+	width: 220%;
+	height: 140%;
+	left: -55px;
+}
+
+#propicNine {
+}
+
+#propicTen {
+	bottom: 3px;
+	left: 3px;
+}
+
+#propicEleven {
+	width: 150%;
+	left: -15px;
+}
+
+#propicTwelve {
+}
+
+.titleChoice {
+	position: absolute;
+	border: solid;
+	border-width: 2px;
+	/*height: 600px;
+	width: 430px;
+	top: -7px;
+	left: -7px;*/
+}
+
+#totalGems {
+	top: -7px;
+	left: -7px;
+	width: 215px;
+	height: 200px;
+	border-top-left-radius: 40px;
+}
+
+#totalArtifacts {
+	top: -7px;
+	left: 210px;
+	width: 215px;
+	height: 200px;
+	border-top-right-radius: 40px;
+}
+
+#totalDeaths {
+	top: 195px;
+	left: -7px;
+	width: 215px;
+	height: 200px;
+}
+
+#totalGames {
+	top: 195px;
+	left: 210px;
+	width: 215px;
+	height: 200px;
+}
+
+#totalDeals {
+	top: 397px;
+	left: -7px;
+	width: 215px;
+	height: 196px;
+	border-bottom-left-radius: 40px;
+}
+
+#secret {
+	top: 397px;
+	left: 210px;
+	width: 215px;
+	height: 196px;
+	border-bottom-right-radius: 40px;
+}
+
+.titleHeading {
+	text-align: center;
+	font-size: 23px;
+	position: relative;
+	bottom: 5px;
+}
+
+.titleOne {
+	text-align: center;
+	position: relative;
+	bottom: 15px;
+	transition: all 0.3s ease 0s;
+}
+
+.titleTwo {
+	text-align: center;
+	position: relative;
+	bottom: 53px;
+	transition: all 0.3s ease 0s;
+}
+
+.titleThree {
+	text-align: center;
+	position: relative;
+	bottom: 90px;
+	transition: all 0.3s ease 0s;
+}
+
+.titleFour {
+	text-align: center;
+	position: relative;	
+	bottom: 124px;
+	transition: all 0.3s ease 0s;
+}
+
+.paramOne {
+	text-align: left;
+	position: relative;
+	left: 10px;
+	bottom: 50px;
+}
+
+.paramTwo {
+	text-align: left;
+	position: relative;
+	left: 10px;
+	bottom: 88px;
+}
+
+.paramThree {
+	text-align: left;
+	position: relative;
+	left: 10px;
+	bottom: 125px;
+}
+
+.paramFour {
+	text-align: left;
+	position: relative;
+	left: 10px;
+	bottom: 159px;
+}
+
+.lockOne {
+	height: 25px;
+	width: 20px;
+	position: absolute;
+	top: 55px;
+	right: 15px;
+}
+
+.lockTwo {
+	height: 25px;
+	width: 20px;
+	position: absolute;
+	top: 91px;
+	right: 15px;
+}
+
+.lockThree {
+	height: 25px;
+	width: 20px;
+	position: absolute;
+	top: 127px;
+	right: 15px;
+}
+
+.lockFour {
+	height: 25px;
+	width: 20px;
+	position: absolute;
+	top: 162px;
+	right: 15px;
+}
+
+#moneyBagsDiv {
+	width: 85px;
+	height: 25px;
+	position: absolute;
+	top: 55px;
+	left: 65px; 
+}
+
+#princeDiv {
+	width: 45px;
+	height: 25px;
+	position: absolute;
+	top: 90px;
+	left: 85px; 
+}
+
+#billionareDiv {
+	width: 65px;
+	height: 25px;
+	position: absolute;
+	top: 124px;
+	left: 75px; 
+}
+
+#jeffBezosDiv {
+	width: 69px;
+	height: 25px;
+	position: absolute;
+	top: 162px;
+	left: 73px; 
+}
+
+#collectorDiv {
+	width: 61px;
+	height: 25px;
+	position: absolute;
+	top: 55px;
+	left: 77px; 
+}
+
+#garyDraytonDiv {
+	width: 85px;
+	height: 25px;
+	position: absolute;
+	top: 90px;
+	left: 65px; 
+}
+
+#archaeologistDiv {
+	width: 89px;
+	height: 25px;
+	position: absolute;
+	top: 124px;
+	left: 63px; 
+}
+
+#indianaJonesDiv {
+	width: 85px;
+	height: 25px;
+	position: absolute;
+	top: 162px;
+	left: 65px; 
+} 
+
+#deceasedDiv {
+	width: 65px;
+	height: 25px;
+	position: absolute;
+	top: 55px;
+	left: 75px; 
+}
+
+#unluckyRollerDiv {
+	width: 93px;
+	height: 25px;
+	position: absolute;
+	top: 90px;
+	left: 61px; 
+}
+
+#riskTakerDiv {
+	width: 72px;
+	height: 25px;
+	position: absolute;
+	top: 124px;
+	left: 70px; 
+}
+
+#graveyardRegularDiv {
+	width: 115px;
+	height: 25px;
+	position: absolute;
+	top: 162px;
+	left: 50px; 
+}
+
+#learnerDiv {
+	width: 53px;
+	height: 25px;
+	position: absolute;
+	top: 55px;
+	left: 81px; 
+}
+
+#experiencedExplorerDiv {
+	width: 135px;
+	height: 25px;
+	position: absolute;
+	top: 90px;
+	left: 40px; 
+}
+
+#masterDiv {
+	width: 48px;
+	height: 25px;
+	position: absolute;
+	top: 124px;
+	left: 83px; 
+}
+
+#ancientOneDiv {
+	width: 83px;
+	height: 25px;
+	position: absolute;
+	top: 162px;
+	left: 66px; 
+}
+
+#businessPersonDiv {
+	width: 101px;
+	height: 25px;
+	position: absolute;
+	top: 55px;
+	left: 58px; 
+}
+
+#dayTraderDiv {
+	width: 75px;
+	height: 25px;
+	position: absolute;
+	top: 90px;
+	left: 70px; 
+}
+
+#cardinalInvestorDiv {
+	width: 108px;
+	height: 25px;
+	position: absolute;
+	top: 124px;
+	left: 54px; 
+}
+
+#wolfOfWallStreetDiv {
+	width: 121px;
+	height: 25px;
+	position: absolute;
+	top: 162px;
+	left: 48px; 
+}
+
+#confusedDiv {
+	width: 61px;
+	height: 25px;
+	position: absolute;
+	top: 55px;
+	left: 78px; 
+}
+
+#hackerDiv {
+	width: 51px;
+	height: 25px;
+	position: absolute;
+	top: 90px;
+	left: 82px; 
+}
+
+#customizedDiv {
+	width: 78px;
+	height: 25px;
+	position: absolute;
+	top: 124px;
+	left: 69px; 
+}
+
+#theCreatorDiv {
+	width: 81px;
+	height: 25px;
+	position: absolute;
+	top: 162px;
+	left: 68px; 
+}

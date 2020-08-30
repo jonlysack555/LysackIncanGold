@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="NewGame.css">
+		<title>New Game</title>
+	</head>
+	
+	<body>
+		<div id="tableSpace">
+			<img src="nixon.jpg", id="ref">
+			<img src="tableTop.jpg", alt="tableTop", id="tableTop">
+			<p id="heading">Game Options</p>
+			<div id="gameOptions">
+				<div id="gamePlayers">
+					<label for="numPlayers">Number of Players</label>
+					<select id="numPlayers">
+						<option value=2>2</option>
+						<option value=3>3</option>
+						<option value=4>4</option>
+						<option value=5>5</option>
+						<option value=6>6</option>
+						<option value=7>7</option>
+					</select>
+				</div>
+				<br><br>
+				<div id="chkOptions">
+					<p>Check boxes that you want to allow.</p>
+					<input type="checkbox" id="sellHands" value="sellHands">
+					<label for="sellHands"> Selling Hands</label><br>
+					<input type="checkbox" id="insurance" value="insurance">
+					<label for="insurance"> Insurance Deals</label><br>
+					<input type="checkbox" id="chat" value="chat">
+					<label for="chat"> Chat</label><br>
+				</div>
+				<button type="button", id="submit", onclick="submitPage()">Submit</button>
+				<div id="gameEndings">
+					<p>End Game Options</p>
+					<input type="radio" name="ending" id="gems" value="gems" onclick="showGemEndGame()">
+					<label for="gems">Gem Goal</label><br>
+					<input type="radio" name="ending" id="rounds" value="rounds" onclick="showRoundEndGame()">
+					<label for="rounds">Number of Rounds</label><br>
+					<input type="radio" name="ending" id="callLater" value="callLater" onclick="showCallLaterEndGame()">
+					<label for="callLater">Call End During Game</label><br>
+					<div id="gemsEndGame", class="endGame", style="display: none">
+						<br>
+						<label for="numOfGems">Number of Gems to Win</label>
+						<input type="number", id="numOfGems">
+						<br>
+					</div>
+					<div id="roundsEndGame", class="endGame", style="display: none">
+						<br>
+						<label for="numOfRounds">Number of Rounds</label>
+						<input type="number", id="numOfRounds">
+						<br>
+					</div>
+					<div id="callEndGame", class="endGame", style="display: none">
+						<p>This option allows the game creater to, at any time between two rounds, call the game. This will mean that three more rounds will be played and then the game will be finished.</p>
+					</div>
+				</div>
+				
+			</div>
+			<div id="waitRoom">
+				<div id="gameInfo">
+					<div id="gameInfoText">
+						<div id="infoNumOfPlayers", class="gameInfoBox">
+							<p id="textNumOfPlayers", class="textGameInfo"></p>
+						</div>
+						<div id="infoEndGame", class="gameInfoBox">
+							<p id="textEndGame", class="textGameInfo"></p>
+						</div>
+						<div id="infoSellingHands", class="gameInfoBox">
+							<p id="textSellingHands", class="textGameInfo"></p>
+						</div>
+						<div id ="infoInsurance", class="gameInfoBox">
+							<p id="textInsurance", class="textGameInfo"></p>
+						</div>
+						<div id="infoChat", class="gameInfoBox">
+							<p id="textChat", class="textGameInfo"></p>
+						</div>
+					</div>
+					<div id="hostInfo">
+						<div id="hostAvatar">
+							<img alt="avatar", id="hostAvatarPic">
+						</div>
+						<div id="hostPersonal">
+							<p class="name", id="hostName"></p>
+							<p class="title", id="hostTitle"></p>
+							<p id="hostHost">Host</p>
+						</div>
+						<div id="startGame">
+							<button type="button", id="startGameButton", onclick="startGame()">Start Game</button>
+						</div>
+					</div>
+				</div>
+				<div id="newPlayOne", class="newPlay">
+					<div width="90%", height="90%", class="newPlayInner" id="newPlayOneInner">
+						<div class="avatar", id="playOneAvatar">
+							<img class="avatarPic", id="playOneAvatarPic">
+						</div>
+						<div class="personal">
+							<p class="name", id="playOneName"></p>
+							<p class="title", id="playOneTitle"></p>
+						</div>
+						<div class="ready", id="playOneReady">
+							<p class="readyText", id="playOneReadyText">Waiting...</p>
+						</div>
+					</div>
+				</div>
+				<div id="newPlayTwo", class="newPlay">
+					<div width="90%", height="90%", class="newPlayInner", id="newPlayTwoInner">
+						<div class="avatar", id="playTwoAvatar">
+							<img class="avatarPic", id="playTwoAvatarPic">
+						</div>
+						<div class="personal">
+							<p class="name", id="playTwoName"></p>
+							<p class="title", id="playTwoTitle"></p>
+						</div>
+						<div class="ready", id="playTwoReady">
+							<p class="readyText", id="playTwoReadyText">Waiting...</p>
+						</div>
+					</div>
+				</div>
+				<div id="newPlayThree", class="newPlay">
+					<div width="90%", height="90%", class="newPlayInner", id="newPlayThreeInner">
+						<div class="avatar", id="playThreeAvatar">
+							<img class="avatarPic", id="playThreeAvatarPic">
+						</div>
+						<div class="personal">
+							<p class="name", id="playThreeName"></p>
+							<p class="title", id="playThreeTitle"></p>
+						</div>
+						<div class="ready", id="playThreeReady">
+							<p class="readyText", id="playThreeReadyText">Waiting...</p>
+						</div>
+					</div>
+				</div>
+				<div id="newPlayFour", class="newPlay">
+					<div width="90%", height="90%", class="newPlayInner", id="newPlayFourInner">
+						<div class="avatar", id="playFourAvatar">
+							<img class="avatarPic", id="playFourAvatarPic">
+						</div>
+						<div class="personal">
+							<p class="name", id="playFourName"></p>
+							<p class="title", id="playFourTitle"></p>
+						</div>
+						<div class="ready", id="playFourReady">
+							<p class="readyText", id="playFourReadyText">Waiting...</p>
+						</div>
+					</div>
+				</div>
+				<div id="newPlayFive", class="newPlay">
+					<div width="90%", height="90%", class="newPlayInner", id="newPlayFiveInner">
+						<div class="avatar", id="playFiveAvatar">
+							<img class="avatarPic", id="playFiveAvatarPic">
+						</div>
+						<div class="personal">
+							<p class="name", id="playFiveName"></p>
+							<p class="title", id="playFiveTitle"></p>
+						</div>
+						<div class="ready", id="playFiveReady">
+							<p class="readyText", id="playFiveReadyText">Waiting...</p>
+						</div>
+					</div>
+				</div>
+				<div id="newPlaySix", class="newPlay">
+					<div width="90%", height="90%", class="newPlayInner", id="newPlaySixInner">
+						<div class="avatar", id="playSixAvatar">
+							<img class="avatarPic", id="playSixAvatarPic">
+						</div>
+						<div class="personal">
+							<p class="name", id="playSixName"></p>
+							<p class="title", id="playSixTitle"></p>
+						</div>
+						<div class="ready", id="playSixReady">
+							<p class="readyText", id="playSixReadyText">Waiting...</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="PubnubWorkAround.js"></script>
+		<script src="NewGame.js"></script>
+	</body>
+</html>

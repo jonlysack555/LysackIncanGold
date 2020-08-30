@@ -1,0 +1,35 @@
+#tableSpace {
+	position: relative;
+	height: 764px;
+	width: 1575px;
+}
+
+#tableTop {
+	z-index: -1;
+	height: 100%;
+	width: 100%;
+}
+
+#heading {
+	position: absolute;
+	top: -50px;
+	left: 0px;
+	font-size: 75px;
+	color: white;
+	width: 1575px;
+	text-align: center;
+}
+
+#instructions {
+	position: absolute;
+	bottom: 30px;
+	left: 570px;
+	height: 550px;
+	width: 380px;
+	border: solid;
+	border-width: 7px;
+	border-color: white;
+	border-radius: 40px;
+	padding: 20px;
+	background-color: white;
+}

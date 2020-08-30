@@ -1,0 +1,739 @@
+#tableSpace {
+	position: relative;
+	height: 764px;
+	width: 1575px;
+}
+
+#tableTop {
+	z-index: -1;
+	height: 100%;
+	width: 100%;
+}
+
+#heading {
+	position: absolute;
+	top: -50px;
+	left: 605px;
+	font-size: 75px;
+	color: white;
+}
+
+#joinGame {
+	position: absolute;
+	left: 90px;
+	bottom: 30px;
+	width: 1350px;
+	height: 550px;
+	border: solid;
+	border-width: 7px;
+	border-color: white;
+	border-radius: 40px;
+	padding: 20px;
+	background-color: white;
+}
+
+.game {
+	position: absolute;
+	width: 1398px;
+	height: 148px;
+	border: solid;
+	border-width: 3px;
+	left: -7px;
+}
+
+#gameOne {
+	top: -10px;
+	border-top-right-radius: 40px;
+	border-top-left-radius: 40px;
+	border-color: red;
+}
+
+#gameTwo {
+	top: 142px;
+}
+
+#gameThree {
+	top: 294px;
+}
+
+#gameFour {
+	top: 446px;
+	border-bottom-right-radius: 40px;
+	border-bottom-left-radius: 40px;
+}
+
+#gameInfoOne {
+	position: absolute;
+	width: 1398px;
+	height: 147px;
+	border: solid;
+	border-width: 3px;
+	border-top-right-radius: 40px;
+	border-top-left-radius: 40px;
+	bottom: -2px;
+	left: -3px;
+}
+
+#gameInfoTwo, #gameInfoThree {
+	position: absolute;
+	width: 1398px;
+	height: 147px;
+	border: solid;
+	border-width: 3px;
+	bottom: -2px;
+	left: -3px;
+}
+
+#gameInfoFour {
+	position: absolute;
+	width: 1398px;
+	height: 147px;
+	border: solid;
+	border-width: 3px;
+	border-bottom-right-radius: 40px;
+	border-bottom-left-radius: 40px;
+	bottom: -2px;
+	left: -3px;
+}
+
+#gameInfoTextOne {
+	position: absolute;
+	width: 673px;
+	height: 147px;
+	border: solid;
+	border-width: 3px;
+	border-top-left-radius: 40px;
+	bottom: -3px;
+	left: -3px;
+}
+
+#gameInfoTextTwo, #gameInfoTextThree {
+	position: absolute;
+	width: 673px;
+	height: 147px;
+	border: solid;
+	border-width: 3px;
+	bottom: -3px;
+	left: -3px;
+}
+
+#gameInfoTextFour {
+	position: absolute;
+	width: 673px;
+	height: 147px;
+	border: solid;
+	border-width: 3px;
+	border-bottom-left-radius: 40px;
+	bottom: -3px;
+	left: -3px;
+}
+
+#hostInfoOne {
+	position: absolute;
+	width: 723px;
+	height: 147px;
+	border: solid;
+	border-width: 3px;
+	border-top-right-radius: 40px;
+	left: 673px;
+	bottom: -3px;
+}
+
+#hostInfoTwo, #hostInfoThree {
+	position: absolute;
+	width: 723px;
+	height: 147px;
+	border: solid;
+	border-width: 3px;
+	left: 673px;
+	bottom: -3px;
+}
+
+#hostInfoFour {
+	position: absolute;
+	width: 723px;
+	height: 147px;
+	border: solid;
+	border-width: 3px;
+	border-bottom-right-radius: 40px;
+	left: 673px;
+	bottom: -3px;
+}
+
+.gameInfoBox {
+	position: absolute;
+	width: 122px;
+	height: 137px;
+	border: solid;
+	border-width: 3px;
+	bottom: -4px;
+	padding: 5px;
+}
+
+#infoNumOfPlayersOne {
+	border-top-left-radius: 40px;
+	left: -3px;
+}
+
+#infoNumOfPlayersTwo, #infoNumOfPlayersThree {
+	left: -3px;
+}
+
+#infoNumOfPlayersFour {
+	border-bottom-left-radius: 40px;
+	left: -3px;
+}
+
+#infoEndGame {
+	left: 132px;
+}
+
+#infoSellingHands {
+	left: 267px;
+}
+
+#infoInsurance {
+	left: 402px;
+}
+
+#infoChat {
+	left: 537px;
+}
+
+.textGameInfo {
+	text-align: center;
+	font-size: 20px;
+}
+
+#hostAvatar {
+	position: absolute;
+	left: 25px;
+	top: 33px;
+	height: 80px;
+	width: 80px;
+	border-radius: 40px;
+	border: none;
+	border-width: 1px;
+	overflow: hidden;
+}
+
+.hostAvatarPic {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	bottom: 0px;
+	background-color: white;
+}
+
+#hostPersonal {
+	position: absolute;
+	height: 130px;
+	width: 200px;
+	left: 240px;
+	bottom: 30px;
+}
+
+.title {
+	text-align: center;
+	position: relative;
+	bottom: 30px;
+}
+
+.name {
+	text-align: center;
+	font-size: 35px;
+	font-weight: bold;
+}
+
+.hostHost {
+	position: relative;
+	bottom: 43px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#joiningGameOne {
+	position: absolute;
+	top: -3px;
+	height: 148px;
+	width: 203px;
+	border: solid;
+	border-width: 3px;
+	border-top-right-radius: 40px;
+	left: 516px;
+}
+
+#joiningGameTwo, #joiningGameThree {
+	position: absolute;
+	top: -3px;
+	height: 148px;
+	width: 203px;
+	border: solid;
+	border-width: 3px;
+	left: 516px;
+}
+
+#joiningGameFour {
+	position: absolute;
+	top: -3px;
+	height: 148px;
+	width: 203px;
+	border: solid;
+	border-width: 3px;
+	border-bottom-right-radius: 40px;
+	left: 516px;
+}
+
+#joinGameButtonGameOne {
+	width: 101%;
+	height: 100%;
+	position: absolute;
+	border: solid;
+	color: #484848;
+	border-width: 3px;
+	border-top-right-radius: 40px;
+	text-transform: uppercase;
+	background: #228B22;
+	opacity: 0.9;
+	transition: all 0.3s ease-in-out;
+	font-size: 30px;
+	border-color: #228B22;
+}
+
+#joinGameButtonGameTwo, #joinGameButtonGameThree {
+	width: 101%;
+	height: 100%;
+	position: absolute;
+	border: solid;
+	color: #484848;
+	border-width: 3px;
+	text-transform: uppercase;
+	background: #228B22;
+	opacity: 0.9;
+	transition: all 0.3s ease-in-out;
+	font-size: 30px;
+	border-color: #228B22;
+}
+
+#joinGameButtonGameFour {
+	width: 101%;
+	height: 100%;
+	position: absolute;
+	border: solid;
+	color: #484848;
+	border-width: 3px;
+	border-bottom-right-radius: 40px;
+	text-transform: uppercase;
+	background: #228B22;
+	opacity: 0.9;
+	transition: all 0.3s ease-in-out;
+	font-size: 30px;
+	border-color: #228B22;
+}
+
+#joinGameButtonGameOne:hover {
+	opacity: 1;
+	color: black;
+}
+
+#joinGameButtonGameTwo:hover {
+	opacity: 1;
+	color: black;
+}
+
+#joinGameButtonGameThree:hover {
+	opacity: 1;
+	color: black;
+}
+
+#joinGameButtonGameFour:hover {
+	opacity: 1;
+	color: black;
+}
+
+#waitRoom {
+	position: absolute;
+	display: none;
+	left: 90px;
+	bottom: 30px;
+	width: 1350px;
+	height: 550px;
+	border: solid;
+	border-width: 7px;
+	border-color: white;
+	border-radius: 40px;
+	padding: 20px;
+	background-color: white;
+}
+
+#gameInfo {
+	position: absolute;
+	width: 1350px;
+	height: 137px;
+	border: solid;
+	border-width: 3px;
+	border-radius: 40px;
+}
+
+.newPlay {
+	position: absolute;
+	width: 672px;
+	height: 130px;
+	border: solid;
+	border-width: 3px;
+	border-radius: 40px;
+}
+
+#newPlayOne {
+	top: 160px;
+}
+
+#newPlayThree {
+	top: 293px;
+}
+
+#newPlayFive {
+	top: 426px;
+}
+
+#newPlayTwo {
+	top: 160px;
+	left: 695px;
+}
+
+#newPlayFour {
+	top: 293px;
+	left: 695px;
+}
+
+#newPlaySix {
+	top: 426px;
+	left: 695px;
+}
+
+#gameInfoText {
+	position: absolute;
+	width: 673px;
+	height: 137px;
+	border: solid;
+	border-width: 3px;
+	border-top-left-radius: 40px;
+	border-bottom-left-radius: 40px;
+	bottom: -3px;
+	left: -2px;
+}
+
+#hostInfo {
+	position: absolute;
+	width: 675px;
+	height: 137px;
+	border: solid;
+	border-width: 3px;
+	border-top-right-radius: 40px;
+	border-bottom-right-radius: 40px;
+	left: 673px;
+	bottom: -3px;
+}
+
+.gameInfoBoxx {
+	position: absolute;
+	width: 122px;
+	height: 127px;
+	border: solid;
+	border-width: 3px;
+	bottom: -3px;
+	padding: 5px;
+}
+
+#infoNumOfPlayers {
+	border-top-left-radius: 40px;
+	border-bottom-left-radius: 40px;
+	left: -3px;
+}
+
+#infoEndGame {
+	left: 132px;
+}
+
+#infoSellingHands {
+	left: 267px;
+}
+
+#infoInsurance {
+	left: 402px;
+}
+
+#infoChat {
+	left: 537px;
+}
+
+.textGameInfo {
+	text-align: center;
+	font-size: 20px;
+}
+
+.avatar {
+	position: absolute;
+	left: 25px;
+	top: 22px;
+	height: 80px;
+	width: 80px;
+	border-radius: 40px;
+	border: solid;
+	border-width: 1px;
+	overflow: hidden;
+}
+
+#hostAvatar {
+	position: absolute;
+	left: 25px;
+	top: 26px;
+	height: 80px;
+	width: 80px;
+	border-radius: 40px;
+	border: solid;
+	border-width: 1px;
+	overflow: hidden;
+}
+
+.avatarPic {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background-color: white;
+}
+
+#ref {
+	opacity: 0;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+}
+
+#hostAvatarPic {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background-color: white;
+}
+
+.title {
+	text-align: center;
+	position: relative;
+	bottom: 30px;
+}
+
+.name {
+	text-align: center;
+	font-size: 35px;
+	font-weight: bold;
+}
+
+.personal {
+	position: absolute;
+	height: 120px;
+	width: 200px;
+	left: 180px;
+}
+
+#hostPersonal {
+	position: absolute;
+	height: 130px;
+	width: 200px;
+	left: 240px;
+}
+
+#hostHost {
+	position: relative;
+	bottom: 43px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.ready {
+	position: absolute;
+	top: -3px;
+	height: 130px;
+	width: 200px;
+	border: solid;
+	border-width: 3px;
+	border-top-right-radius: 40px;
+	border-bottom-right-radius: 40px;
+	left: 469px;
+}
+
+#startGame {
+	position: absolute;
+	top: -3px;
+	height: 137px;
+	width: 203px;
+	border: solid;
+	border-width: 3px;
+	border-top-right-radius: 40px;
+	border-bottom-right-radius: 40px;
+	left: 468px;
+	display: none;
+}
+
+#startGameButton {
+	width: 101.5%;
+	height: 100%;
+	position: absolute;
+	border: solid;
+	color: #484848;
+	border-width: 2px;
+	border-top-right-radius: 40px;
+	border-bottom-right-radius: 40px;
+	text-transform: uppercase;
+	background: #228B22;
+	opacity: 0.9;
+	transition: all 0.3s ease-in-out;
+	font-size: 30px;
+}
+
+#startGameButton:hover {
+	opacity: 1;
+	color: black;
+}
+
+#playOneReady {
+	background-color: #FF6961;
+	opacity: 0.9;
+	transition: all 0.3s ease-in-out;
+}
+
+#playOneReady:hover {
+	background: #228B22;
+}
+
+#playTwoReady {
+	background-color: gray;
+}
+
+#playThreeReady {
+	background-color: gray;
+}
+
+#playFourReady {
+	background-color: gray;
+}
+
+#playFiveReady {
+	background-color: gray;
+}
+
+#playSixReady {
+	background-color: gray;
+}
+
+.readyText {
+	position: relative;
+	top: 25px;
+	font-size: 25px;
+	text-align: center;
+	font-weight: bolder;
+}
+
+#hostOnne {
+	display: none;
+}
+
+.cover {
+	z-index: 99;
+	background-color: gray;
+}
+
+#coverOne {
+	position: absolute;
+	top: -9px;
+	height: 148px;
+	width: 1400px;
+	border: solid;
+	border-width: 3px;
+	border-top-right-radius: 40px;
+	border-top-left-radius: 40px;
+	left: -7px;
+}
+
+#coverTwo {
+	position: absolute;
+	top: 142px;
+	height: 148px;
+	width: 1400px;
+	border: solid;
+	border-width: 3px;
+	left: -7px;
+}
+
+#coverThree {
+	position: absolute;
+	top: 293px;
+	height: 148px;
+	width: 1400px;
+	border: solid;
+	border-width: 3px;
+	left: -7px;
+}
+
+#coverFour {
+	position: absolute;
+	top: 444px;
+	height: 148px;
+	width: 1400px;
+	border: solid;
+	border-width: 3px;
+	border-bottom-right-radius: 40px;
+	border-bottom-left-radius: 40px;
+	left: -7px;
+}
+
+#leaveGame {
+	position: absolute;
+	top: 20px;
+	height: 137px;
+	width: 203px;
+	border: solid;
+	border-width: 3px;
+	border-top-right-radius: 40px;
+	border-bottom-right-radius: 40px;
+	left: 228px;
+	display: none;
+}
+
+#leaveGameButton {
+	width: 101.5%;
+	height: 100%;
+	position: absolute;
+	border: solid;
+	color: #484848;
+	border-width: 2px;
+	border-top-right-radius: 40px;
+	border-bottom-right-radius: 40px;
+	text-transform: uppercase;
+	background: #FF6961;
+	opacity: 0.9;
+	transition: all 0.3s ease-in-out;
+	font-size: 30px;
+}
+
+#leaveGameButton:hover {
+	opacity: 1;
+	color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+

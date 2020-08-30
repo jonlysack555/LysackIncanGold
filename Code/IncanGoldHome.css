@@ -1,0 +1,55 @@
+#background {
+	height: 764px;
+	width: 1575px;
+}
+
+#frontPagge {
+	z-index: -1;
+}
+
+.pageButtons {
+	position: absolute;
+	color: #fff !important;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: #228B22;
+	padding: 20px;
+	border-radius: 50px;
+	display: inline-block;
+	border: none;
+	transition: all 0.3s ease 0s;
+	opacity: 0.8;
+}
+
+.pageButtons:hover {
+	text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.3s ease 0s;
+	opacity: 0.9;
+}
+
+#newGame {
+	bottom: 464px;
+	left: 772px;
+}
+
+#joinGame {
+	bottom: 550px;
+	left: 824px;
+}
+
+#stats {
+	bottom: 464px;
+	left: 890px;
+}
+
+#account {
+	bottom: 378px;
+	left: 735px;
+}
+
+#instructions {
+	bottom: 378px;
+	left: 843px;
+}

@@ -1,0 +1,517 @@
+#tableSpace {
+	position: relative;
+	height: 764px;
+	width: 1575px;
+}
+
+#tableTop {
+	z-index: -1;
+	height: 100%;
+	width: 100%;
+}
+
+.player {
+	height: 200px;
+	width: 300px;
+	position: absolute;
+	border: solid;
+	border-color: white;
+	border-radius: 15px;
+}
+
+#playOne {
+	top: 464px;
+	left: 5px;
+}
+
+#playTwo {
+	top: 5px;
+	left: 5px
+}
+
+#playThree {
+	left: 400px;
+	top: 5px;
+}
+
+
+#playFour {
+	left: 875px;
+	top: 5px;
+}
+
+#playFive {
+	left: 1260px;
+	top: 100px;
+}
+
+#playSix {
+	left: 1260px;
+	top: 464px;
+}
+
+#user {
+	height: 300px;
+	width: 800px;
+	position: absolute;
+	top: 464px;
+	left: 387px;
+	border: solid;
+	border-color: white;
+}
+
+#cardSpace {
+	height: 200px;
+	width: 800px;
+	position: absolute;
+	top: 230px;
+	left: 387px;
+	border: solid;
+	border-color: white;
+	border-radius: 8px;
+}
+
+.tent {
+	height: 100px;
+	width: 170px;
+}
+
+#tentOne {
+	position: relative;
+	left: 120px;
+	top: 5px;
+}
+
+#tentTwo {
+	position: relative;
+	left: 120px;
+	top: 5px;
+}
+
+#tentThree {
+	position: relative;
+	top: 5px;
+	left: 120px;
+}
+
+#tentFour {
+	position: relative;
+	left: 5px;
+	top: 5px;
+}
+
+#tentFive {
+	position: relative;
+	top: 5px;
+	left: 5px;
+}
+
+#tentSix {
+	position: relative;
+	left: 5px;
+	top: 5px;
+}
+
+#userStaying {
+	height: 295px;
+	position: absolute;
+	opacity: 0.8;
+	width: 23%;
+}
+
+#userStaying:hover {
+	opacity: 1;
+}
+
+#userLeaving {
+	height: 295px;
+	position: absolute;
+	left: 184px;
+	opacity: 0.8;
+	width: 23%;
+}
+
+#userLeaving:hover {
+	opacity: 1;
+}
+
+#tentUser {
+	left: 620px;
+	top: 5px;
+	position: absolute;
+}
+
+#userMoney {
+	position: absolute;
+	left: 755px;
+	bottom: 230px;
+	font-size: 30px;
+	font-weight: bolder;
+	color: white;
+}
+
+.tableCard {
+	height: 200px;
+	width: 100px;
+}
+
+#cardHoldOne {
+	position: absolute;
+	z-index: 1;
+}
+
+#cardHoldTwo {
+	position: absolute;
+	left: 100px;
+	z-index: 2;
+}
+
+#cardHoldThree {
+	position: absolute;
+	left: 200px;
+	z-index: 3;
+}
+
+#cardHoldFour {
+	position: absolute;
+	left: 300px;
+	z-index: 4;
+}
+
+#cardHoldFive {
+	position: absolute;
+	left: 400px;
+	z-index: 5;
+}
+
+#cardHoldSix {
+	position: absolute;
+	left: 500px;
+	z-index: 6;
+}
+
+#cardHoldSeven {
+	position: absolute;
+	left: 600px;
+	z-index: 7;
+}
+
+#cardHoldEight {
+	position: absolute;
+	left: 700px;
+	z-index: 8;
+}
+
+#cardHoldNine {
+	position: absolute;
+	left: 400px;
+	z-index: 9;
+}
+
+#cardHoldTen {
+	position: absolute;
+	left: 500px;
+	z-index: 10;
+}
+
+#cardHoldEleven {
+	position: absolute;
+	left: 600px;
+	z-index: 11;
+}
+
+#cardHoldTwelve {
+	position: absolute;
+	left: 700px;
+	z-index: 12;
+}
+
+#cardHoldThirteen {
+	position: absolute;
+	left: 600px;
+	z-index: 13;
+}
+
+#cardHoldFourteen {
+	position: absolute;
+	left: 700px;
+	z-index: 14;
+}
+
+#cardHoldFifteen {
+	position: absolute;
+	left: 700px;
+	z-index: 15;
+}
+
+#cardHoldSixteen {
+	position: absolute;
+	left: 700px;
+	z-index: 16;
+}
+
+.roundMoney {
+	width: 90px;
+	height: 80px;
+}
+
+#roundMoneyOne {
+	position: relative;
+	bottom: 100px;
+	left: 5px;
+}
+
+#roundMoneyTwo {
+	position: relative;
+	bottom: 100px;
+	left: 5px;
+}
+
+#roundMoneyThree {
+	position: relative;
+	bottom: 100px;
+	left: 5px;
+}
+
+#roundMoneyFour {
+	position: relative;
+	bottom: 100px;
+	left: 184px;
+}
+
+#roundMoneyFive {
+	position: relative;
+	bottom: 100px;
+	left: 184px;
+}
+
+#roundMoneySix {
+	position: relative;
+	bottom: 100px;
+	left: 184px;
+}
+
+#roundMoneyUser {
+	position: absolute;
+	bottom: 215px;
+	left: 500px;
+}
+
+.name {
+	position: absolute;
+	font-size: 26px;
+	color: white;
+	text-align: center;
+	top: 92px;
+}
+
+#nameOne {
+	left: 183px;
+	width: 110px;
+}
+
+#nameTwo {
+	left: 183px;
+	width: 110px;
+}
+
+#nameThree {
+	left: 183px;
+	width: 110px;
+}
+
+#nameFour {
+	left: -95px;
+	width: 110px;
+}
+
+#nameFive {
+	left: -95px;
+	width: 110px;
+	
+}
+
+#nameSix {
+	left: -95px;
+	width: 110px;
+}
+
+.playerDecision {
+	height: 100px;
+	width: 70px;
+	position: absolute;
+}
+
+#playerDecisionOne {
+	top: 90px;
+	left: 7px;
+}
+
+#playerDecisionTwo {
+	top: 90px;
+	left: 7px;
+}
+
+#playerDecisionThree {
+	top: 90px;
+	left: 7px;
+}
+
+#playerDecisionFour {
+	top: 90px;
+	left: 35px;
+}
+
+#playerDecisionFive {
+	top: 90px;
+	left: 35px;
+}
+
+#playerDecisionSix {
+	top: 90px;
+	left: 35px;
+}
+
+.gem {
+	height: 20px;
+	width: 20px;
+	border: solid;
+	border-width: 1px;
+	border-radius: 3px;
+	border-color: white;
+}
+
+.cardPile {
+	z-index: -10;
+	position: absolute;
+}
+
+.playerDecisionCard {
+	border: solid;
+	border-radius: 6px;
+	border-color: white;
+	border-width: 1px;
+}
+
+#deck {
+	height: 200px;
+	width: 100px;
+	position: absolute;
+	top: 230px;
+	left: 187px;
+	border: solid;
+	border-color: white;
+	border-radius: 8px;
+	overflow: show;
+}
+
+.cardPile {
+	height: 100%;
+	width: 100px;
+	position: absolute;
+	display: block;
+}
+
+#cardPileOne {
+	z-index: 31;
+}
+
+#cardPileTwo {
+	z-index: 30;
+}
+
+.playerTitle {
+	position: absolute;
+	color: white;
+}
+
+#playerOneTitle, #playerTwoTitle, #playerThreeTitle {
+	bottom: 5px;
+	text-align: center;
+	width: 110px;
+	left: 188px;
+}
+
+#playerFourTitle, #playerFiveTitle, #playerSixTitle {
+	bottom: 5px;
+	text-align: center;
+	width: 110px;
+	left: 88px;
+}
+
+.playerPicHolder {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	border: solid;
+	border-width: 1px;
+	border-radius: 40px;
+	overflow: hidden;
+	bottom: 7px;
+	background-color: white;
+}
+
+#playerOnePicHolder, #playerTwoPicHolder, #playerThreePicHolder {
+	left: 110px;
+}
+
+#playerFourPicHolder, #playerFivePicHolder, #playerSixPicHolder {
+	left: 7px;
+}
+
+.playerPic {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+#hostName {
+	position: absolute;
+	font-size: 30px;
+	color: white;
+	top: 35px;
+	left: 470px;
+	width: 150px;
+	text-align: center;
+}
+
+#hostTitle {
+	position: absolute;
+	color: white;
+	top: 87px;
+	left: 470px;
+	width: 150px;
+	text-align: center;
+}
+
+#hostPic {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
+#hostPicHolder {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	border: solid;
+	border-width: 1px;
+	border-radius: 40px;
+	overflow: hidden;
+	top: 52px;
+	left: 390px;
+	background-color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

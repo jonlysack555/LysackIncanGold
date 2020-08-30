@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="LoginPage.css"></link>
+  </head>
+  <body>
+  <div id="banner">
+	<p id="title">Lysack Board Games</p>
+  </div>
+	<div id="main">
+	<img src="gameBackground.jpg", width="1600px", height="727px", id="backGround">
+		<div id="oldUser">
+		<h2 class="centered">Login</h2>
+		  <div class="field">
+			<p>Username: </p><input id="userLogin" class="login"></input>
+		  </div>
+		  <div class="field">
+			<p id="passLoginn">Password: </p><input type="password", id="passLogin" class="login"></input>
+		  </div>
+		  <div class="centered">
+			<button id="submitLogin" class="submit">Login</button>
+		  </div>
+		</div>
+		<div style="margin-top:50px;", id="newUser">
+		<h2 class="centered">Create User</h2>
+		  <div class="field">
+			<p>Username: </p><input id="userCreate" class="login"></input>
+		  </div>
+		  <div class="field">
+			<p id="passCreatee">Password: </p><input type="password", id="passCreate" class="login"></input>
+		  </div>
+		  <div class="field">
+			<p id="nameCreatee">Name: </p><input id="nameCreate" class="login"></input>
+		  </div>
+		  <div class="centered">
+			<button id="submitCreate" class="submit">Create User</button>
+		  </div>
+		</div>
+	</div>
+  </body>
+  <script src="PubnubWorkAround.js"></script>
+  <script src="LoginPage.js"></script>
+</html>

@@ -1,0 +1,159 @@
+.login{
+  width:auto;
+  height: 20px;
+  margin-top:12px;
+  margin-left: 5px;
+}
+
+.field{
+  margin-top:10px;
+  display:flex;
+  /* float:right; */
+  /* align-content: flex-end; */
+  margin-left: auto;
+  margin-right:0;
+  width:60%;
+  left: 25px;
+  position: absolute;
+}
+
+.centered{
+  text-align:center;
+  font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+}
+
+.submit{
+  width:auto;
+  height:20px;
+  position: absolute;
+  top: 300px;
+  right: 122px;
+}
+
+#banner {
+	width: 1600px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	height: 80px;
+	background-color: #aec6cf;
+}
+
+#title {
+	text-align: center;
+	font-size: 40px;
+	font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+	position: relative;
+	bottom: 22px;
+}
+
+#main {
+	width: 1600px;
+	position: absolute;
+	left: 0px;
+	top: 80px;
+	height: 727px;
+	overflow: hidden;
+}
+
+#oldUser {
+	border: solid;
+	border-width: 2px;
+	border-radius: 15px;
+	width: 300px;
+	height: 400px;
+	position: absolute;
+	top: 100px;
+	left: 300px;
+	background-color: #e7eef1;
+	z-index: 5;
+}
+
+#newUser {
+	border: solid;
+	border-width: 2px;
+	border-radius: 15px;
+	width: 300px;
+	height: 400px;
+	position: absolute;
+	top: 50px;
+	left: 950px;
+	background-color: #e7eef1;
+	z-index: 5;
+}
+
+#backGround {
+	-webkit-filter: grayscale(100%); 
+	filter: grayscale(100%);
+}
+
+#userLogin {
+	right: -60px;
+	position: absolute;
+}
+
+#passLogin, #passLoginn {
+	top: 100px;
+	position: absolute;
+}
+
+#passLogin {
+	right: -60px;
+}
+
+#submitCreate {
+	right: 90px;
+	top: 320px;
+	box-shadow: 0px 0px 13px 2px #aec6cf;
+	border: 2px solid #aec6cf;
+	border-radius: 20px;
+	height: 30px;
+	width: 100px;
+	opacity: 0.8;
+	transition: all 0.3s ease 0s;
+}
+
+#submitCreate:hover {
+	opacity: 1.0;
+	background-color: #aec6cf;
+	transition: all 0.3s ease 0s;
+}
+
+#userCreate, #passCreate, #nameCreate {
+	position: absolute;
+	right: -60px;
+}
+
+#passCreate {
+	top: 75px;
+}
+
+#passCreatee {
+	top: 75px;
+	position: absolute;
+}
+
+#nameCreate {
+	top: 150px;
+}
+
+#nameCreatee {
+	top: 150px;
+	position: absolute;
+}
+
+#submitLogin {
+	box-shadow: 0px 0px 13px 2px #aec6cf;
+	border: 2px solid #aec6cf;
+	border-radius: 20px;
+	height: 30px;
+	width: 60px;
+	opacity: 0.8;
+	transition: all 0.3s ease 0s;
+}
+
+#submitLogin:hover {
+	opacity: 1.0;
+	background-color: #aec6cf;
+	transition: all 0.3s ease 0s;
+}

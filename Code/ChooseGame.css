@@ -1,0 +1,114 @@
+.halfOption {
+	width: 800px;
+	height: 727px;
+	position: absolute;
+	top: 80px;
+}
+
+#risk {
+	left: 0px;
+	background-color: #e7eef1;
+}
+
+#incanGold {
+	left: 800px;
+	background-color: #e7eef1;
+}
+
+#banner {
+	width: 1600px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	height: 80px;
+	background-color: #aec6cf;
+}
+
+#title {
+	text-align: center;
+	font-size: 40px;
+	font-family: Century Gothic;
+	position: relative;
+	bottom: 22px;
+	opacity: 1;
+	transition: opacity 0.4s;
+	color: black;
+	height: 80px;
+}
+
+#riskPhoto {
+	width: 791px;
+	height: 720px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	border: solid;
+	border-width: 4px;
+	border-radius: 60px;
+	opacity: 0.8;
+	transition: opacity 0.3s;
+}
+
+#incanGoldPhoto {
+	width: 791px;
+	height: 720px;
+	position: absolute;
+	top: 0px;
+	left: 1px;
+	border: solid;
+	border-width: 4px;
+	border-radius: 60px;
+	opacity: 0.8;
+	transition: opacity 0.3s;
+}
+
+#riskPhoto:hover {
+	opacity: 1.0;
+	transition: opacity 0.3s;
+}
+
+#incanGoldPhoto:hover {
+	opacity: 1.0;
+	transition: opacity 0.3s;
+}
+
+#riskTitle {
+	text-align: center;
+	font-size: 40px;
+	font-family: Century Gothic;
+	position: absolute;
+	top: -22px;
+	left: 763px;
+	opacity: 0;
+	transition: opacity 0.4s;
+}
+
+#incanGoldTitle {
+	text-align: center;
+	font-size: 40px;
+	font-family: Century Gothic;
+	position: absolute;
+	top: -22px;
+	left: 687px;
+	opacity: 0;
+	transition: opacity 0.4s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="Account.css">
+		<title>Account Options</title>
+		<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5f161bbc119b480019729d9d&product=inline-follow-buttons" async="async"></script>
+	</head>
+	
+	<body>
+		<div id="tableSpace">
+			<img src="tableTop.jpg", alt="tableTop", id="tableTop">
+			<p id="heading">Account Options</p>
+			<p id="avatarsHeading">Avatars</p>
+			<p id="titlesHeading">Titles</p>
+			<div id="propics">
+				<div class="propicChoice", id="propicChoiceOne", onclick="clickOne()">
+					<div class="picHolder", id="picHolderOne">
+						<img src="blankAvatar.jpg", class="propicPic", id="propicOne">
+					</div>
+				</div>
+				<div class="propicChoice", id="propicChoiceTwo", onclick="clickTwo()">
+					<div class="picHolder", id="picHolderTwo">
+						<img src="elaphant.jpg", class="propicPic", id="propicTwo">
+					</div>
+					<p id="unlockTwo", class="unlock">Unlock "Archaeologist"</p>
+				</div>
+				<div class="propicChoice", id="propicChoiceThree", onclick="clickThree()">
+					<div class="picHolder", id="picHolderThree">
+						<img src="steve.jpg", class="propicPic", id="propicThree">
+					</div>
+					<p id="unlockThree", class="unlock">Unlock "Master"</p>
+				</div>
+				<div class="propicChoice", id="propicChoiceFour", onclick="clickFour()">
+					<div class="picHolder", id="picHolderFour">
+						<img src="nixon.jpg", class="propicPic", id="propicFour">
+					</div>
+					<p id="unlockFour", class="unlock">Unlock "Cardinal Investor"</p>
+				</div>
+				<div class="propicChoice", id="propicChoiceFive", onclick="clickFive()">
+					<div class="picHolder", id="picHolderFive">
+						<img src="spiderman.jpg", class="propicPic", id="propicFive">
+					</div>
+					<p id="unlockFive", class="unlock">Unlock "Billionare"</p>
+				</div>
+				<div class="propicChoice", id="propicChoiceSix", onclick="clickSix()">
+					<div class="picHolder", id="picHolderSix">
+						<img src="loki.jpg", class="propicPic", id="propicSix">
+					</div>
+					<p id="unlockSix", class="unlock">Unlock "Risk Taker"</p>
+				</div>
+				<div class="propicChoice", id="propicChoiceSeven", onclick="clickSeven()">
+					<div class="picHolder", id="picHolderSeven">
+						<img src="mario.jpg", class="propicPic", id="propicSeven">
+					</div>
+					<p id="unlockSeven", class="unlock">Follow</p>
+					<div id="instaHold">
+						<div class="sharethis-inline-follow-buttons", onclick='unlock("Seven")'></div>
+					</div>
+				</div>
+				<div class="propicChoice", id="propicChoiceEight", onclick="clickEight()">
+					<div class="picHolder", id="picHolderEight">
+						<img src="riskPieces.jpg", class="propicPic", id="propicEight">
+					</div>
+					<p id="unlockEight", class="unlock">Create Lysack Risk</p>
+				</div>
+				<div class="propicChoice", id="propicChoiceNine", onclick="clickNine()">
+					<div class="picHolder", id="picHolderNine">
+						<img src="link.jpg", class="propicPic", id="propicNine">
+					</div>
+					<p id="unlockNine", class="unlock">Unlock one secret title</p>
+				</div>
+				<div class="propicChoice", id="propicChoiceTen", onclick="clickTen()">
+					<div class="picHolder", id="picHolderTen">
+						<img src="pikachu.jpg", class="propicPic", id="propicTen">
+					</div>
+					<p id="unlockTen", class="unlock">???</p>
+				</div>
+				<div class="propicChoice", id="propicChoiceEleven", onclick="clickEleven()">
+					<div class="picHolder", id="picHolderEleven">
+						<img src="yoda.jpg", class="propicPic", id="propicEleven">
+					</div>
+					<p id="unlockEleven", class="unlock">$0.99 in cash</p>
+				</div>
+				<div class="propicChoice", id="propicChoiceTwelve", onclick="clickTwelve()">
+					<div class="picHolder", id="picHolderTwelve">
+						<img src="thanos.jpg", class="propicPic", id="propicTwelve">
+					</div>
+					<p id="unlockTwelve", class="unlock">Unlock "The Creator"</p>
+				</div>
+			</div>
+			<div id="playerTab">
+				<div id="hostAvatar">
+					<img alt="avatar", id="hostAvatarPic">
+				</div>
+				<div id="hostPersonal">
+					<p class="name", id="hostName"></p>
+					<p class="title", id="hostTitle"></p>
+				</div>
+			</div>
+			<div id="titles">
+				<div id="totalGems", class="titleChoice">
+					<p id="totalGemsHeading", class="titleHeading">Total Gems</p>
+					<p id="moneyBags", class="titleOne">Money Bags</p><p class="paramOne">50</p>
+					<p id="prince", class="titleTwo">Prince</p><p class="paramTwo">250</p>
+					<p id="billionare", class="titleThree">Billionare</p><p class="paramThree">1000</p>
+					<p id="jeffBezos", class="titleFour">Jeff Bezos</p><p class="paramFour">5000</p>
+					<img id="moneyBagsLock", class="lockOne">
+					<img id="princeLock", class="lockTwo">
+					<img id="billionareLock", class="lockThree">
+					<img id="jeffBezosLock", class="lockFour">
+					<div id="moneyBagsDiv", onclick="moneyBagsClick()"></div>
+					<div id="princeDiv", onclick="princeClick()"></div>
+					<div id="billionareDiv", onclick="billionareClick()"></div>
+					<div id="jeffBezosDiv", onclick="jeffBezosClick()"></div>
+				</div>
+				<div id="totalArtifacts", class="titleChoice">
+					<p id="totalGemsHeading", class="titleHeading">Total Artifacts</p>
+					<p id="collector", class="titleOne">Collector</p><p class="paramOne">5</p>
+					<p id="garyDrayton", class="titleTwo">Gary Drayton</p><p class="paramTwo">20</p>
+					<p id="archaeologist", class="titleThree">Archaeologist</p><p class="paramThree">100</p>
+					<p id="indianaJones", class="titleFour">Indiana Jones</p><p class="paramFour">250</p>
+					<img id="collectorLock", class="lockOne">
+					<img id="garyDraytonLock", class="lockTwo">
+					<img id="archaeologistLock", class="lockThree">
+					<img id="indianaJonesLock", class="lockFour">
+					<div id="collectorDiv", onclick="collectorClick()"></div>
+					<div id="garyDraytonDiv", onclick="garyDraytonClick()"></div>
+					<div id="archaeologistDiv", onclick="archaeologistClick()"></div>
+					<div id="indianaJonesDiv", onclick="indianaJonesClick()"></div>
+				</div>
+				<div id="totalDeaths", class="titleChoice">
+					<p id="totalGemsHeading", class="titleHeading">Total Deaths</p>
+					<p id="deceased", class="titleOne">Deceased</p><p class="paramOne">20</p>
+					<p id="unluckyRoller", class="titleTwo">Unlucky Roller</p><p class="paramTwo">100</p>
+					<p id="riskTaker", class="titleThree">Risk Taker</p><p class="paramThree">500</p>
+					<p id="graveyardRegular", class="titleFour">Graveyard Regular</p><p class="paramFour">2000</p>
+					<img id="deceasedLock", class="lockOne">
+					<img id="unluckyRollerLock", class="lockTwo">
+					<img id="riskTakerLock", class="lockThree">
+					<img id="graveyardRegularLock", class="lockFour">
+					<div id="deceasedDiv", onclick="deceasedClick()"></div>
+					<div id="unluckyRollerDiv", onclick="unluckyRollerClick()"></div>
+					<div id="riskTakerDiv", onclick="riskTakerClick()"></div>
+					<div id="graveyardRegularDiv", onclick="graveyardRegularClick()"></div>
+				</div>
+				<div id="totalGames", class="titleChoice">
+					<p id="totalGemsHeading", class="titleHeading">Total Games</p>
+					<p id="learner", class="titleOne">Learner</p><p class="paramOne">1</p>
+					<p id="experiencedExplorer", class="titleTwo">Experienced Explorer</p><p class="paramTwo">10</p>
+					<p id="master", class="titleThree">Master</p><p class="paramThree">50</p>
+					<p id="ancientOne", class="titleFour">Ancient One</p><p class="paramFour">400</p>
+					<img id="learnerLock", class="lockOne">
+					<img id="experiencedExplorerLock", class="lockTwo">
+					<img id="masterLock", class="lockThree">
+					<img id="ancientOneLock", class="lockFour">
+					<div id="learnerDiv", onclick="learnerClick()"></div>
+					<div id="experiencedExplorerDiv", onclick="experiencedExplorerClick()"></div>
+					<div id="masterDiv", onclick="masterClick()"></div>
+					<div id="ancientOneDiv", onclick="ancientOneClick()"></div>
+				</div>
+				<div id="totalDeals", class="titleChoice">
+					<p id="totalGemsHeading", class="titleHeading">Total Deals</p>
+					<p id="businessPerson", class="titleOne">Business Person</p><p class="paramOne">10</p>
+					<p id="dayTrader", class="titleTwo">Day Trader</p><p class="paramTwo">50</p>
+					<p id="cardinalInvestor", class="titleThree">Cardinal Investor</p><p class="paramThree">250</p>
+					<p id="wolfOfWallStreet", class="titleFour">Wolf of Wall Street</p><p class="paramFour">1000</p>
+					<img id="businessPersonLock", class="lockOne">
+					<img id="dayTraderLock", class="lockTwo">
+					<img id="cardinalInvestorLock", class="lockThree">
+					<img id="wolfOfWallStreetLock", class="lockFour">
+					<div id="businessPersonDiv", onclick="businessPersonClick()"></div>
+					<div id="dayTraderDiv", onclick="dayTraderClick()"></div>
+					<div id="cardinalInvestorDiv", onclick="cardinalInvestorClick()"></div>
+					<div id="wolfOfWallStreetDiv", onclick="wolfOfWallStreetClick()"></div>
+				</div>
+				<div id="secret", class="titleChoice">
+					<p id="totalGemsHeading", class="titleHeading">Secret</p>
+					<p id="confused", class="titleOne">Confused</p><p class="paramOne">???</p>
+					<p id="hacker", class="titleTwo">Hacker</p><p class="paramTwo">???</p>
+					<p id="customized", class="titleThree">Customized</p><p class="paramThree">???</p>
+					<p id="theCreator", class="titleFour">The Creator</p><p class="paramFour">???</p>
+					<img id="confusedLock", class="lockOne">
+					<img id="hackerLock", class="lockTwo">
+					<img id="customizedLock", class="lockThree">
+					<img id="theCreatorLock", class="lockFour">
+					<div id="confusedDiv", onclick="confusedClick()"></div>
+					<div id="hackerDiv", onclick="hackerClick()"></div>
+					<div id="customizedDiv", onclick="customizedClick()"></div>
+					<div id="theCreatorDiv", onclick="theCreatorClick()"></div>
+				</div>
+			</div>
+		</div>
+		<script src="Account.js"></script>
+	</body>
+</html>

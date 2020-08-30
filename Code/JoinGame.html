@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="JoinGame.css">
+		<title>Join Game</title>
+	</head>
+	
+	<body>
+		<div id="tableSpace">
+			<img src="nixon.jpg", id="ref">
+			<img src="tableTop.jpg", alt="tableTop", id="tableTop">
+			<p id="heading">Join Game</p>
+			<div id="joinGame">
+				<div class="game", id="gameOne">
+					<div id="gameInfoOne">
+						<div id="gameInfoTextOne">
+							<div id="infoNumOfPlayersOne", class="gameInfoBox">
+								<p id="textNumOfPlayersGameOne", class="textGameInfo"></p>
+							</div>
+							<div id="infoEndGame", class="gameInfoBox">
+								<p id="textEndGameGameOne", class="textGameInfo"></p>
+							</div>
+							<div id="infoSellingHands", class="gameInfoBox">
+								<p id="textSellingHandsGameOne", class="textGameInfo"></p>
+							</div>
+							<div id ="infoInsurance", class="gameInfoBox">
+								<p id="textInsuranceGameOne", class="textGameInfo"></p>
+							</div>
+							<div id="infoChat", class="gameInfoBox">
+								<p id="textChatGameOne", class="textGameInfo"></p>
+							</div>
+						</div>
+						<div id="hostInfoOne">
+							<div id="hostAvatar">
+								<img alt="avatar", class="hostAvatarPic", id="hostAvatarPicGameOne">
+							</div>
+							<div id="hostPersonal">
+								<p class="name", id="hostNameGameOne"></p>
+								<p class="title", id="hostTitleGameOne"></p>
+								<p class="hostHost", id="hostOnne">Host</p>
+							</div>
+							<div id="joiningGameOne">
+								<button type="button", id="joinGameButtonGameOne", onclick="joiningGameOne()">Join Game</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="game", id="gameTwo">
+					<div id="gameInfoTwo">
+						<div id="gameInfoTextTwo">
+							<div id="infoNumOfPlayersTwo", class="gameInfoBox">
+								<p id="textNumOfPlayersGameTwo", class="textGameInfo"></p>
+							</div>
+							<div id="infoEndGame", class="gameInfoBox">
+								<p id="textEndGameGameTwo", class="textGameInfo"></p>
+							</div>
+							<div id="infoSellingHands", class="gameInfoBox">
+								<p id="textSellingHandsGameTwo", class="textGameInfo"></p>
+							</div>
+							<div id ="infoInsurance", class="gameInfoBox">
+								<p id="textInsuranceGameTwo", class="textGameInfo"></p>
+							</div>
+							<div id="infoChat", class="gameInfoBox">
+								<p id="textChatGameTwo", class="textGameInfo"></p>
+							</div>
+						</div>
+						<div id="hostInfoTwo">
+							<div id="hostAvatar">
+								<img src="blankAvatar.jpg", alt="avatar", class="hostAvatarPic", id="hostAvatarPicGameTwo">
+							</div>
+							<div id="hostPersonal">
+								<p class="name", id="hostNameGameTwo"></p>
+								<p class="title", id="hostTitleGameTwo"></p>
+								<p class="hostHost", id="hostTwwo">Host</p>
+							</div>
+							<div id="joiningGameTwo">
+								<button type="button", id="joinGameButtonGameTwo", onclick="joiningGameTwo()">Join Game</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="game", id="gameThree">
+					<div id="gameInfoThree">
+						<div id="gameInfoTextThree">
+							<div id="infoNumOfPlayersThree", class="gameInfoBox">
+								<p id="textNumOfPlayersGameThree", class="textGameInfo"></p>
+							</div>
+							<div id="infoEndGame", class="gameInfoBox">
+								<p id="textEndGameGameThree", class="textGameInfo"></p>
+							</div>
+							<div id="infoSellingHands", class="gameInfoBox">
+								<p id="textSellingHandsGameThree", class="textGameInfo"></p>
+							</div>
+							<div id ="infoInsurance", class="gameInfoBox">
+								<p id="textInsuranceGameThree", class="textGameInfo"></p>
+							</div>
+							<div id="infoChat", class="gameInfoBox">
+								<p id="textChatGameThree", class="textGameInfo"></p>
+							</div>
+						</div>
+						<div id="hostInfoThree">
+							<div id="hostAvatar">
+								<img src="blankAvatar.jpg", alt="avatar", class="hostAvatarPic", id="hostAvatarPicGameThree">
+							</div>
+							<div id="hostPersonal">
+								<p class="name", id="hostNameGameThree"></p>
+								<p class="title", id="hostTitleGameThree"></p>
+								<p class="hostHost", id="hostThreee">Host</p>
+							</div>
+							<div id="joiningGameThree">
+								<button type="button", id="joinGameButtonGameThree", onclick="joiningGameThree()">Join Game</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="game", id="gameFour">
+					<div id="gameInfoFour">
+						<div id="gameInfoTextFour">
+							<div id="infoNumOfPlayersFour", class="gameInfoBox">
+								<p id="textNumOfPlayersGameFour", class="textGameInfo"></p>
+							</div>
+							<div id="infoEndGame", class="gameInfoBox">
+								<p id="textEndGameGameFour", class="textGameInfo"></p>
+							</div>
+							<div id="infoSellingHands", class="gameInfoBox">
+								<p id="textSellingHandsGameFour", class="textGameInfo"></p>
+							</div>
+							<div id ="infoInsurance", class="gameInfoBox">
+								<p id="textInsuranceGameFour", class="textGameInfo"></p>
+							</div>
+							<div id="infoChat", class="gameInfoBox">
+								<p id="textChatGameFour", class="textGameInfo"></p>
+							</div>
+						</div>
+						<div id="hostInfoFour">
+							<div id="hostAvatar">
+								<img src="blankAvatar.jpg", alt="avatar", class="hostAvatarPic", id="hostAvatarPicGameFour">
+							</div>
+							<div id="hostPersonal">
+								<p class="name", id="hostNameGameFour"></p>
+								<p class="title", id="hostTitleGameFour"></p>
+								<p class="hostHost", id="hostFouur">Host</p>
+							</div>
+							<div id="joiningGameFour">
+								<button type="button", id="joinGameButtonGameFour", onclick="joiningGameFour()">Join Game</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="coverOne", class="cover">
+					
+				</div>
+				<div id="coverTwo", class="cover">
+					
+				</div>
+				<div id="coverThree", class="cover">
+					
+				</div>
+				<div id="coverFour", class="cover">
+					
+				</div>
+			</div>
+			<div id="waitRoom">
+				<div id="gameInfo">
+					<div id="gameInfoText">
+						<div id="infoNumOfPlayers", class="gameInfoBoxx">
+							<p id="textNumOfPlayers", class="textGameInfo"></p>
+						</div>
+						<div id="infoEndGame", class="gameInfoBoxx">
+							<p id="textEndGame", class="textGameInfo"></p>
+						</div>
+						<div id="infoSellingHands", class="gameInfoBoxx">
+							<p id="textSellingHands", class="textGameInfo"></p>
+						</div>
+						<div id ="infoInsurance", class="gameInfoBoxx">
+							<p id="textInsurance", class="textGameInfo"></p>
+						</div>
+						<div id="infoChat", class="gameInfoBoxx">
+							<p id="textChat", class="textGameInfo"></p>
+						</div>
+					</div>
+					<div id="hostInfo">
+						<div id="hostAvatar">
+							<img alt="avatar", id="hostAvatarPic">
+						</div>
+						<div id="hostPersonal">
+							<p class="name", id="hostName"></p>
+							<p class="title", id="hostTitle"></p>
+							<p id="hostHost">Host</p>
+							<div id="leaveGame">
+								<button type="button", id="leaveGameButton", onclick="leaveGame()">Leave Game</button>
+							</div>
+						</div>
+					</div>
+					</div>
+				<div id="newPlayOne", class="newPlay">
+					<div width="90%", height="90%", class="newPlayInner" id="newPlayOneInner">
+						<div class="avatar", id="playOneAvatar">
+							<img class="avatarPic", id="playOneAvatarPic">
+						</div>
+						<div class="personal">
+							<p class="name", id="playOneName"></p>
+							<p class="title", id="playOneTitle"></p>
+						</div>
+						<div onclick="playerReady()", class="ready", id="playOneReady">
+							<p class="readyText", id="playOneReadyText">Waiting...</p>
+						</div>
+					</div>
+				</div>
+				<div id="newPlayTwo", class="newPlay">
+					<div width="90%", height="90%", class="newPlayInner", id="newPlayTwoInner">
+						<div class="avatar", id="playTwoAvatar">
+							<img class="avatarPic", id="playTwoAvatarPic">
+						</div>
+						<div class="personal">
+							<p class="name", id="playTwoName"></p>
+							<p class="title", id="playTwoTitle"></p>
+						</div>
+						<div class="ready", id="playTwoReady">
+							<p class="readyText", id="playTwoReadyText">Waiting...</p>
+						</div>
+					</div>
+				</div>
+				<div id="newPlayThree", class="newPlay">
+					<div width="90%", height="90%", class="newPlayInner", id="newPlayThreeInner">
+						<div class="avatar", id="playThreeAvatar">
+							<img class="avatarPic", id="playThreeAvatarPic">
+						</div>
+						<div class="personal">
+							<p class="name", id="playThreeName"></p>
+							<p class="title", id="playThreeTitle"></p>
+						</div>
+						<div class="ready", id="playThreeReady">
+							<p class="readyText", id="playThreeReadyText">Waiting...</p>
+						</div>
+					</div>
+				</div>
+				<div id="newPlayFour", class="newPlay">
+					<div width="90%", height="90%", class="newPlayInner", id="newPlayFourInner">
+						<div class="avatar", id="playFourAvatar">
+							<img class="avatarPic", id="playFourAvatarPic">
+						</div>
+						<div class="personal">
+							<p class="name", id="playFourName"></p>
+							<p class="title", id="playFourTitle"></p>
+						</div>
+						<div class="ready", id="playFourReady">
+							<p class="readyText", id="playFourReadyText">Waiting...</p>
+						</div>
+					</div>
+				</div>
+				<div id="newPlayFive", class="newPlay">
+					<div width="90%", height="90%", class="newPlayInner", id="newPlayFiveInner">
+						<div class="avatar", id="playFiveAvatar">
+							<img class="avatarPic", id="playFiveAvatarPic">
+						</div>
+						<div class="personal">
+							<p class="name", id="playFiveName"></p>
+							<p class="title", id="playFiveTitle"></p>
+						</div>
+						<div class="ready", id="playFiveReady">
+							<p class="readyText", id="playFiveReadyText">Waiting...</p>
+						</div>
+					</div>
+				</div>
+				<div id="newPlaySix", class="newPlay">
+					<div width="90%", height="90%", class="newPlayInner", id="newPlaySixInner">
+						<div class="avatar", id="playSixAvatar">
+							<img class="avatarPic", id="playSixAvatarPic">
+						</div>
+						<div class="personal">
+							<p class="name", id="playSixName"></p>
+							<p class="title", id="playSixTitle"></p>
+						</div>
+						<div class="ready", id="playSixReady">
+							<p class="readyText", id="playSixReadyText">Waiting...</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="PubnubWorkAround.js"></script>
+		<script src="JoinGame.js"></script>
+	</body>
+</html>
