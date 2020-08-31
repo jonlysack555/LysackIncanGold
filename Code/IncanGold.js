@@ -192,7 +192,7 @@ function startGame () {
 		document.getElementById("nameFive").innerHTML = playerArray[4][1];
 		document.getElementById("playerFiveTitle").innerHTML = playerArray[4][2];
 		document.getElementById("playerFivePic").src = playerArray[4][3];
-	} else {
+	} else if (totalPlayers == 7) {
 		document.getElementById("nameOne").innerHTML = playerArray[0][1];
 		document.getElementById("playerOneTitle").innerHTML = playerArray[0][2];
 		document.getElementById("playerOnePic").src = playerArray[0][3];
@@ -1349,6 +1349,11 @@ function endRound() {
 	roundSpiders = 0;
 	roundRocks = 0;
 	playersLeft = totalPlayers;
+	var pq = 0;
+	while (pq < 7) {
+		playerList[pq].justLeft = false;
+		pq += 1;
+	}
 	while (c < 7) {
 		playerList[c].playerRoundGems = 0;
 		playerList[c].staying = true;

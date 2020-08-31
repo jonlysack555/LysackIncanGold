@@ -11,12 +11,14 @@ var hostUserBackup = null;
 var waitingSlots = [document.getElementById("newPlayOne"), document.getElementById("newPlayTwo"), document.getElementById("newPlayThree"), document.getElementById("newPlayFour"), document.getElementById("newPlayFive"), document.getElementById("newPlaySix")];
 var waitingSlotsInner = [document.getElementById("newPlayOneInner"), document.getElementById("newPlayTwoInner"), document.getElementById("newPlayThreeInner"), document.getElementById("newPlayFourInner"), document.getElementById("newPlayFiveInner"), document.getElementById("newPlaySixInner")];
 var u = 0;
+var numnum = 0;
 
 function joiningGameOne() {
 	document.getElementById("heading").innerHTML = "Wait for Players";
 	document.getElementById("joinGame").style.display = "none";
 	document.getElementById("waitRoom").style.display = "block";
 	document.getElementById("heading").style.left = "555px";
+	numnum = parseInt(gameOne.numOfPlayers);
 	var r = 6;
 	hostUserBackup = gameOne.host.userr;
 	while (r >= gameOne.numOfPlayers) {
@@ -32,6 +34,7 @@ function joiningGameTwo() {
 	document.getElementById("joinGame").style.display = "none";
 	document.getElementById("waitRoom").style.display = "block";
 	document.getElementById("heading").style.left = "555px";
+	numnum = parseInt(gameTwo.numOfPlayers);
 	var r = 6;
 	hostUserBackup = gameTwo.host.userr;
 	while (r >= gameTwo.numOfPlayers) {
@@ -47,6 +50,7 @@ function joiningGameThree() {
 	document.getElementById("joinGame").style.display = "none";
 	document.getElementById("waitRoom").style.display = "block";
 	document.getElementById("heading").style.left = "555px";
+	numnum = parseInt(gameThree.numOfPlayers);
 	var r = 6;
 	hostUserBackup = gameThree.host.userr;
 	while (r >= gameThree.numOfPlayers) {
@@ -62,6 +66,7 @@ function joiningGameFour() {
 	document.getElementById("joinGame").style.display = "none";
 	document.getElementById("waitRoom").style.display = "block";
 	document.getElementById("heading").style.left = "555px";
+	numnum = parseInt(gameFour.numOfPlayers);
 	var r = 6;
 	hostUserBackup = gameFour.host.userr;
 	while (r >= gameFour.numOfPlayers) {
@@ -84,9 +89,9 @@ function playerReady() {
 }
 
 window.onload = function(){
-	while ((document.getElementById("ref").src.slice(u)).includes("/")) {
+	/* while ((document.getElementById("ref").src.slice(u)).includes("/")) {
 		u += 1;
-	}
+	} */
 	if (document.getElementById("hostAvatarPicGameOne").src.includes("elaphant.jpg")) {
 		document.getElementById("hostAvatarPicGameOne").style.bottom = "2px";
 		document.getElementById("hostAvatarPicGameOne").style.width = "200%";
@@ -431,6 +436,36 @@ function joiningGame(game) {
 	updatePropics();
 }
 
+function proPics(source) {
+	var hostyTwo;
+	if (document.getElementById("hostAvatarPic").src.includes("blankAvatar.jpg")) {
+		hostyTwo = "blankAvatar.jpg";
+	} else if (document.getElementById("hostAvatarPic").src.includes("elaphant.jpg")) {
+		hostyTwo = "elaphant.jpg";
+	} else if (document.getElementById("hostAvatarPic").src.includes("steve.jpg")) {
+		hostyTwo = "steve.jpg";
+	} else if (document.getElementById("hostAvatarPic").src.includes("nixon.jpg")) {
+		hostyTwo = "nixon.jpg";
+	} else if (document.getElementById("hostAvatarPic").src.includes("spiderman.jpg")) {
+		hostyTwo = "spiderman.jpg";
+	} else if (document.getElementById("hostAvatarPic").src.includes("loki.jpg")) {
+		hostyTwo = "loki.jpg";
+	} else if (document.getElementById("hostAvatarPic").src.includes("mario.jpg")) {
+		hostyTwo = "mario.jpg";
+	} else if (document.getElementById("hostAvatarPic").src.includes("riskPieces.jpg")) {
+		hostyTwo = "riskPieces.jpg";
+	} else if (document.getElementById("hostAvatarPic").src.includes("loki.jpg")) {
+		hostyTwo = "loki.jpg";
+	} if (document.getElementById("hostAvatarPic").src.includes("pikachu.jpg")) {
+		hostyTwo = "pikachu.jpg";
+	} else if (document.getElementById("hostAvatarPic").src.includes("yoda.jpg")) {
+		hostyTwo = "yoda.jpg";
+	} else if (document.getElementById("hostAvatarPic").src.includes("thanos.jpg")) {
+		hostyTwo = "thanos.jpg";
+	}
+	return hostyTwo;
+}
+
 pubnub.addListener({
 	message: function(event) {
 		console.log("message");
@@ -440,7 +475,34 @@ pubnub.addListener({
 				console.log(JSON.parse(event.message).thePlayersIn);
 				window.localStorage.setItem('thePlayersIn', JSON.parse(event.message).thePlayersIn);
 				window.localStorage.setItem('hosting', false);
-				window.localStorage.setItem('hostInfo', JSON.stringify([hostUserBackup, document.getElementById("hostName").innerHTML, document.getElementById("hostTitle").innerHTML, document.getElementById("hostAvatarPic").src.slice(u)]));
+				window.localStorage.setItem('numOfPlayers', numnum);
+				var hosty;
+				if (document.getElementById("hostAvatarPic").src.includes("blankAvatar.jpg")) {
+					hosty = "blankAvatar.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("elaphant.jpg")) {
+					hosty = "elaphant.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("steve.jpg")) {
+					hosty = "steve.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("nixon.jpg")) {
+					hosty = "nixon.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("spiderman.jpg")) {
+					hosty = "spiderman.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("loki.jpg")) {
+					hosty = "loki.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("mario.jpg")) {
+					hosty = "mario.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("riskPieces.jpg")) {
+					hosty = "riskPieces.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("loki.jpg")) {
+					hosty = "loki.jpg";
+				} if (document.getElementById("hostAvatarPic").src.includes("pikachu.jpg")) {
+					hosty = "pikachu.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("yoda.jpg")) {
+					hosty = "yoda.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("thanos.jpg")) {
+					hosty = "thanos.jpg";
+				}
+				window.localStorage.setItem('hostInfo', JSON.stringify([hostUserBackup, document.getElementById("hostName").innerHTML, document.getElementById("hostTitle").innerHTML, hosty]));
 				window.open("IncanGold.html", "_self");
 			}
 			if (JSON.parse(event.message).hostUser == hostUserBackup && JSON.parse(event.message).closingGame == true) {
@@ -453,8 +515,33 @@ pubnub.addListener({
 				console.log(document.getElementById("playTwoName").innerHTML);
 				console.log(document.getElementById("playTwoName").innerHTML == JSON.stringify(JSON.parse(event.message).name));
 				console.log(document.getElementById("playTwoName").innerHTML == JSON.parse(event.message).name);
-				console.log(JSON.parse(event.message).name + " " + document.getElementById("playTwoName").innerHTML + ", " + document.getElementById("playTwoTitle").innerHTML + " " + JSON.parse(event.message).title + ", " + document.getElementById("playTwoAvatarPic").src.slice(u) + " " + JSON.parse(event.message).propic);
-				if (document.getElementById("playTwoName").innerHTML == JSON.parse(event.message).name && document.getElementById("playTwoTitle").innerHTML == JSON.parse(event.message).title && document.getElementById("playTwoAvatarPic").src.slice(u) == JSON.parse(event.message).propic) {
+				var hostyOne;
+				if (document.getElementById("hostAvatarPic").src.includes("blankAvatar.jpg")) {
+					hostyOne = "blankAvatar.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("elaphant.jpg")) {
+					hostyOne = "elaphant.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("steve.jpg")) {
+					hostyOne = "steve.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("nixon.jpg")) {
+					hostyOne = "nixon.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("spiderman.jpg")) {
+					hostyOne = "spiderman.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("loki.jpg")) {
+					hostyOne = "loki.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("mario.jpg")) {
+					hostyOne = "mario.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("riskPieces.jpg")) {
+					hostyOne = "riskPieces.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("loki.jpg")) {
+					hostyOne = "loki.jpg";
+				} if (document.getElementById("hostAvatarPic").src.includes("pikachu.jpg")) {
+					hostyOne = "pikachu.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("yoda.jpg")) {
+					hostyOne = "yoda.jpg";
+				} else if (document.getElementById("hostAvatarPic").src.includes("thanos.jpg")) {
+					hostyOne = "thanos.jpg";
+				}
+				if (document.getElementById("playTwoName").innerHTML == JSON.parse(event.message).name && document.getElementById("playTwoTitle").innerHTML == JSON.parse(event.message).title && hostyOne == JSON.parse(event.message).propic) {
 					console.log("playTwoOut");
 					document.getElementById("playTwoAvatarPic").src = "";
 					document.getElementById("playTwoAvatarPic").style.left = "0px";
@@ -463,7 +550,7 @@ pubnub.addListener({
 					document.getElementById("playTwoTitle").innerHTML = "";
 					document.getElementById("playTwoReadyText").innerHTML = "Waiting...";
 					document.getElementById("playTwoReady").style.backgroundColor = "gray";
-				} else if (document.getElementById("playThreeName").innerHTML == JSON.parse(event.message).name && document.getElementById("playThreeTitle").innerHTML == JSON.parse(event.message).title && document.getElementById("playThreeAvatarPic").src.slice(u) == JSON.parse(event.message).propic) {
+				} else if (document.getElementById("playThreeName").innerHTML == JSON.parse(event.message).name && document.getElementById("playThreeTitle").innerHTML == JSON.parse(event.message).title && proPics(document.getElementById("playThreeAvatarPic").src) == JSON.parse(event.message).propic) {
 					console.log("playThreeOut");
 					document.getElementById("playThreeAvatarPic").src = "";
 					document.getElementById("playThreeAvatarPic").style.left = "0px";
@@ -472,7 +559,7 @@ pubnub.addListener({
 					document.getElementById("playThreeTitle").innerHTML = "";
 					document.getElementById("playThreeReadyText").innerHTML = "Waiting...";
 					document.getElementById("playThreeReady").style.backgroundColor = "gray";
-				} else if (document.getElementById("playFourName").innerHTML == JSON.parse(event.message).name && document.getElementById("playFourTitle").innerHTML == JSON.parse(event.message).title && document.getElementById("playFourAvatarPic").src.slice(u) == JSON.parse(event.message).propic) {
+				} else if (document.getElementById("playFourName").innerHTML == JSON.parse(event.message).name && document.getElementById("playFourTitle").innerHTML == JSON.parse(event.message).title && proPics(document.getElementById("playFourAvatarPic").src) == JSON.parse(event.message).propic) {
 					document.getElementById("playFourAvatarPic").src = "";
 					document.getElementById("playFourAvatarPic").style.left = "0px";
 					document.getElementById("playFourAvatarPic").style.bottom = "0px";
@@ -480,7 +567,7 @@ pubnub.addListener({
 					document.getElementById("playFourTitle").innerHTML = "";
 					document.getElementById("playFourReadyText").innerHTML = "Waiting...";
 					document.getElementById("playFourReady").style.backgroundColor = "gray";
-				} else if (document.getElementById("playFiveName").innerHTML == JSON.parse(event.message).name && document.getElementById("playFiveTitle").innerHTML == JSON.parse(event.message).title && document.getElementById("playFiveAvatarPic").src.slice(u) == JSON.parse(event.message).propic) {
+				} else if (document.getElementById("playFiveName").innerHTML == JSON.parse(event.message).name && document.getElementById("playFiveTitle").innerHTML == JSON.parse(event.message).title && proPics(document.getElementById("playFiveAvatarPic").src) == JSON.parse(event.message).propic) {
 					document.getElementById("playFiveAvatarPic").src = "";
 					document.getElementById("playFiveAvatarPic").style.left = "0px";
 					document.getElementById("playFiveAvatarPic").style.bottom = "0px";
@@ -488,7 +575,7 @@ pubnub.addListener({
 					document.getElementById("playFiveTitle").innerHTML = "";
 					document.getElementById("playFiveReadyText").innerHTML = "Waiting...";
 					document.getElementById("playFiveReady").style.backgroundColor = "gray";
-				} else if (document.getElementById("playSixName").innerHTML == JSON.parse(event.message).name && document.getElementById("playSixTitle").innerHTML == JSON.parse(event.message).title && document.getElementById("playSixAvatarPic").src.slice(u) == JSON.parse(event.message).propic) {
+				} else if (document.getElementById("playSixName").innerHTML == JSON.parse(event.message).name && document.getElementById("playSixTitle").innerHTML == JSON.parse(event.message).title && proPics(document.getElementById("playSixAvatarPic").src) == JSON.parse(event.message).propic) {
 					document.getElementById("playSixAvatarPic").src = "";
 					document.getElementById("playSixAvatarPic").style.left = "0px";
 					document.getElementById("playSixAvatarPic").style.bottom = "0px";
@@ -499,23 +586,23 @@ pubnub.addListener({
 				}
 			}
 			if (JSON.parse(event.message).readyy == true && JSON.parse(event.message).userr != userr) {
-				if (document.getElementById("playTwoName").innerHTML == JSON.parse(event.message).name && document.getElementById("playTwoTitle").innerHTML == JSON.parse(event.message).title && document.getElementById("playTwoAvatarPic").src.slice(u) == JSON.parse(event.message).propic) {
+				if (document.getElementById("playTwoName").innerHTML == JSON.parse(event.message).name && document.getElementById("playTwoTitle").innerHTML == JSON.parse(event.message).title && proPics(document.getElementById("playTwoAvatarPic").src) == JSON.parse(event.message).propic) {
 					document.getElementById("playTwoReady").style.backgroundColor = "#228B22";
 					document.getElementById("playTwoReadyText").innerHTML = "Ready";
 				}
-				if (document.getElementById("playThreeName").innerHTML == JSON.parse(event.message).name && document.getElementById("playThreeTitle").innerHTML == JSON.parse(event.message).title && document.getElementById("playThreeAvatarPic").src.slice(u) == JSON.parse(event.message).propic) {
+				if (document.getElementById("playThreeName").innerHTML == JSON.parse(event.message).name && document.getElementById("playThreeTitle").innerHTML == JSON.parse(event.message).title && proPics(document.getElementById("playThreeAvatarPic").src) == JSON.parse(event.message).propic) {
 					document.getElementById("playThreeReady").style.backgroundColor = "#228B22";
 					document.getElementById("playThreeReadyText").innerHTML = "Ready";
 				}
-				if (document.getElementById("playFourName").innerHTML == JSON.parse(event.message).name && document.getElementById("playFourTitle").innerHTML == JSON.parse(event.message).title && document.getElementById("playFourAvatarPic").src.slice(u) == JSON.parse(event.message).propic) {
+				if (document.getElementById("playFourName").innerHTML == JSON.parse(event.message).name && document.getElementById("playFourTitle").innerHTML == JSON.parse(event.message).title && proPics(document.getElementById("playFourAvatarPic").src) == JSON.parse(event.message).propic) {
 					document.getElementById("playFourReady").style.backgroundColor = "#228B22";
 					document.getElementById("playFourReadyText").innerHTML = "Ready";
 				}
-				if (document.getElementById("playFiveName").innerHTML == JSON.parse(event.message).name && document.getElementById("playFiveTitle").innerHTML == JSON.parse(event.message).title && document.getElementById("playFiveAvatarPic").src.slice(u) == JSON.parse(event.message).propic) {
+				if (document.getElementById("playFiveName").innerHTML == JSON.parse(event.message).name && document.getElementById("playFiveTitle").innerHTML == JSON.parse(event.message).title && proPics(document.getElementById("playFiveAvatarPic").src) == JSON.parse(event.message).propic) {
 					document.getElementById("playFiveReady").style.backgroundColor = "#228B22";
 					document.getElementById("playFiveReadyText").innerHTML = "Ready";
 				}
-				if (document.getElementById("playSixName").innerHTML == JSON.parse(event.message).name && document.getElementById("playSixTitle").innerHTML == JSON.parse(event.message).title && document.getElementById("playSixAvatarPic").src.slice(u) == JSON.parse(event.message).propic) {
+				if (document.getElementById("playSixName").innerHTML == JSON.parse(event.message).name && document.getElementById("playSixTitle").innerHTML == JSON.parse(event.message).title && proPics(document.getElementById("playSixAvatarPic").src) == JSON.parse(event.message).propic) {
 					document.getElementById("playSixReady").style.backgroundColor = "#228B22";
 					document.getElementById("playSixReadyText").innerHTML = "Ready";
 				}
@@ -526,9 +613,9 @@ pubnub.addListener({
 			if (JSON.parse(event.message).newPlayerAdd == true) {
 				console.log("hello doe");
 				console.log(JSON.parse(event.message).hostName + " " + document.getElementById("hostName").innerHTML);
-				console.log(JSON.parse(event.message).hostPropic + " " + document.getElementById("hostAvatarPic").src.slice(u));
+				console.log(JSON.parse(event.message).hostPropic + " " + proPics(document.getElementById("hostAvatarPic").src));
 			}
-			if (JSON.parse(event.message).newPlayerAdd == true && JSON.parse(event.message).hostName == document.getElementById("hostName").innerHTML && JSON.parse(event.message).hostPropic == document.getElementById("hostAvatarPic").src.slice(u) && JSON.stringify(JSON.parse(event.message).playName + JSON.parse(event.message).playTitle + JSON.parse(event.message).playPropic) != JSON.stringify(name + title + propic)) {
+			if (JSON.parse(event.message).newPlayerAdd == true && JSON.parse(event.message).hostName == document.getElementById("hostName").innerHTML && JSON.parse(event.message).hostPropic == proPics(document.getElementById("hostAvatarPic").src) && JSON.stringify(JSON.parse(event.message).playName + JSON.parse(event.message).playTitle + JSON.parse(event.message).playPropic) != JSON.stringify(name + title + propic)) {
 				console.log("about to add a new player");
 				addNewPlayer(JSON.parse(event.message).playName, JSON.parse(event.message).playTitle, JSON.parse(event.message).playPropic);
 			} else if (JSON.parse(event.message).cancelled == false) {	
