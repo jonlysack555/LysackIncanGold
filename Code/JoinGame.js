@@ -264,7 +264,7 @@ function joiningGame(game) {
 			document.getElementById("textEndGame").innerHTML = "Host will call the game to signify three rounds left";
 		}
 		if (gameOne.sellingHands == true) {
-			document.getElementById("textSellingsHands").innerHTML = "Selling hands is allowed";
+			document.getElementById("textSellingHands").innerHTML = "Selling hands is allowed";
 		} else {
 			document.getElementById("textSellingHands").innerHTML = "Selling hands is not allowed";
 		}
@@ -1064,6 +1064,7 @@ function leaveGame() {
 
 function addNewPlayer(newName, newTitle, newPropic) {
 	console.log("adding a new player");
+	console.log(newPropic);
 	if (document.getElementById("playTwoName").innerHTML == null || document.getElementById("playTwoName").innerHTML == "") {
 		document.getElementById("playTwoName").innerHTML = newName;
 		document.getElementById("playTwoTitle").innerHTML = newTitle;

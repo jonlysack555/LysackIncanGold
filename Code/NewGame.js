@@ -42,13 +42,14 @@ pubnub.addListener({
 			}
 		} else if (JSON.parse(event.message).joining == true && JSON.parse(event.message).host == userr) {
 			console.log("got the game");
+			console.log(JSON.parse(event.message));
 			addPlayer(JSON.parse(event.message));
 		} else if (JSON.parse(event.message).leaving == true && JSON.parse(event.message).hostUser == userr) {
 			playersIn = playersIn - 1;
 			document.getElementById("startGame").style.display = "none";
 			publishMessage();
 			if (playerOneUser == JSON.parse(event.message).playerLeaving) {
-				distributeLeaving(playerOneUser, document.getElementById("playOneName").innerHTML, document.getElementById("playOneTitle").innerHTML, document.getElementById("playOneAvatarPic").src.slice(n)); 
+				distributeLeaving(playerOneUser, document.getElementById("playOneName").innerHTML, document.getElementById("playOneTitle").innerHTML, updated(document.getElementById("playOneAvatarPic").src)); 
 				if (document.getElementById("playOneReadyText").innerHTML == "Ready") {
 					readies = readies - 1;	
 				}
@@ -61,7 +62,7 @@ pubnub.addListener({
 				document.getElementById("playOneReady").style.backgroundColor = "gray";
 				playerOneUser = "";
 			} else if (playerTwoUser == JSON.parse(event.message).playerLeaving) {
-				distributeLeaving(playerTwoUser, document.getElementById("playTwoName").innerHTML, document.getElementById("playTwoTitle").innerHTML, document.getElementById("playTwoAvatarPic").src.slice(n));
+				distributeLeaving(playerTwoUser, document.getElementById("playTwoName").innerHTML, document.getElementById("playTwoTitle").innerHTML, updated(document.getElementById("playTwoAvatarPic").src));
 				if (document.getElementById("playTwoReadyText").innerHTML == "Ready") {
 					readies = readies - 1;	
 				}
@@ -74,7 +75,7 @@ pubnub.addListener({
 				document.getElementById("playTwoReady").style.backgroundColor = "gray";
 				playerTwoUser = "";
 			} else if (playerThreeUser == JSON.parse(event.message).playerLeaving) {
-				distributeLeaving(playerThreeUser, document.getElementById("playThreeName").innerHTML, document.getElementById("playThreeTitle").innerHTML, document.getElementById("playThreeAvatarPic").src.slice(n));
+				distributeLeaving(playerThreeUser, document.getElementById("playThreeName").innerHTML, document.getElementById("playThreeTitle").innerHTML, updated(document.getElementById("playThreeAvatarPic").src));
 				if (document.getElementById("playThreeReadyText").innerHTML == "Ready") {
 					readies = readies - 1;	
 				}
@@ -87,7 +88,7 @@ pubnub.addListener({
 				document.getElementById("playThreeReady").style.backgroundColor = "gray";
 				playerThreeUser = "";
 			} else if (playerFourUser == JSON.parse(event.message).playerLeaving) {
-				distributeLeaving(playerFourUser, document.getElementById("playFourName").innerHTML, document.getElementById("playFourTitle").innerHTML, document.getElementById("playFourAvatarPic").src.slice(n));
+				distributeLeaving(playerFourUser, document.getElementById("playFourName").innerHTML, document.getElementById("playFourTitle").innerHTML, updated(document.getElementById("playFourAvatarPic").src));
 				if (document.getElementById("playFourReadyText").innerHTML == "Ready") {
 					readies = readies - 1;	
 				}
@@ -100,7 +101,7 @@ pubnub.addListener({
 				document.getElementById("playFourReady").style.backgroundColor = "gray";
 				playerFourUser = "";
 			} else if (playerFiveUser == JSON.parse(event.message).playerLeaving) {
-				distributeLeaving(playerFiveUser, document.getElementById("playFiveName").innerHTML, document.getElementById("playFiveTitle").innerHTML, document.getElementById("playFiveAvatarPic").src.slice(n));
+				distributeLeaving(playerFiveUser, document.getElementById("playFiveName").innerHTML, document.getElementById("playFiveTitle").innerHTML, updated(document.getElementById("playFiveAvatarPic").src));
 				if (document.getElementById("playFiveReadyText").innerHTML == "Ready") {
 					readies = readies - 1;	
 				}
@@ -113,7 +114,7 @@ pubnub.addListener({
 				document.getElementById("playFiveReady").style.backgroundColor = "gray";
 				playerFiveUser = "";
 			} else if (playerSixUser == JSON.parse(event.message).playerLeaving) {
-				distributeLeaving(playerSixUser, document.getElementById("playSixName").innerHTML, document.getElementById("playSixTitle").innerHTML, document.getElementById("playSixAvatarPic").src.slice(n));
+				distributeLeaving(playerSixUser, document.getElementById("playSixName").innerHTML, document.getElementById("playSixTitle").innerHTML, updated(document.getElementById("playSixAvatarPic").src));
 				if (document.getElementById("playSixReadyText").innerHTML == "Ready") {
 					readies = readies - 1;	
 				}
@@ -347,22 +348,22 @@ function startGame() {
 	//window.localStorage.setItem('playerOne', playerOneObject);
 	var playersIn = [];
 	if (document.getElementById("playOneName").innerHTML != "") {
-		playersIn.push([playerOneUser, document.getElementById("playOneName").innerHTML, document.getElementById("playOneTitle").innerHTML, document.getElementById("playOneAvatarPic").src.slice(n)]);
+		playersIn.push([playerOneUser, document.getElementById("playOneName").innerHTML, document.getElementById("playOneTitle").innerHTML, updated(document.getElementById("playOneAvatarPic").src)]);
 	}
 	if (document.getElementById("playTwoName").innerHTML != "") {
-		playersIn.push([playerTwoUser, document.getElementById("playTwoName").innerHTML, document.getElementById("playTwoTitle").innerHTML, document.getElementById("playTwoAvatarPic").src.slice(n)]);
+		playersIn.push([playerTwoUser, document.getElementById("playTwoName").innerHTML, document.getElementById("playTwoTitle").innerHTML, updated(document.getElementById("playTwoAvatarPic").src)]);
 	}
 	if (document.getElementById("playThreeName").innerHTML != "") {
-		playersIn.push([playerThreeUser, document.getElementById("playThreeName").innerHTML, document.getElementById("playThreeTitle").innerHTML, document.getElementById("playThreeAvatarPic").src.slice(n)]);
+		playersIn.push([playerThreeUser, document.getElementById("playThreeName").innerHTML, document.getElementById("playThreeTitle").innerHTML, updated(document.getElementById("playThreeAvatarPic").src)]);
 	}
 	if (document.getElementById("playFourName").innerHTML != "") {
-		playersIn.push([playerFourUser, document.getElementById("playFourName").innerHTML, document.getElementById("playFourTitle").innerHTML, document.getElementById("playFourAvatarPic").src.slice(n)]);
+		playersIn.push([playerFourUser, document.getElementById("playFourName").innerHTML, document.getElementById("playFourTitle").innerHTML, updated(document.getElementById("playFourAvatarPic").src)]);
 	}
 	if (document.getElementById("playFiveName").innerHTML != "") {
-		playersIn.push([playerFiveUser, document.getElementById("playFiveName").innerHTML, document.getElementById("playFiveTitle").innerHTML, document.getElementById("playFiveAvatarPic").src.slice(n)]);
+		playersIn.push([playerFiveUser, document.getElementById("playFiveName").innerHTML, document.getElementById("playFiveTitle").innerHTML, updated(document.getElementById("playFiveAvatarPic").src)]);
 	}
 	if (document.getElementById("playSixName").innerHTML != "") {
-		playersIn.push([playerSixUser, document.getElementById("playSixName").innerHTML, document.getElementById("playSixTitle").innerHTML, document.getElementById("playSixAvatarPic").src.slice(n)]);
+		playersIn.push([playerSixUser, document.getElementById("playSixName").innerHTML, document.getElementById("playSixTitle").innerHTML, updated(document.getElementById("playSixAvatarPic").src)]);
 	}
 	console.log(playersIn);
 	window.localStorage.setItem('thePlayersIn', JSON.stringify(playersIn));
@@ -417,11 +418,11 @@ window.addEventListener("beforeunload", function(e){
    closeGame();
 }, false);
 
-window.onunload = function(){
+/* window.onunload = function(){
 	while (document.getElementById("ref").src.slice(n).includes("/")) {
 		n += 1;
 	}
-}
+} */
 
 function addPlayer(newPlayer) {
 	inPlayers(newPlayer);
@@ -475,6 +476,7 @@ function addPlayer(newPlayer) {
 		if (numOfPlayers == 2) {
 			cancel("one");
 		}
+		console.log(newPlayer.propic);
 		distributeNewPlayer(newPlayer.name, newPlayer.title, newPlayer.propic);
 	} else if (document.getElementById("playTwoName").innerHTML == "" && numOfPlayers > 2) {
 		document.getElementById("playTwoName").innerHTML = newPlayer.name;
@@ -733,6 +735,7 @@ function distributeNewPlayer(playName, playTitle, playPropic) {
 	console.log("distrivute player");
 	console.log(name);
 	console.log(propic);
+	console.log(playPropic);
 	pubnub.publish({
     channel : 'availableGames',
     message : JSON.stringify({hostName:name, hostPropic:propic, playName:playName, playTitle:playTitle, playPropic:playPropic, newPlayerAdd:true})
@@ -743,43 +746,73 @@ function inPlayers(newPlayer) {
 	var playerList = [];
 	if (document.getElementById("playOneName").innerHTML != "" && document.getElementById("playOneName").innerHTML != null) {
 		if (document.getElementById("playOneReadyText").innerHTML == "Ready") {
-			playerList.push([document.getElementById("playOneName").innerHTML, document.getElementById("playOneTitle").innerHTML, document.getElementById("playOneAvatarPic").src.slice(n), "Ready"]);
+			playerList.push([document.getElementById("playOneName").innerHTML, document.getElementById("playOneTitle").innerHTML, updated(document.getElementById("playOneAvatarPic").src), "Ready"]);
 		} else {
-			playerList.push([document.getElementById("playOneName").innerHTML, document.getElementById("playOneTitle").innerHTML, document.getElementById("playOneAvatarPic").src.slice(n), "Not Ready"]);			
+			playerList.push([document.getElementById("playOneName").innerHTML, document.getElementById("playOneTitle").innerHTML, updated(document.getElementById("playOneAvatarPic").src), "Not Ready"]);			
 		}
 	}
 	if (document.getElementById("playTwoName").innerHTML != "" && document.getElementById("playTwoName").innerHTML != null) {
 		if (document.getElementById("playOneReadyText").innerHTML == "Ready") {
-			playerList.push([document.getElementById("playTwoName").innerHTML, document.getElementById("playTwoTitle").innerHTML, document.getElementById("playTwoAvatarPic").src.slice(n), "Ready"]);
+			playerList.push([document.getElementById("playTwoName").innerHTML, document.getElementById("playTwoTitle").innerHTML, updated(document.getElementById("playTwoAvatarPic").src), "Ready"]);
 		} else {
-			playerList.push([document.getElementById("playTwoName").innerHTML, document.getElementById("playTwoTitle").innerHTML, document.getElementById("playTwoAvatarPic").src.slice(n), "Not Ready"]);
+			playerList.push([document.getElementById("playTwoName").innerHTML, document.getElementById("playTwoTitle").innerHTML, updated(document.getElementById("playTwoAvatarPic").src), "Not Ready"]);
 		}
 	}
 	if (document.getElementById("playThreeName").innerHTML != "" && document.getElementById("playThreeName").innerHTML != null) {
 		if (document.getElementById("playOneReadyText").innerHTML == "Ready") {	
-			playerList.push([document.getElementById("playThreeName").innerHTML, document.getElementById("playThreeTitle").innerHTML, document.getElementById("playThreeAvatarPic").src.slice(n), "Ready"]);
+			playerList.push([document.getElementById("playThreeName").innerHTML, document.getElementById("playThreeTitle").innerHTML, updated(document.getElementById("playThreeAvatarPic").src), "Ready"]);
 		} else {
-			playerList.push([document.getElementById("playThreeName").innerHTML, document.getElementById("playThreeTitle").innerHTML, document.getElementById("playThreeAvatarPic").src.slice(n), "Not Ready"]);
+			playerList.push([document.getElementById("playThreeName").innerHTML, document.getElementById("playThreeTitle").innerHTML, updated(document.getElementById("playThreeAvatarPic").src), "Not Ready"]);
 		}
 	}
 	if (document.getElementById("playFourName").innerHTML != "" && document.getElementById("playFourName").innerHTML != null) {
 		if (document.getElementById("playOneReadyText").innerHTML == "Ready") {
-			playerList.push([document.getElementById("playFourName").innerHTML, document.getElementById("playFourTitle").innerHTML, document.getElementById("playFourAvatarPic").src.slice(n), "Ready"]);
+			playerList.push([document.getElementById("playFourName").innerHTML, document.getElementById("playFourTitle").innerHTML, updated(document.getElementById("playFourAvatarPic").src), "Ready"]);
 		} else {
-			playerList.push([document.getElementById("playFourName").innerHTML, document.getElementById("playFourTitle").innerHTML, document.getElementById("playFourAvatarPic").src.slice(n), "Not Ready"]);
+			playerList.push([document.getElementById("playFourName").innerHTML, document.getElementById("playFourTitle").innerHTML, updated(document.getElementById("playFourAvatarPic").src), "Not Ready"]);
 		}
 	}
 	if (document.getElementById("playFiveName").innerHTML != "" && document.getElementById("playFiveName").innerHTML != null) {
 		if (document.getElementById("playOneReadyText").innerHTML == "Ready") {
-			playerList.push([document.getElementById("playFiveName").innerHTML, document.getElementById("playFiveTitle").innerHTML, document.getElementById("playFiveAvatarPic").src.slice(n), "Ready"]);
+			playerList.push([document.getElementById("playFiveName").innerHTML, document.getElementById("playFiveTitle").innerHTML, updated(document.getElementById("playFiveAvatarPic").src), "Ready"]);
 		} else {
-			playerList.push([document.getElementById("playFiveName").innerHTML, document.getElementById("playFiveTitle").innerHTML, document.getElementById("playFiveAvatarPic").src.slice(n), "Not Ready"]);
+			playerList.push([document.getElementById("playFiveName").innerHTML, document.getElementById("playFiveTitle").innerHTML, updated(document.getElementById("playFiveAvatarPic").src), "Not Ready"]);
 		}
 	}
 	pubnub.publish({
     channel : 'availableGames',
     message : JSON.stringify({newName:newPlayer.name, newTitle:newPlayer.title, newPropic:newPlayer.propic, players:playerList, inPlayers:true})
 	});
+}
+
+function updated(source) {
+	var hostyTwo;
+	if (source.includes("blankAvatar.jpg")) {
+		hostyTwo = "blankAvatar.jpg";
+	} else if (source.includes("elaphant.jpg")) {
+		hostyTwo = "elaphant.jpg";
+	} else if (source.includes("steve.jpg")) {
+		hostyTwo = "steve.jpg";
+	} else if (source.includes("nixon.jpg")) {
+		hostyTwo = "nixon.jpg";
+	} else if (source.includes("spiderman.jpg")) {
+		hostyTwo = "spiderman.jpg";
+	} else if (source.includes("loki.jpg")) {
+		hostyTwo = "loki.jpg";
+	} else if (source.includes("mario.jpg")) {
+		hostyTwo = "mario.jpg";
+	} else if (source.includes("riskPieces.jpg")) {
+		hostyTwo = "riskPieces.jpg";
+	} else if (source.includes("loki.jpg")) {
+		hostyTwo = "loki.jpg";
+	} if (source.includes("pikachu.jpg")) {
+		hostyTwo = "pikachu.jpg";
+	} else if (source.includes("yoda.jpg")) {
+		hostyTwo = "yoda.jpg";
+	} else if (source.includes("thanos.jpg")) {
+		hostyTwo = "thanos.jpg";
+	}
+	return hostyTwo;
 }
 
 function distributeLeaving(userr, name, title, propic) {
