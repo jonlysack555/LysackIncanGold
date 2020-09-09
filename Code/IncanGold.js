@@ -1665,6 +1665,11 @@ function reduceGems() {
 }
 
 function leaving(playerNum) {
+	if (playerList[playerNum].staying == true) {
+		console.log(playerNum + " is leaving");
+		playersLeft = playersLeft - 1;
+		r += 1;
+	}
 	var w = 0;
 	playerList[playerNum].staying = false;
 	playerList[playerNum].totalGems += playerList[playerNum].playerRoundGems;
@@ -1692,9 +1697,6 @@ function leaving(playerNum) {
 	} else if (playerNum == 6) {
 		document.getElementById("playerSixDecision").src = "leaving.jpg";
 	} */
-	console.log(playerNum + " is leaving");
-	playersLeft = playersLeft - 1;
-	r += 1;
 	if (playersLeft == 0 && host == "true") {
 		endRound();
 	}
