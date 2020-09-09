@@ -1,13 +1,13 @@
 var userr = JSON.parse(window.localStorage.getItem('pubnubUser')).id;
 userr = userr + "i";
-var cards = ["fire.jpg", "fire.jpg", "fire.jpg", "rocks.jpg", "rocks.jpg", "rocks.jpg", "mummy.jpg", "mummy.jpg", "mummy.jpg", "snake.jpg", "snake.jpg", "snake.jpg", "spiders.jpg", "spiders.jpg", "spiders.jpg", "artifact1.jpg", "artifact2.jpg", "artifact3.jpg", "artifact4.jpg", "artifact5.jpg", "oneGem.jpg", "twoGems.jpg", "threeGems.jpg", "fourGems.jpg", "fiveGems.jpg", "fiveGems.jpg", "sevenGems.jpg", "sevenGems.jpg", "nineGems.jpg", "elevenGems.jpg", "elevenGems.jpg", "thirteenGems.jpg", "fourteenGems.jpg", "fifteenGems.jpg", "seventeenGems.jpg"];
-var playerUser = {name:"7", title:"", userr:"", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
-var playerOne = {name:"1", title:"", userr:"", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
-var playerTwo = {name:"2", title:"", userr:"", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
-var playerThree = {name:"3", title:"", userr:"", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
-var playerFour = {name:"4", title:"", userr:"", staying:true, playerRoundGems:0, totalGems: 0, justLeft: false};
-var playerFive = {name:"5", title:"", userr:"", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
-var playerSix = {name:"6", title:"", userr:"", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+var cards = ['fire.jpg', 'fire.jpg', 'fire.jpg', 'rocks.jpg', 'rocks.jpg', 'rocks.jpg', 'mummy.jpg', 'mummy.jpg', 'mummy.jpg', 'snake.jpg', 'snake.jpg', 'snake.jpg', 'spiders.jpg', 'spiders.jpg', 'spiders.jpg', 'artifact1.jpg', 'artifact2.jpg', 'artifact3.jpg', 'artifact4.jpg', 'artifact5.jpg', 'oneGem.jpg', 'twoGems.jpg', 'threeGems.jpg', 'fourGems.jpg', 'fiveGems.jpg', 'fiveGems.jpg', 'sevenGems.jpg', 'sevenGems.jpg', 'nineGems.jpg', 'elevenGems.jpg', 'elevenGems.jpg', 'thirteenGems.jpg', 'fourteenGems.jpg', 'fifteenGems.jpg', 'seventeenGems.jpg'];
+var playerUser = {name:"7", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+var playerOne = {name:"1", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+var playerTwo = {name:"2", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+var playerThree = {name:"3", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+var playerFour = {name:"4", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems: 0, justLeft: false};
+var playerFive = {name:"5", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+var playerSix = {name:"6", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
 var playerList = [playerUser, playerOne, playerTwo, playerThree, playerFour, playerFive, playerSix];
 var gemSlots = [[document.getElementById("pUsOne"), document.getElementById("pUsTwo"), document.getElementById("pUsThree"), document.getElementById("pUsFour"), document.getElementById("pUsFive"), document.getElementById("pUsSix"), document.getElementById("pUsSeven"), document.getElementById("pUsEight")], [document.getElementById("pOnesOne"), document.getElementById("pOnesTwo"), document.getElementById("pOnesThree"), document.getElementById("pOnesFour"), document.getElementById("pOnesFive"), document.getElementById("pOnesSix"), document.getElementById("pOnesSeven"), document.getElementById("pOnesEight")], [document.getElementById("pTwosOne"), document.getElementById("pTwosTwo"), document.getElementById("pTwosThree"), document.getElementById("pTwosFour"), document.getElementById("pTwosFive"), document.getElementById("pTwosSix"), document.getElementById("pTwosSeven"), document.getElementById("pTwosEight")], [document.getElementById("pThreesOne"), document.getElementById("pThreesTwo"), document.getElementById("pThreesThree"), document.getElementById("pThreesFour"), document.getElementById("pThreesFive"), document.getElementById("pThreesSix"), document.getElementById("pThreesSeven"), document.getElementById("pThreesEight")], [document.getElementById("pFoursOne"), document.getElementById("pFoursTwo"), document.getElementById("pFoursThree"), document.getElementById("pFoursFour"), document.getElementById("pFoursFive"), document.getElementById("pFoursSix"), document.getElementById("pFoursSeven"), document.getElementById("pFoursEight")], [document.getElementById("pFivesOne"), document.getElementById("pFivesTwo"), document.getElementById("pFivesThree"), document.getElementById("pFivesFour"), document.getElementById("pFivesFive"), document.getElementById("pFivesSix"), document.getElementById("pFivesSeven"), document.getElementById("pFivesEight")], [document.getElementById("pSixsOne"), document.getElementById("pSixsTwo"), document.getElementById("pSixsThree"), document.getElementById("pSixsFour"), document.getElementById("pSixsFive"), document.getElementById("pSixsSix"), document.getElementById("pSixsSeven"), document.getElementById("pSixsEight")]];
 var playerArray = [];
@@ -15,6 +15,7 @@ var host;
 var hostInfo;
 var outed = false;
 var startingRound = 0;
+var hasBeenCalled = false;
 
 var i = 1;
 var p = 1;
@@ -30,6 +31,8 @@ var callToWin;
 var sellingHands;
 var insurance;
 var chat;
+var roundsPlayed = 0;
+var roundsDone = 0;
 var roundFires = 0;
 var roundMummies = 0;
 var roundSnakes = 0;
@@ -237,7 +240,7 @@ function startGame () {
 	}
 	playerTwo.title = document.getElementById("playerTwoTitle").innerHTML;
 	if (playerTwo.name != "2") {
-		while (playerArray[qw][1] != playerTwo.name && qw < (totalPlayers - 1)) {
+		while (playerArray[qw][1] != playerTwo.name && qw < (totalPlayers - 1) && playerOne.userr == playerArray[qw][0]) {
 			qw += 1;
 		}
 		playerTwo.userr = playerArray[qw][0];
@@ -249,7 +252,7 @@ function startGame () {
 	}
 	playerThree.title = document.getElementById("playerThreeTitle").innerHTML;
 	if (playerThree.name != "3") {
-		while (playerArray[qw][1] != playerThree.name && qw < (totalPlayers - 1)) {
+		while (playerArray[qw][1] != playerThree.name && qw < (totalPlayers - 1) && playerOne.userr == playerArray[qw][0] && playerTwo.userr == playerArray[qw][0]) {
 			qw += 1;
 		}
 		playerThree.userr = playerArray[qw][0];
@@ -261,7 +264,7 @@ function startGame () {
 	}
 	playerFour.title = document.getElementById("playerFourTitle").innerHTML;
 	if (playerFour.name != "4") {
-		while (playerArray[qw][1] != playerFour.name && qw < (totalPlayers - 1)) {
+		while (playerArray[qw][1] != playerFour.name && qw < (totalPlayers - 1) && playerOne.userr == playerArray[qw][0] && playerTwo.userr == playerArray[qw][0] && playerThree.userr == playerArray[qw][0]) {
 			qw += 1;
 		}
 		playerFour.userr = playerArray[qw][0];
@@ -273,7 +276,7 @@ function startGame () {
 	}
 	playerFive.title = document.getElementById("playerFiveTitle").innerHTML;
 	if (playerFive.name != "5") {
-		while (playerArray[qw][1] != playerFive.name && qw < (totalPlayers - 1)) {
+		while (playerArray[qw][1] != playerFive.name && qw < (totalPlayers - 1) && playerOne.userr == playerArray[qw][0] && playerTwo.userr == playerArray[qw][0] && playerThree.userr == playerArray[qw][0] && playerFour.userr == playerArray[qw][0]) {
 			qw += 1;
 		}
 		playerFive.userr = playerArray[qw][0];
@@ -285,7 +288,7 @@ function startGame () {
 	}
 	playerSix.title = document.getElementById("playerSixTitle").innerHTML;
 	if (playerSix.name != "6") {
-		while (playerArray[qw][1] != playerSix.name && qw < (totalPlayers - 1)) {
+		while (playerArray[qw][1] != playerSix.name && qw < (totalPlayers - 1) && playerOne.userr == playerArray[qw][0] && playerTwo.userr == playerArray[qw][0] && playerThree.userr == playerArray[qw][0] && playerFour.userr == playerArray[qw][0] && playerFive.userr == playerArray[qw][0]) {
 			qw += 1;
 		}
 		playerSix.userr = playerArray[qw][0];
@@ -309,12 +312,24 @@ function startGame () {
 	if (document.getElementById("playerSixTitle").innerHTML == "Wolf of Wall Street") {
 		document.getElementById("playerSixTitle").style.bottom = "-5px";
 	}
+	if (callToWin == true && host == "true") {
+		document.getElementById("callingButton").style.display = "block";
+		console.log("blocked");
+	}
+}
+
+document.getElementById("callingButton").onclick = callGame;
+
+function callGame() {
+	hasBeenCalled = true;
+	document.getElementById("callingButton").style.display = "none";
 }
 
 cards = shuffle(cards);
 
 if (host == "true") {
-	newCard();
+	//newCard();
+	setTimeout(newCard, 2000);
 }
 
 pubnub.addListener({
@@ -346,6 +361,9 @@ pubnub.addListener({
 			}
 			/* zm += 1;
 			leaving(zm); */
+			if (decided > 0) {
+				checkAllDecided();
+			}
 		}
 		if (JSON.parse(event.message).insAndOuts == true && host == "false") {
 			var zz = 1;
@@ -356,7 +374,7 @@ pubnub.addListener({
 				zz += 1;
 			} */
 			while (zz < 7) {
-				yaya = playerList[zz].name;
+				yaya = playerList[zz].userr;
 				console.log(yaya);
 				/* var coding = "if (JSON.parse(event.message)..staying == false) { leaving(zz); }";
 				var txtt = coding.slice(0, 30) + yaya + coding.slice(30);
@@ -364,6 +382,7 @@ pubnub.addListener({
 				eval(JSON.stringify(txtt));  */
 				if (JSON.parse(event.message)[yaya].staying == false) {
 					leaving(zz);
+					console.log(yaya + " is leaving");
 				}
 				zz += 1;
 			}
@@ -401,7 +420,7 @@ function checkAllDecided() {
 
 function distributeInOut() {
 	//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA tell whos in and out
-	var theObject = {insAndOuts: true, [playerList[0].name]: playerList[0], [playerList[1].name]: playerList[1], [playerList[2].name]: playerList[2], [playerList[3].name]: playerList[3], [playerList[4].name]: playerList[4], [playerList[5].name]: playerList[5], [playerList[6].name]: playerList[6]};
+	var theObject = {insAndOuts: true, [playerList[0].userr]: playerList[0], [playerList[1].userr]: playerList[1], [playerList[2].userr]: playerList[2], [playerList[3].userr]: playerList[3], [playerList[4].userr]: playerList[4], [playerList[5].userr]: playerList[5], [playerList[6].userr]: playerList[6]};
 	console.log(theObject);
 	pubnub.publish({
 		channel : hostInfo[0],
@@ -477,7 +496,9 @@ function userLeaving() {
 	document.getElementById("userLeaving").style.display = "none";
 	if (host == "true") {
 		leaving(0);
-		checkAllDecided();
+		if (decided > 0) {
+			checkAllDecided();
+		}
 	} else if (host == "false") {
 		leaving(0);
 		pubnub.publish({
@@ -1309,6 +1330,7 @@ function distributeGems(cardSource) {
 	while (c < 7) {
 		if (playerList[c].staying == true) {
 			console.log(playerList[c].name + "got gems");
+			console.log(roundGems);
 			playerList[c].playerRoundGems += roundGems;
 		}
 		c += 1;
@@ -1334,15 +1356,21 @@ function checkRoundEnd(cardSource) {
 }
 
 function endRound() {
+	if (hasBeenCalled == true) {
+		roundsDone += 1;
+	}
+	roundsPlayed += 1;
 	startingRound = 0;
 	cards = shuffle(cards);
 	outed = false;
 	var c = 0;
 	i = 1;
+	r = 0;
 	p = 1;
 	var q = 0;
 	var w = 0;
 	artifactNum = 0;
+	decided = 0;
 	roundFires = 0;
 	roundMummies = 0;
 	roundSnakes = 0;
@@ -1405,6 +1433,7 @@ function endRound() {
 		message : JSON.stringify({ready:true})
 	});
 	}
+	checkGameDone();
 }
 
 function tellEndRound() {
@@ -1646,7 +1675,7 @@ function leaving(playerNum) {
 			w += 1;
 	}
 	if (playerNum == 0) {
-		document.getElementById("userMoney").innerHTML = playerList[playerNum].totalGems;
+		document.getElementById("userMoney").innerHTML = playerUser.totalGems;
 		document.getElementById("userStaying").style.display = "none";
 		document.getElementById("userLeaving").style.display = "none";
 		outed = true;
@@ -1663,6 +1692,7 @@ function leaving(playerNum) {
 	} else if (playerNum == 6) {
 		document.getElementById("playerSixDecision").src = "leaving.jpg";
 	} */
+	console.log(playerNum + " is leaving");
 	playersLeft = playersLeft - 1;
 	r += 1;
 	if (playersLeft == 0 && host == "true") {
@@ -1681,6 +1711,7 @@ function distributeArtifact() {
 		emptyArtifacts();
 		artifactNum = artifactNum - 1;
 		}
+		document.getElementById("userMoney").innerHTML = playerUser.totalGems;
 	}
 }
 
@@ -2160,11 +2191,54 @@ function updatePropics() {
 	}
 }
 
+function checkGameDone() {
+	var wons = 0;
+	if (gemWin == true) {
+		if (playerUser.totalGems >= gemsToWin) {
+			wons += 1;
+		}
+		if (playerOne.totalGems >= gemsToWin) {
+			wons += 1;
+		}
+		if (playerTwo.totalGems >= gemsToWin) {
+			wons += 1;
+		}
+		if (playerThree.totalGems >= gemsToWin) {
+			wons += 1;
+		}
+		if (playerFour.totalGems >= gemsToWin) {
+			wons += 1;
+		}
+		if (playerFive.totalGems >= gemsToWin) {
+			wons += 1;
+		}
+		if (playerSix.totalGems >= gemsToWin) {
+			wons += 1;
+		}
+		if (wons > 0) {
+			endGemGame(wons);
+		}
+	} else if (roundWin == true) {
+		if (roundsPlayed >= roundsToWin) {
+			endRoundGame();
+		}
+	} else if (callToWin == true) {
+		if (roundsDone >= 3) {
+			endCallGame();
+		}
+	}
+}
 
+function endGemGame(won) {
+	console.log("that's the match");
+}
 
+function endRoundGame() {
+	console.log("that's the match");
+}
 
-
-
-
+function endCallGame() {
+	console.log("that's the match");
+}
 
 

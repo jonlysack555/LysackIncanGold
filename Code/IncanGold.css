@@ -416,6 +416,31 @@
 	z-index: 31;
 }
 
+#callingButton {
+	display: none;
+	position: absolute;
+	height: 60px;
+	width: 130px;
+	text-align: center;
+	top: 230px;
+	left: 665px;
+	border: solid;
+	border-width: 1px;
+	border-radius: 30px;
+	background-color: #aec6cf;
+	opacity: 0.8;
+	transition: all 0.3s ease-in-out;
+}
+
+#callingButton:hover {
+	opacity: 1;
+}
+
+#callingText {
+	text-align: center;
+	font-size: 20px;
+}
+
 #cardPileTwo {
 	z-index: 30;
 }

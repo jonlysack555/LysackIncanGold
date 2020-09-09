@@ -9,6 +9,7 @@ var callToWin = false;
 var sellingHands = false;
 var insurance = false;
 var chat = false;
+var startedTheGame = false;
 var name = JSON.parse(localStorage.getItem(userr)).name;
 var title = JSON.parse(localStorage.getItem(userr)).title;
 var propic = JSON.parse(localStorage.getItem(userr)).propic;
@@ -257,6 +258,7 @@ function submitPage() {
 		alert("Please select an end game option along with set a value if you selected a gem win or round win.");
 	}
 	gameParam = [numOfPlayers, gemWin, gemsToWin, roundWin, roundsToWin, callToWin, sellingHands, insurance, chat, [userr, name, title, propic]];
+	window.localStorage.setItem('hostInfo', JSON.stringify([userr, name, title, propic]));	
 	publishMessage();
 }
 
@@ -345,6 +347,7 @@ function checkAllReady() {
 }
 
 function startGame() {
+	startedTheGame = true;
 	//window.localStorage.setItem('playerOne', playerOneObject);
 	var playersIn = [];
 	if (document.getElementById("playOneName").innerHTML != "") {
@@ -415,7 +418,9 @@ window.addEventListener("beforeunload", function(e){
 		   t++;
 	   }
    }
-   closeGame();
+   if (startedTheGame == false) {
+	closeGame();
+   }
 }, false);
 
 /* window.onunload = function(){
