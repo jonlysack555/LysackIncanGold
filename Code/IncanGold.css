@@ -4,6 +4,112 @@
 	width: 1575px;
 }
 
+#wonBackground {
+	display: none;
+	position: relative;
+	height: 754px;
+	width: 1575px;
+	text-align: center;
+	background: linear-gradient(45deg, transparent 0%, transparent 57%, #77dd77 100%), linear-gradient(-45deg, aqua 0%, green 0.3%, #77dd77 112%, transparent 11%), linear-gradient(-90deg, #77dd77 100%, green 65%, transparent 20%);
+}
+
+#lostBackground {
+	display: none;
+	position: relative;
+	height: 754px;
+	width: 1575px;
+	text-align: center;
+	background: linear-gradient(45deg, transparent 0%, transparent 57%, #ff6961 100%), linear-gradient(-45deg, pink 0%, red 0.3%, #ff6961 112%, transparent 11%), linear-gradient(-90deg, #ff6961 100%, red 65%, transparent 20%);
+}
+
+#winningText {
+	position: absolute;
+	font-size: 40px;
+	text-align: center;
+	width: 1575px;
+	top: 437px;
+}
+
+#losingText {
+	position: absolute;
+	font-size: 40px;
+	text-align: center;
+	width: 1575px;
+	top: 437px;
+}
+
+#hostNameW {
+	position: absolute;
+	font-size: 30px;
+	top: 235px;
+	left: 740px;
+	width: 150px;
+	text-align: center;
+}
+
+#hostTitleW {
+	position: absolute;
+	top: 287px;
+	left: 740px;
+	width: 150px;
+	text-align: center;
+}
+
+#hostPicW {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
+#hostPicHolderW {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	border: solid;
+	border-width: 1px;
+	border-radius: 40px;
+	overflow: hidden;
+	top: 252px;
+	left: 660px;
+	background-color: white;
+}
+
+#hostNameL {
+	position: absolute;
+	font-size: 30px;
+	top: 235px;
+	left: 740px;
+	width: 150px;
+	text-align: center;
+}
+
+#hostTitleL {
+	position: absolute;
+	top: 287px;
+	left: 740px;
+	width: 150px;
+	text-align: center;
+}
+
+#hostPicL {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
+#hostPicHolderL {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	border: solid;
+	border-width: 1px;
+	border-radius: 40px;
+	overflow: hidden;
+	top: 252px;
+	left: 660px;
+	background-color: white;
+}
+
 #tableTop {
 	z-index: -1;
 	height: 100%;

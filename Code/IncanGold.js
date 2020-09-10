@@ -16,13 +16,12 @@ var hostInfo;
 var outed = false;
 var startingRound = 0;
 var hasBeenCalled = false;
-
+var iWon = false;
 var i = 1;
 var p = 1;
 var artifactNum = 0;
 var r = 0;
 var eliminated = false;
-
 var gemWin;
 var gemsToWin;
 var roundWin;
@@ -335,6 +334,16 @@ if (host == "true") {
 pubnub.addListener({
 	message: function(event) {
 		console.log(event.message);
+		if (JSON.parse(event.message).won == true && JSON.parse(event.message).userr == userr) {
+			iWon = true;
+		}
+		if (JSON.parse(event.message).sentWins == true) {
+			if (iWon == true) {
+				win();
+			} else {
+				lose();
+			}
+		}
 		if (JSON.parse(event.message).stayingIn == true && host == "true") {
 			decided += 1;
 			checkAllDecided();
@@ -1433,7 +1442,9 @@ function endRound() {
 		message : JSON.stringify({ready:true})
 	});
 	}
-	checkGameDone();
+	if (host == "true") {
+		checkGameDone();
+	}
 }
 
 function tellEndRound() {
@@ -1709,6 +1720,8 @@ function distributeArtifact() {
 			k += 1;
 		}
 		playerList[k].totalGems += (5*artifactNum);
+		console.log(playerList[k]);
+		console.log(5*artifactNum);
 		while (artifactNum > 0) {
 		emptyArtifacts();
 		artifactNum = artifactNum - 1;
@@ -2233,14 +2246,307 @@ function checkGameDone() {
 
 function endGemGame(won) {
 	console.log("that's the match");
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerUser.totalGems) {
+		iWon = true;
+	}
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerOne.totalGems) {
+		pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({won:true, userr:playerOne.userr})
+		});
+	}
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerTwo.totalGems) {
+		pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({won:true, userr:playerTwo.userr})
+		});
+	}
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerThree.totalGems) {
+		pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({won:true, userr:playerThree.userr})
+		});	
+	}
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerFour.totalGems) {
+		pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({won:true, userr:playerFour.userr})
+		});	
+	}
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerFive.totalGems) {
+		pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({won:true, userr:playerFive.userr})
+		});	
+	}
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerSix.totalGems) {
+		pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({won:true, userr:playerSix.userr})
+		});	
+	}
+	pubnub.publish({
+		channel : hostInfo[0],
+		message : JSON.stringify({sentWins:true})
+	});	
+	if (iWon == true) {
+		win();
+	} else {
+		lose();
+	}
 }
 
 function endRoundGame() {
 	console.log("that's the match");
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerUser.totalGems) {
+		iWon = true;
+	}
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerOne.totalGems) {
+		pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({won:true, userr:playerOne.userr})
+		});
+	}
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerTwo.totalGems) {
+		pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({won:true, userr:playerTwo.userr})
+		});
+	}
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerThree.totalGems) {
+		pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({won:true, userr:playerThree.userr})
+		});	
+	}
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerFour.totalGems) {
+		pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({won:true, userr:playerFour.userr})
+		});	
+	}
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerFive.totalGems) {
+		pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({won:true, userr:playerFive.userr})
+		});	
+	}
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerSix.totalGems) {
+		pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({won:true, userr:playerSix.userr})
+		});	
+	}
+	pubnub.publish({
+		channel : hostInfo[0],
+		message : JSON.stringify({sentWins:true})
+	});	
+	if (iWon == true) {
+		win();
+	} else {
+		lose();
+	}
 }
 
 function endCallGame() {
 	console.log("that's the match");
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerUser.totalGems) {
+		iWon = true;
+	}
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerOne.totalGems) {
+		pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({won:true, userr:playerOne.userr})
+		});
+	}
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerTwo.totalGems) {
+		pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({won:true, userr:playerTwo.userr})
+		});
+	}
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerThree.totalGems) {
+		pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({won:true, userr:playerThree.userr})
+		});	
+	}
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerFour.totalGems) {
+		pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({won:true, userr:playerFour.userr})
+		});	
+	}
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerFive.totalGems) {
+		pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({won:true, userr:playerFive.userr})
+		});	
+	}
+	if (Math.max(playerUser.totalGems, playerOne.totalGems, playerTwo.totalGems, playerThree.totalGems, playerFour.totalGems, playerFive.totalGems, playerSix.totalGems) == playerSix.totalGems) {
+		pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({won:true, userr:playerSix.userr})
+		});	
+	}
+	pubnub.publish({
+		channel : hostInfo[0],
+		message : JSON.stringify({sentWins:true})
+	});	
+	if (iWon == true) {
+		win();
+	} else {
+		lose();
+	}
 }
 
+function win() {
+	console.log("you won");
+	document.getElementById("tableSpace").style.display = "none";
+	document.getElementById("wonBackground").style.display = "block";
+	var finall = [[playerUser.totalGems]];
+	if (playerOne.userr != "use") {
+		finall.push([playerOne.totalGems, playerOne.name]);
+	}
+	if (playerTwo.userr != "use") {
+		finall.push([playerTwo.totalGems, playerTwo.name]);
+	}
+	if (playerThree.userr != "use") {
+		finall.push([playerThree.totalGems, playerThree.name]);
+	}
+	if (playerFour.userr != "use") {
+		finall.push([playerFour.totalGems, playerFour.name]);
+	}
+	if (playerFive.userr != "use") {
+		finall.push([playerFive.totalGems, playerFive.name]);
+	}
+	if (playerSix.userr != "use") {
+		finall.push([playerSix.totalGems, playerSix.name]);
+	}
+	var theString = "Congratulations, YOU WIN! After " + roundsPlayed + " rounds, you had " + playerUser.totalGems + " gems";
+	console.log(theString);
+	console.log(finall);
+	var qwe = 1;
+	while (qwe < totalPlayers) {
+		theString = theString.concat(", " + finall[qwe][1] + " had " + finall[qwe][0] + " gems");
+		qwe += 1;
+	}
+	console.log(theString);
+	theString = theString.concat(".");
+	console.log(theString);
+	document.getElementById("winningText").innerHTML = theString;
+	document.getElementById("losingText").innerHTML = theString;
+	document.getElementById("hostNameW").innerHTML = name;
+	document.getElementById("hostTitleW").innerHTML = title;
+	document.getElementById("hostPicW").src = propic;
+	if (document.getElementById("hostPicW").src.includes("elaphant.jpg")) {
+		document.getElementById("hostPicW").style.bottom = "2px";
+		document.getElementById("hostPicW").style.width = "200%";
+		document.getElementById("hostPicW").style.left = "-40px";
+		document.getElementById("hostPicW").style.height = "120%";
+	} else if (document.getElementById("hostPicW").src.includes("blankAvatar.jpg")) {
+		document.getElementById("hostPicW").style.bottom = "8px";
+	} else if (document.getElementById("hostPicW").src.includes("steve")) {
+		document.getElementById("hostPicW").style.left = "-18px";
+		document.getElementById("hostPicW").style.bottom = "15px";
+		document.getElementById("hostPicW").style.width = "140%";
+		document.getElementById("hostPicW").style.height = "130%";
+	} else if (document.getElementById("hostPicW").src.includes("nixon")) {
+		document.getElementById("hostPicW").style.bottom = "13px";
+		document.getElementById("hostPicW").style.width = "110%";
+		document.getElementById("hostPicW").style.height = "130%";
+		document.getElementById("hostPicW").style.left = "-3px";
+	} else if (document.getElementById("hostPicW").src.includes("spiderman.jpg")) {
+		document.getElementById("hostPicW").style.width = "130%";
+	} else if (document.getElementById("hostPicW").src.includes("loki")) {
+		document.getElementById("hostPicW").style.width = "150%";
+		document.getElementById("hostPicW").style.height = "120%";
+		document.getElementById("hostPicW").style.left = "-20px";
+	} else if (document.getElementById("hostPicW").src.includes("riskPieces")) {
+		document.getElementById("hostPicW").style.bottom = "28px";
+		document.getElementById("hostPicW").style.width = "220%";
+		document.getElementById("hostPicW").style.height = "140%";
+		document.getElementById("hostPicW").style.left = "-55px";
+	} else if (document.getElementById("hostPicW").src.includes("pikachu")) {
+		document.getElementById("hostPicW").style.bottom = "3px";
+		document.getElementById("hostPicW").style.left = "3px";
+	} else if (document.getElementById("hostPicW").src.includes("yoda")) {
+		document.getElementById("hostPicW").style.width = "150%";
+		document.getElementById("hostPicW").style.left = "-15px";
+	}
+}
 
+function lose() {
+	console.log("you lost");
+	document.getElementById("tableSpace").style.display = "none";
+	document.getElementById("lostBackground").style.display = "block";
+	var finall = [[playerUser.totalGems]];
+	if (playerOne.userr != "use") {
+		finall.push([playerOne.totalGems, playerOne.name]);
+	}
+	if (playerTwo.userr != "use") {
+		finall.push([playerTwo.totalGems, playerTwo.name]);
+	}
+	if (playerThree.userr != "use") {
+		finall.push([playerThree.totalGems, playerThree.name]);
+	}
+	if (playerFour.userr != "use") {
+		finall.push([playerFour.totalGems, playerFour.name]);
+	}
+	if (playerFive.userr != "use") {
+		finall.push([playerFive.totalGems, playerFive.name]);
+	}
+	if (playerSix.userr != "use") {
+		finall.push([playerSix.totalGems, playerSix.name]);
+	}
+	var theString = "Sadly, you lost this time. After " + roundsPlayed + " rounds, you had " + playerUser.totalGems + " gems";
+	console.log(theString);
+	console.log(finall);
+	var qwe = 1;
+	while (qwe < totalPlayers) {
+		theString = theString.concat(", " + finall[qwe][1] + " had " + finall[qwe][0] + " gems");
+		qwe += 1;
+	}
+	console.log(theString);
+	theString = theString.concat(".");
+	console.log(theString);
+	document.getElementById("losingText").innerHTML = theString;
+	document.getElementById("hostNameL").innerHTML = name;
+	document.getElementById("hostTitleL").innerHTML = title;
+	document.getElementById("hostPicL").src = propic;
+	if (document.getElementById("hostPicL").src.includes("elaphant.jpg")) {
+		document.getElementById("hostPicL").style.bottom = "2px";
+		document.getElementById("hostPicL").style.width = "200%";
+		document.getElementById("hostPicL").style.left = "-40px";
+		document.getElementById("hostPicL").style.height = "120%";
+	} else if (document.getElementById("hostPicL").src.includes("blankAvatar.jpg")) {
+		document.getElementById("hostPicL").style.bottom = "8px";
+	} else if (document.getElementById("hostPicL").src.includes("steve")) {
+		document.getElementById("hostPicL").style.left = "-18px";
+		document.getElementById("hostPicL").style.bottom = "15px";
+		document.getElementById("hostPicL").style.width = "140%";
+		document.getElementById("hostPicL").style.height = "130%";
+	} else if (document.getElementById("hostPicL").src.includes("nixon")) {
+		document.getElementById("hostPicL").style.bottom = "13px";
+		document.getElementById("hostPicL").style.width = "110%";
+		document.getElementById("hostPicL").style.height = "130%";
+		document.getElementById("hostPicL").style.left = "-3px";
+	} else if (document.getElementById("hostPicL").src.includes("spiderman.jpg")) {
+		document.getElementById("hostPicL").style.width = "130%";
+	} else if (document.getElementById("hostPicL").src.includes("loki")) {
+		document.getElementById("hostPicL").style.width = "150%";
+		document.getElementById("hostPicL").style.height = "120%";
+		document.getElementById("hostPicL").style.left = "-20px";
+	} else if (document.getElementById("hostPicL").src.includes("riskPieces")) {
+		document.getElementById("hostPicL").style.bottom = "28px";
+		document.getElementById("hostPicL").style.width = "220%";
+		document.getElementById("hostPicL").style.height = "140%";
+		document.getElementById("hostPicL").style.left = "-55px";
+	} else if (document.getElementById("hostPicL").src.includes("pikachu")) {
+		document.getElementById("hostPicL").style.bottom = "3px";
+		document.getElementById("hostPicL").style.left = "3px";
+	} else if (document.getElementById("hostPicL").src.includes("yoda")) {
+		document.getElementById("hostPicL").style.width = "150%";
+		document.getElementById("hostPicL").style.left = "-15px";
+	}
+}
