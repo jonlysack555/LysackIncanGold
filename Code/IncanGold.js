@@ -370,7 +370,7 @@ pubnub.addListener({
 			}
 			/* zm += 1;
 			leaving(zm); */
-			if (decided > 0) {
+			if (playersLeft != 0) {
 				checkAllDecided();
 			}
 		}
@@ -422,8 +422,10 @@ pubnub.addListener({
 function checkAllDecided() {
 	if (decided == playersLeft && host == "true") {
 		distributeArtifact();
-		distributeInOut();
-		newCard();
+		if (playersLeft != 0) {
+			distributeInOut();
+			newCard();
+		}
 	}
 }
 
@@ -1709,6 +1711,7 @@ function leaving(playerNum) {
 		document.getElementById("playerSixDecision").src = "leaving.jpg";
 	} */
 	if (playersLeft == 0 && host == "true") {
+		distributeArtifact();
 		endRound();
 	}
 }
@@ -1724,7 +1727,7 @@ function distributeArtifact() {
 		console.log(5*artifactNum);
 		while (artifactNum > 0) {
 		emptyArtifacts();
-		artifactNum = artifactNum - 1;
+		//artifactNum = artifactNum - 1;
 		}
 		document.getElementById("userMoney").innerHTML = playerUser.totalGems;
 	}

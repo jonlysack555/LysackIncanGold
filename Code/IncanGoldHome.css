@@ -1,10 +1,14 @@
 #background {
+	position: absolute;
+	left: 0px;
+	top: 0px;
 	height: 764px;
 	width: 1575px;
 }
 
 #frontPagge {
 	z-index: -1;
+	position: absolute;
 }
 
 .pageButtons {
@@ -30,26 +34,31 @@
 }
 
 #newGame {
+	position: absolute;
 	bottom: 464px;
 	left: 772px;
 }
 
 #joinGame {
+	position: absolute;
 	bottom: 550px;
 	left: 824px;
 }
 
 #stats {
+	position: absolute;
 	bottom: 464px;
 	left: 890px;
 }
 
 #account {
+	position: absolute;
 	bottom: 378px;
 	left: 735px;
 }
 
 #instructions {
+	position: absolute;
 	bottom: 378px;
 	left: 843px;
 }
