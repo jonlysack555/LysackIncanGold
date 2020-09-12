@@ -634,6 +634,102 @@
 	background-color: white;
 }
 
+#returnWinButton {
+	width: 100px; 
+	height: 80px; 
+	background: #FF6961; 
+	position: relative;
+	left: 100px;
+	top: 30px;
+	opacity: 0.9;
+	transition: all 0.3s ease-in-out;
+}
+
+#returnWinButton:hover {
+	opacity: 1.0;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	transition: all 0.3s ease-in-out;
+}
+
+#returnWinButton:before { 
+	content: ""; 
+	position: absolute; 
+	top: 0; 
+	width: 0; 
+	height: 0; 
+	right: 100px;
+	border-top: 40px solid transparent; 
+	border-bottom: 40px solid transparent; 
+	border-right: 35px solid #FF6961;
+}
+
+#returnWinButton:after { 
+	content: ""; 
+	position: absolute; 
+	right: 400px; 
+	bottom: 0; 
+	width: 0; 
+	height: 0; 
+	border-top: 40px solid transparent;
+	border-bottom: 40px solid transparent;
+	border-right: 45px solid #FF6961;
+}
+
+#returnLoseButton {
+	width: 100px; 
+	height: 80px; 
+	background: black; 
+	position: relative;
+	left: 100px;
+	top: 30px;
+	opacity: 0.9;
+	transition: all 0.3s ease-in-out;
+}
+
+#returnLoseButton:hover {
+	opacity: 1.0;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	transition: all 0.3s ease-in-out;
+}
+
+#returnLoseButton:before { 
+	content: ""; 
+	position: absolute; 
+	top: 0; 
+	width: 0; 
+	height: 0; 
+	right: 100px;
+	border-top: 40px solid transparent; 
+	border-bottom: 40px solid transparent; 
+	border-right: 35px solid black;
+}
+
+#returnLoseButton:after { 
+	content: ""; 
+	position: absolute; 
+	right: 400px; 
+	bottom: 0; 
+	width: 0; 
+	height: 0; 
+	border-top: 40px solid transparent;
+	border-bottom: 40px solid transparent;
+	border-right: 45px solid black;
+}
+
+.returnText {
+	font-size: 20px;
+	font-weight: bolder;
+}
+
+#returnLoseText {
+	color: white;
+}
+
+#returnWinText {
+	color: black;
+}
 
 
 

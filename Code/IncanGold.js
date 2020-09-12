@@ -11,8 +11,14 @@ var playerSix = {name:"6", title:"", userr:"use", staying:true, playerRoundGems:
 var playerList = [playerUser, playerOne, playerTwo, playerThree, playerFour, playerFive, playerSix];
 var gemSlots = [[document.getElementById("pUsOne"), document.getElementById("pUsTwo"), document.getElementById("pUsThree"), document.getElementById("pUsFour"), document.getElementById("pUsFive"), document.getElementById("pUsSix"), document.getElementById("pUsSeven"), document.getElementById("pUsEight")], [document.getElementById("pOnesOne"), document.getElementById("pOnesTwo"), document.getElementById("pOnesThree"), document.getElementById("pOnesFour"), document.getElementById("pOnesFive"), document.getElementById("pOnesSix"), document.getElementById("pOnesSeven"), document.getElementById("pOnesEight")], [document.getElementById("pTwosOne"), document.getElementById("pTwosTwo"), document.getElementById("pTwosThree"), document.getElementById("pTwosFour"), document.getElementById("pTwosFive"), document.getElementById("pTwosSix"), document.getElementById("pTwosSeven"), document.getElementById("pTwosEight")], [document.getElementById("pThreesOne"), document.getElementById("pThreesTwo"), document.getElementById("pThreesThree"), document.getElementById("pThreesFour"), document.getElementById("pThreesFive"), document.getElementById("pThreesSix"), document.getElementById("pThreesSeven"), document.getElementById("pThreesEight")], [document.getElementById("pFoursOne"), document.getElementById("pFoursTwo"), document.getElementById("pFoursThree"), document.getElementById("pFoursFour"), document.getElementById("pFoursFive"), document.getElementById("pFoursSix"), document.getElementById("pFoursSeven"), document.getElementById("pFoursEight")], [document.getElementById("pFivesOne"), document.getElementById("pFivesTwo"), document.getElementById("pFivesThree"), document.getElementById("pFivesFour"), document.getElementById("pFivesFive"), document.getElementById("pFivesSix"), document.getElementById("pFivesSeven"), document.getElementById("pFivesEight")], [document.getElementById("pSixsOne"), document.getElementById("pSixsTwo"), document.getElementById("pSixsThree"), document.getElementById("pSixsFour"), document.getElementById("pSixsFive"), document.getElementById("pSixsSix"), document.getElementById("pSixsSeven"), document.getElementById("pSixsEight")]];
 var playerArray = [];
+var hasLeft = [];
+var userArtifacts = 0;
+var userDeaths = 0;
+var userDeals = 0;
+var sams = false;
 var host;
 var hostInfo;
+var hasDoneIt = false;
 var outed = false;
 var startingRound = 0;
 var hasBeenCalled = false;
@@ -317,6 +323,35 @@ function startGame () {
 	}
 }
 
+document.getElementById("returnLoseButton").onclick = saveGame;
+
+document.getElementById("returnWinButton").onclick = saveGame;
+
+function saveGame() {
+	hasDoneIt = true;
+	var userSave = JSON.parse(localStorage.getItem(user));
+	userSave.totalGem += playerUser.totalGems;
+	userSave.totalArtifact += userArtifacts;
+	userSave.totalDeath += userDeaths;
+	userSave.totalGame += 1;
+	userSave.totalDeal += userDeals;
+	localStorage.setItem(user, JSON.stringify(userSave));
+	window.open("IncanGoldHome.html","_self");
+}
+
+function hostLeft() {
+	hasDoneIt = true;
+	var userSave = JSON.parse(localStorage.getItem(user));
+	userSave.totalGem += playerUser.totalGems;
+	userSave.totalArtifact += userArtifacts;
+	userSave.totalDeath += userDeaths;
+	userSave.totalGame += 1;
+	userSave.totalDeal += userDeals;
+	localStorage.setItem(user, JSON.stringify(userSave));
+	alert("The host has left the game. Your stats have been saved and you will be routed back to the homepage.");
+	window.open("IncanGoldHome.html","_self");
+}
+
 document.getElementById("callingButton").onclick = callGame;
 
 function callGame() {
@@ -334,6 +369,23 @@ if (host == "true") {
 pubnub.addListener({
 	message: function(event) {
 		console.log(event.message);
+		if (JSON.parse(event.message).playerLeftt == true && JSON.parse(event.message).userr == userr) {
+			sams = true;
+			host = "fa";
+			window.open("IncanGoldHome.html", "_self");
+		}
+		if (JSON.parse(event.message).playerLeftt == true && JSON.parse(event.message).userr != userr) {
+			var asd = 0;
+			while (playerList[asd].userr != JSON.parse(event.message).userr) {
+				asd += 1;
+			}
+			playerList[asd].staying = false;
+			playerList[asd].justLeft = true;
+			hasLeft.push([JSON.parse(event.message).userr, asd]);
+		}
+		if (JSON.parse(event.message).hostLeft == true && host == "false") {
+			hostLeft();
+		}
 		if (JSON.parse(event.message).won == true && JSON.parse(event.message).userr == userr) {
 			iWon = true;
 		}
@@ -1362,6 +1414,9 @@ function checkRoundEnd(cardSource) {
 		roundSpiders += 1;
 	}
 	if ((roundFires > 1 || roundRocks > 1 || roundMummies > 1 || roundSnakes > 1 || roundSpiders > 1) && host == "true") {
+		if (playerUser.staying == true) {
+			userDeaths += 1;
+		}
 		endRound();
 	}
 }
@@ -1435,6 +1490,41 @@ function endRound() {
 	document.getElementById("cardFourteen").src = "";
 	document.getElementById("cardFifteen").src = "";
 	document.getElementById("cardSixteen").src = "";
+	while (hasLeft.length > 0) {
+		var aqa = hasLeft.length - 1;
+		alert("The user " + hasLeft[aqa][0] + " has left the game.");
+		if (hasLeft[aqa][1] == 1) {
+			document.getElementById("playOne").style.display = "none";
+			playerOne = {name:"1", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+		} else if (hasLeft[aqa][1] == 2) {
+			document.getElementById("playTwo").style.display = "none";
+			playerTwo = {name:"2", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+		} else if (hasLeft[aqa][1] == 3) {
+			document.getElementById("playThree").style.display = "none";
+			playerThree = {name:"3", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+		} else if (hasLeft[aqa][1] == 4) {
+			document.getElementById("playFour").style.display = "none";
+			playerFour = {name:"4", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+		} else if (hasLeft[aqa][1] == 5) {
+			document.getElementById("playFive").style.display = "none";
+			playerFive = {name:"5", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+		} else if (hasLeft[aqa][1] == 6) {
+			document.getElementById("playSix").style.display = "none";
+			playerSix = {name:"6", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+		}
+		totalPlayers = totalPlayers - 1;
+		playersLeft = totalPlayers;
+		var qweqwe = 0;
+		while (playerArray[qweqwe][0] != hasLeft[aqa][0]) {
+			qweqwe += 1;
+		}
+		playerArray.splice(qweqwe, 1);
+		hasLeft.pop();
+	}
+	if (totalPlayers < 2) {
+		alert("All other players have left the game, your stats will be saved and you will be returned to the homepage");
+		saveGame();
+	}
 	if (host == "true") {
 		tellEndRound();
 	}
@@ -1723,6 +1813,9 @@ function distributeArtifact() {
 			k += 1;
 		}
 		playerList[k].totalGems += (5*artifactNum);
+		if (k == 0) {
+			userArtifacts += artifactNum;
+		}
 		console.log(playerList[k]);
 		console.log(5*artifactNum);
 		while (artifactNum > 0) {
@@ -2553,3 +2646,63 @@ function lose() {
 		document.getElementById("hostPicL").style.left = "-15px";
 	}
 }
+
+function yip() {
+	pubnub.publish({
+		channel : hostInfo[0],
+		message : JSON.stringify({playerLeftt: true, userr: userr})
+	});
+	console.log(sams);
+}
+
+window.onbeforeunload = function(){
+	if (hasDoneIt == false) {
+		hasDoneIt = true;
+		var userSave = JSON.parse(localStorage.getItem(user));
+		userSave.totalGem += playerUser.totalGems;
+		userSave.totalArtifact += userArtifacts;
+		userSave.totalDeath += userDeaths;
+		userSave.totalGame += 1;
+		userSave.totalDeal += userDeals;
+		localStorage.setItem(user, JSON.stringify(userSave));
+		if (host == "false") {
+			yip();
+			console.log("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+		}
+		if (host == "true") {
+			pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({hostLeft: true})
+			});
+		} 
+		while (sams == false && host == "false") {
+			return " ";
+		}
+	}
+}
+
+window.addEventListener("beforeunload", function(e){
+	if (hasDoneIt == false) {
+		hasDoneIt = true;
+		var userSave = JSON.parse(localStorage.getItem(user));
+		userSave.totalGem += playerUser.totalGems;
+		userSave.totalArtifact += userArtifacts;
+		userSave.totalDeath += userDeaths;
+		userSave.totalGame += 1;
+		userSave.totalDeal += userDeals;
+		localStorage.setItem(user, JSON.stringify(userSave));
+		if (host == "false") {
+			pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({playerLeftt: true, userr: userr})
+			});
+			console.log("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+		}
+		if (host == "true") {
+			pubnub.publish({
+			channel : hostInfo[0],
+			message : JSON.stringify({hostLeft: true})
+			});
+		} 
+	}
+}, false);

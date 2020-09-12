@@ -389,6 +389,9 @@ window.onbeforeunload = function(){
 		   t++;
 	   }
    }
+   if (startedTheGame == false) {
+	   closeGame();
+   }
 }
 
 function cancel(num) {
