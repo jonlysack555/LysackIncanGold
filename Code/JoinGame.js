@@ -438,29 +438,29 @@ function joiningGame(game) {
 
 function proPics(source) {
 	var hostyTwo;
-	if (document.getElementById("hostAvatarPic").src.includes("blankAvatar.jpg")) {
+	if (source.includes("blankAvatar.jpg")) {
 		hostyTwo = "blankAvatar.jpg";
-	} else if (document.getElementById("hostAvatarPic").src.includes("elaphant.jpg")) {
+	} else if (source.includes("elaphant.jpg")) {
 		hostyTwo = "elaphant.jpg";
-	} else if (document.getElementById("hostAvatarPic").src.includes("steve.jpg")) {
+	} else if (source.includes("steve.jpg")) {
 		hostyTwo = "steve.jpg";
-	} else if (document.getElementById("hostAvatarPic").src.includes("nixon.jpg")) {
+	} else if (source.includes("nixon.jpg")) {
 		hostyTwo = "nixon.jpg";
-	} else if (document.getElementById("hostAvatarPic").src.includes("spiderman.jpg")) {
+	} else if (source.includes("spiderman.jpg")) {
 		hostyTwo = "spiderman.jpg";
-	} else if (document.getElementById("hostAvatarPic").src.includes("loki.jpg")) {
+	} else if (source.includes("loki.jpg")) {
 		hostyTwo = "loki.jpg";
-	} else if (document.getElementById("hostAvatarPic").src.includes("mario.jpg")) {
+	} else if (source.includes("mario.jpg")) {
 		hostyTwo = "mario.jpg";
-	} else if (document.getElementById("hostAvatarPic").src.includes("riskPieces.jpg")) {
+	} else if (source.includes("riskPieces.jpg")) {
 		hostyTwo = "riskPieces.jpg";
-	} else if (document.getElementById("hostAvatarPic").src.includes("loki.jpg")) {
+	} else if (source.includes("loki.jpg")) {
 		hostyTwo = "loki.jpg";
-	} if (document.getElementById("hostAvatarPic").src.includes("pikachu.jpg")) {
+	} if (source.includes("pikachu.jpg")) {
 		hostyTwo = "pikachu.jpg";
-	} else if (document.getElementById("hostAvatarPic").src.includes("yoda.jpg")) {
+	} else if (source.includes("yoda.jpg")) {
 		hostyTwo = "yoda.jpg";
-	} else if (document.getElementById("hostAvatarPic").src.includes("thanos.jpg")) {
+	} else if (source.includes("thanos.jpg")) {
 		hostyTwo = "thanos.jpg";
 	}
 	return hostyTwo;

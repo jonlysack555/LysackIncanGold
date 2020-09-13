@@ -243,7 +243,7 @@ function submitPage() {
 	if (document.getElementById("chat").checked == true) {
 		chat = true;
 	}
-	if ((gemWin == true && gemsToWin != null) || (roundWin == true && roundsToWin != null) || (callToWin == true)) {
+	if ((gemWin == true && gemsToWin != null && gemsToWin > 0) || (roundWin == true && roundsToWin != null && roundsToWin > 0) || (callToWin == true)) {
 		window.localStorage.setItem('numOfPlayers', numOfPlayers);
 		window.localStorage.setItem('gemWin', JSON.stringify(gemWin));
 		window.localStorage.setItem('gemsToWin', gemsToWin);
@@ -255,7 +255,7 @@ function submitPage() {
 		window.localStorage.setItem('chat', JSON.stringify(chat));
 		waitingRoom();
 	} else {
-		alert("Please select an end game option along with set a value if you selected a gem win or round win.");
+		alert("Please select an end game option along with a value that is greater than 0 if you selected 'gem win' or 'round win'.");
 	}
 	gameParam = [numOfPlayers, gemWin, gemsToWin, roundWin, roundsToWin, callToWin, sellingHands, insurance, chat, [userr, name, title, propic]];
 	window.localStorage.setItem('hostInfo', JSON.stringify([userr, name, title, propic]));	

@@ -1,17 +1,18 @@
 var userr = JSON.parse(window.localStorage.getItem('pubnubUser')).id;
 userr = userr + "i";
 var cards = ['fire.jpg', 'fire.jpg', 'fire.jpg', 'rocks.jpg', 'rocks.jpg', 'rocks.jpg', 'mummy.jpg', 'mummy.jpg', 'mummy.jpg', 'snake.jpg', 'snake.jpg', 'snake.jpg', 'spiders.jpg', 'spiders.jpg', 'spiders.jpg', 'artifact1.jpg', 'artifact2.jpg', 'artifact3.jpg', 'artifact4.jpg', 'artifact5.jpg', 'oneGem.jpg', 'twoGems.jpg', 'threeGems.jpg', 'fourGems.jpg', 'fiveGems.jpg', 'fiveGems.jpg', 'sevenGems.jpg', 'sevenGems.jpg', 'nineGems.jpg', 'elevenGems.jpg', 'elevenGems.jpg', 'thirteenGems.jpg', 'fourteenGems.jpg', 'fifteenGems.jpg', 'seventeenGems.jpg'];
-var playerUser = {name:"7", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
-var playerOne = {name:"1", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
-var playerTwo = {name:"2", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
-var playerThree = {name:"3", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
-var playerFour = {name:"4", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems: 0, justLeft: false};
-var playerFive = {name:"5", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
-var playerSix = {name:"6", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+var playerUser = {name:"7", title:"j", userr:"useg", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+var playerOne = {name:"1", title:"a", userr:"usea", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+var playerTwo = {name:"2", title:"s", userr:"useb", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+var playerThree = {name:"3", title:"d", userr:"usec", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+var playerFour = {name:"4", title:"f", userr:"used", staying:true, playerRoundGems:0, totalGems: 0, justLeft: false};
+var playerFive = {name:"5", title:"g", userr:"usee", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+var playerSix = {name:"6", title:"h", userr:"usef", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
 var playerList = [playerUser, playerOne, playerTwo, playerThree, playerFour, playerFive, playerSix];
 var gemSlots = [[document.getElementById("pUsOne"), document.getElementById("pUsTwo"), document.getElementById("pUsThree"), document.getElementById("pUsFour"), document.getElementById("pUsFive"), document.getElementById("pUsSix"), document.getElementById("pUsSeven"), document.getElementById("pUsEight")], [document.getElementById("pOnesOne"), document.getElementById("pOnesTwo"), document.getElementById("pOnesThree"), document.getElementById("pOnesFour"), document.getElementById("pOnesFive"), document.getElementById("pOnesSix"), document.getElementById("pOnesSeven"), document.getElementById("pOnesEight")], [document.getElementById("pTwosOne"), document.getElementById("pTwosTwo"), document.getElementById("pTwosThree"), document.getElementById("pTwosFour"), document.getElementById("pTwosFive"), document.getElementById("pTwosSix"), document.getElementById("pTwosSeven"), document.getElementById("pTwosEight")], [document.getElementById("pThreesOne"), document.getElementById("pThreesTwo"), document.getElementById("pThreesThree"), document.getElementById("pThreesFour"), document.getElementById("pThreesFive"), document.getElementById("pThreesSix"), document.getElementById("pThreesSeven"), document.getElementById("pThreesEight")], [document.getElementById("pFoursOne"), document.getElementById("pFoursTwo"), document.getElementById("pFoursThree"), document.getElementById("pFoursFour"), document.getElementById("pFoursFive"), document.getElementById("pFoursSix"), document.getElementById("pFoursSeven"), document.getElementById("pFoursEight")], [document.getElementById("pFivesOne"), document.getElementById("pFivesTwo"), document.getElementById("pFivesThree"), document.getElementById("pFivesFour"), document.getElementById("pFivesFive"), document.getElementById("pFivesSix"), document.getElementById("pFivesSeven"), document.getElementById("pFivesEight")], [document.getElementById("pSixsOne"), document.getElementById("pSixsTwo"), document.getElementById("pSixsThree"), document.getElementById("pSixsFour"), document.getElementById("pSixsFive"), document.getElementById("pSixsSix"), document.getElementById("pSixsSeven"), document.getElementById("pSixsEight")]];
 var playerArray = [];
 var hasLeft = [];
+var jjust = false;
 var userArtifacts = 0;
 var userDeaths = 0;
 var userDeals = 0;
@@ -62,6 +63,21 @@ pubnub.subscribe({
   channels: [hostInfo[0]],
   withPresence: true
 });
+
+function subscribing() {
+	const pubnub = new PubNub({
+		publishKey: "pub-c-32276b33-4bb1-4f52-b507-84269bbd2b0b",
+		subscribeKey: "sub-c-67c10818-beed-11ea-a57f-4e41fc185ce6",
+		uuid: userr
+	});
+	pubnub.subscribe({
+		channels: [hostInfo[0]],
+		withPresence: true
+	});
+	setTimeout(subscribing, 60000);
+}
+
+subscribing();
 
 window.onload = function(){
 	if (document.getElementById("hostPic").src.includes("elaphant.jpg")) {
@@ -245,7 +261,7 @@ function startGame () {
 	}
 	playerTwo.title = document.getElementById("playerTwoTitle").innerHTML;
 	if (playerTwo.name != "2") {
-		while (playerArray[qw][1] != playerTwo.name && qw < (totalPlayers - 1) && playerOne.userr == playerArray[qw][0]) {
+		while (playerArray[qw][1] != playerTwo.name && qw < (totalPlayers - 1) && (playerOne.userr == playerArray[qw][0] || playerOne.userr == "usea")) {
 			qw += 1;
 		}
 		playerTwo.userr = playerArray[qw][0];
@@ -257,7 +273,7 @@ function startGame () {
 	}
 	playerThree.title = document.getElementById("playerThreeTitle").innerHTML;
 	if (playerThree.name != "3") {
-		while (playerArray[qw][1] != playerThree.name && qw < (totalPlayers - 1) && playerOne.userr == playerArray[qw][0] && playerTwo.userr == playerArray[qw][0]) {
+		while (playerArray[qw][1] != playerThree.name && qw < (totalPlayers - 1) && (playerOne.userr == playerArray[qw][0] || playerOne.userr == "usea") && (playerTwo.userr == playerArray[qw][0] || playerTwo.userr == "useb")) {
 			qw += 1;
 		}
 		playerThree.userr = playerArray[qw][0];
@@ -269,7 +285,7 @@ function startGame () {
 	}
 	playerFour.title = document.getElementById("playerFourTitle").innerHTML;
 	if (playerFour.name != "4") {
-		while (playerArray[qw][1] != playerFour.name && qw < (totalPlayers - 1) && playerOne.userr == playerArray[qw][0] && playerTwo.userr == playerArray[qw][0] && playerThree.userr == playerArray[qw][0]) {
+		while (playerArray[qw][1] != playerFour.name && qw < (totalPlayers - 1) && (playerOne.userr == playerArray[qw][0] || playerOne.userr == "usea") && (playerTwo.userr == playerArray[qw][0] || playerTwo.userr == "useb") && (playerThree.userr == playerArray[qw][0] || playerThree.userr == "usec")) {
 			qw += 1;
 		}
 		playerFour.userr = playerArray[qw][0];
@@ -281,7 +297,7 @@ function startGame () {
 	}
 	playerFive.title = document.getElementById("playerFiveTitle").innerHTML;
 	if (playerFive.name != "5") {
-		while (playerArray[qw][1] != playerFive.name && qw < (totalPlayers - 1) && playerOne.userr == playerArray[qw][0] && playerTwo.userr == playerArray[qw][0] && playerThree.userr == playerArray[qw][0] && playerFour.userr == playerArray[qw][0]) {
+		while (playerArray[qw][1] != playerFive.name && qw < (totalPlayers - 1) && (playerOne.userr == playerArray[qw][0] || playerOne.userr == "usea") && (playerTwo.userr == playerArray[qw][0] || playerTwo.userr == "useb") && (playerThree.userr == playerArray[qw][0] || playerThree.userr == "usec") && (playerFour.userr == playerArray[qw][0] || playerFour.userr == "used")) {
 			qw += 1;
 		}
 		playerFive.userr = playerArray[qw][0];
@@ -293,7 +309,7 @@ function startGame () {
 	}
 	playerSix.title = document.getElementById("playerSixTitle").innerHTML;
 	if (playerSix.name != "6") {
-		while (playerArray[qw][1] != playerSix.name && qw < (totalPlayers - 1) && playerOne.userr == playerArray[qw][0] && playerTwo.userr == playerArray[qw][0] && playerThree.userr == playerArray[qw][0] && playerFour.userr == playerArray[qw][0] && playerFive.userr == playerArray[qw][0]) {
+		while (playerArray[qw][1] != playerSix.name && qw < (totalPlayers - 1) && (playerOne.userr == playerArray[qw][0] || playerOne.userr == "usea") && (playerTwo.userr == playerArray[qw][0] || playerTwo.userr == "useb") && (playerThree.userr == playerArray[qw][0] || playerThree.userr == "usec") && (playerFour.userr == playerArray[qw][0] || playerFour.userr == "used") && (playerFive.userr == playerArray[qw][0] || playerFive.userr == "usee")) {
 			qw += 1;
 		}
 		playerSix.userr = playerArray[qw][0];
@@ -407,24 +423,25 @@ pubnub.addListener({
 				console.log(playerArray[zm][0]);
 				zm += 1;
 			}
-			if (playerArray[zm][1] == document.getElementById("nameOne").innerHTML && playerArray[zm][2] == document.getElementById("playerOneTitle").innerHTML) {
+			if (playerArray[zm][0] == playerOne.userr) {
 				leaving(1);
-			} else if (playerArray[zm][1] == document.getElementById("nameTwo").innerHTML && playerArray[zm][2] == document.getElementById("playerTwoTitle").innerHTML) {
+			} else if (playerArray[zm][0] == playerTwo.userr) {
 				leaving(2);
-			} else if (playerArray[zm][1] == document.getElementById("nameThree").innerHTML && playerArray[zm][2] == document.getElementById("playerThreeTitle").innerHTML) {
+			} else if (playerArray[zm][0] == playerThree.userr) {
 				leaving(3);
-			} else if (playerArray[zm][1] == document.getElementById("nameFour").innerHTML && playerArray[zm][2] == document.getElementById("playerFourTitle").innerHTML) {
+			} else if (playerArray[zm][0] == playerFour.userr) {
 				leaving(4);
-			} else if (playerArray[zm][1] == document.getElementById("nameFive").innerHTML && playerArray[zm][2] == document.getElementById("playerFiveTitle").innerHTML) {
+			} else if (playerArray[zm][0] == playerFive.userr) {
 				leaving(5);
-			} else if (playerArray[zm][1] == document.getElementById("nameSix").innerHTML && playerArray[zm][2] == document.getElementById("playerSixTitle").innerHTML) {
+			} else if (playerArray[zm][0] == playerSix.userr) {
 				leaving(6);
 			}
 			/* zm += 1;
 			leaving(zm); */
-			if (playersLeft != 0) {
+			if (playersLeft != 0 && jjust == false) {
 				checkAllDecided();
 			}
+			jjust = false
 		}
 		if (JSON.parse(event.message).insAndOuts == true && host == "false") {
 			var zz = 1;
@@ -559,9 +576,10 @@ function userLeaving() {
 	document.getElementById("userLeaving").style.display = "none";
 	if (host == "true") {
 		leaving(0);
-		if (decided > 0) {
+		if (decided > 0 && jjust == false) {
 			checkAllDecided();
 		}
+		jjust = false;
 	} else if (host == "false") {
 		leaving(0);
 		pubnub.publish({
@@ -572,7 +590,7 @@ function userLeaving() {
 }
 
 function newerCard() {
-	var t;
+	var t = 0;
 	while (t < 7) {
 		playerList[t].justLeft = false;
 		t += 1;
@@ -1495,22 +1513,22 @@ function endRound() {
 		alert("The user " + hasLeft[aqa][0] + " has left the game.");
 		if (hasLeft[aqa][1] == 1) {
 			document.getElementById("playOne").style.display = "none";
-			playerOne = {name:"1", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+			playerOne = {name:"1", title:"a", userr:"usea", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
 		} else if (hasLeft[aqa][1] == 2) {
 			document.getElementById("playTwo").style.display = "none";
-			playerTwo = {name:"2", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+			playerTwo = {name:"2", title:"s", userr:"useb", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
 		} else if (hasLeft[aqa][1] == 3) {
 			document.getElementById("playThree").style.display = "none";
-			playerThree = {name:"3", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+			playerThree = {name:"3", title:"d", userr:"usec", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
 		} else if (hasLeft[aqa][1] == 4) {
 			document.getElementById("playFour").style.display = "none";
-			playerFour = {name:"4", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+			playerFour = {name:"4", title:"f", userr:"used", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
 		} else if (hasLeft[aqa][1] == 5) {
 			document.getElementById("playFive").style.display = "none";
-			playerFive = {name:"5", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+			playerFive = {name:"5", title:"g", userr:"usee", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
 		} else if (hasLeft[aqa][1] == 6) {
 			document.getElementById("playSix").style.display = "none";
-			playerSix = {name:"6", title:"", userr:"use", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
+			playerSix = {name:"6", title:"h", userr:"usef", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
 		}
 		totalPlayers = totalPlayers - 1;
 		playersLeft = totalPlayers;
@@ -1800,7 +1818,11 @@ function leaving(playerNum) {
 	} else if (playerNum == 6) {
 		document.getElementById("playerSixDecision").src = "leaving.jpg";
 	} */
+	if (host == "false" && playersLeft == 0) {
+		distributeArtifact();
+	}
 	if (playersLeft == 0 && host == "true") {
+		jjust = true;
 		distributeArtifact();
 		endRound();
 	}
@@ -2501,22 +2523,22 @@ function win() {
 	document.getElementById("tableSpace").style.display = "none";
 	document.getElementById("wonBackground").style.display = "block";
 	var finall = [[playerUser.totalGems]];
-	if (playerOne.userr != "use") {
+	if (playerOne.userr != "usea") {
 		finall.push([playerOne.totalGems, playerOne.name]);
 	}
-	if (playerTwo.userr != "use") {
+	if (playerTwo.userr != "useb") {
 		finall.push([playerTwo.totalGems, playerTwo.name]);
 	}
-	if (playerThree.userr != "use") {
+	if (playerThree.userr != "usec") {
 		finall.push([playerThree.totalGems, playerThree.name]);
 	}
-	if (playerFour.userr != "use") {
+	if (playerFour.userr != "used") {
 		finall.push([playerFour.totalGems, playerFour.name]);
 	}
-	if (playerFive.userr != "use") {
+	if (playerFive.userr != "usee") {
 		finall.push([playerFive.totalGems, playerFive.name]);
 	}
-	if (playerSix.userr != "use") {
+	if (playerSix.userr != "usef") {
 		finall.push([playerSix.totalGems, playerSix.name]);
 	}
 	var theString = "Congratulations, YOU WIN! After " + roundsPlayed + " rounds, you had " + playerUser.totalGems + " gems";
@@ -2577,22 +2599,22 @@ function lose() {
 	document.getElementById("tableSpace").style.display = "none";
 	document.getElementById("lostBackground").style.display = "block";
 	var finall = [[playerUser.totalGems]];
-	if (playerOne.userr != "use") {
+	if (playerOne.userr != "usea") {
 		finall.push([playerOne.totalGems, playerOne.name]);
 	}
-	if (playerTwo.userr != "use") {
+	if (playerTwo.userr != "useb") {
 		finall.push([playerTwo.totalGems, playerTwo.name]);
 	}
-	if (playerThree.userr != "use") {
+	if (playerThree.userr != "usec") {
 		finall.push([playerThree.totalGems, playerThree.name]);
 	}
-	if (playerFour.userr != "use") {
+	if (playerFour.userr != "used") {
 		finall.push([playerFour.totalGems, playerFour.name]);
 	}
-	if (playerFive.userr != "use") {
+	if (playerFive.userr != "usee") {
 		finall.push([playerFive.totalGems, playerFive.name]);
 	}
-	if (playerSix.userr != "use") {
+	if (playerSix.userr != "usef") {
 		finall.push([playerSix.totalGems, playerSix.name]);
 	}
 	var theString = "Sadly, you lost this time. After " + roundsPlayed + " rounds, you had " + playerUser.totalGems + " gems";
