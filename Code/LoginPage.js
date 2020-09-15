@@ -26,6 +26,7 @@ window.onload = function(){
         console.log("getUser");
         if (response.data.custom.pass == pass) {
 			console.log("hiyahiya");
+			localStorage.setItem("signIn", "true");
           openSelectionPage(response.data.id, response.data.name, response.data.custom.pass);
         }
       })
@@ -34,6 +35,7 @@ window.onload = function(){
           var lStorUsr = JSON.parse(localStorage.getItem(pass));
           pubNub.createUser({id:lStorUsr.user, name:lStorUsr.name, custom:{pass:lStorUsr.pass}});
 		  console.log("heyyyy");
+		  localStorage.setItem("signIn", "true");
           openSelectionPage(lStorUsr.user, lStorUsr.name, lStorUsr.pass);
         } else {
           alert("Invalid login info")
@@ -60,6 +62,7 @@ window.onload = function(){
       function(status, response){
         console.log(response);
         console.log("createUser");
+		localStorage.setItem("signIn", "false");
         openSelectionPage(response.data.id, response.data.name, response.data.custom.pass);
       }
     ).catch(error => alert("error, username may already exist"))

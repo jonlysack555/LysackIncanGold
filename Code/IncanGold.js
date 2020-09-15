@@ -482,7 +482,7 @@ pubnub.addListener({
 		if (JSON.parse(event.message).ready == true && host == "true") {
 			startingRound += 1;
 			if (startingRound == (totalPlayers - 1)) {
-				newCard();
+				setTimeout(newCard, 500);
 			}
 		}
 	}
@@ -845,15 +845,19 @@ function flipCard(newCard, position) {
 }
 
 function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
-  while (0 !== currentIndex) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-  return array;
+	var qwer = 0;
+	while (qwer < 5) {
+		var currentIndex = array.length, temporaryValue, randomIndex;
+		while (0 !== currentIndex) {
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+		qwer += 1;
+	}
+	return array;
 }
 
 function layover() {
@@ -1372,7 +1376,7 @@ function eliminateCards() {
 
 function cardType(newestCard) {
 	if (newestCard == "fire.jpg" || newestCard == "rocks.jpg" || newestCard == "mummy.jpg" || newestCard == "spiders.jpg" || newestCard == "snake.jpg") {
-		checkRoundEnd(newestCard);
+		setTimeout(checkRoundEnd, 500, newestCard);
 	} else if (newestCard == "artifact1.jpg" || newestCard == "artifact2.jpg" || newestCard == "artifact3.jpg" || newestCard == "artifact4.jpg" || newestCard == "artifact5.jpg") {
 		artifactNum += 1;
 	} else {

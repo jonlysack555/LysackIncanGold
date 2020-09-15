@@ -1,4 +1,6 @@
 var user;
+user = JSON.parse(window.localStorage.getItem('pubnubUser')).id;
+user = user + "i";
 var name;
 var pass;
 var title;
@@ -21,6 +23,19 @@ var yoda;
 var thanos;
 var instructions;
 var hacker;
+var creation = false;
+
+const pubnub = new PubNub({
+  publishKey: "pub-c-32276b33-4bb1-4f52-b507-84269bbd2b0b",
+  subscribeKey: "sub-c-67c10818-beed-11ea-a57f-4e41fc185ce6",
+  secretKey: "sec-c-ZWIwN2Y0OGYtNzM2Yi00Y2U1LThlZjYtNGZjMjBjNTgxY2U4",
+  uuid: user
+});
+
+pubnub.subscribe({
+  channels: ['aChannel'],
+  withPresence: true
+});
 
 document.getElementById("newGame").addEventListener("click", newGameOpen);
 
@@ -52,11 +67,62 @@ function newInstructionsOpen() {
 	window.open("Instructions.html","_self");
 }
 
+document.getElementById("saveGame").addEventListener("click", saveGame);
+
+function saveGame() {
+	document.getElementById("saveGame").style.display = "none";
+	var gameFile = localStorage.getItem(user);
+	pubnub.updateSpace({id:user, name:gameFile});
+	console.log(gameFile);
+}
+
+var responsee = null;
+
 window.onload = function(){
-	user = JSON.parse(window.localStorage.getItem('pubnubUser')).id;
-	user = user + "i";
+	document.getElementById("saveGame").style.display = "block";
 	name = JSON.parse(window.localStorage.getItem('pubnubUser')).name;
 	pass = JSON.parse(window.localStorage.getItem('pubnubUser')).custom.pass;
+	if (localStorage.getItem("signIn") == "true") {
+		pubnub.getSpace({spaceId: user})
+		.then(response => {
+			console.log(response);
+			responsee = response.data.name;
+			doIt();
+		})
+		.catch((error) => {
+		  creation = true;
+		  doIt();
+		});
+	} else {
+		creation = true;
+		doIt();
+	}
+}
+
+function doIt() {
+	setTimeout(hiya, 50);
+	setTimeout(using, 100);
+	setTimeout(playing, 200);
+	setTimeout(create, 300);
+}
+
+function hiya() {
+	if (responsee == null) {
+		console.log("starting over");
+	} else {
+		console.log("getUser");
+		console.log("hiyahiya");
+		console.log(responsee);
+		localStorage.setItem(user, responsee);
+	}
+}
+
+function playing() {
+	playerUser(user, name, pass, title, propic, totalGem, totalArtifact, totalDeath, totalGame, totalDeal, elaphant, steve, nixon, spiderman, loki, mario, riskPieces, linkk, pikachu, yoda, thanos, instructions, hacker);
+	console.log("two");
+}
+
+function using() {
 	if (JSON.parse(window.localStorage.getItem(user)) != null) {
 		title = JSON.parse(window.localStorage.getItem(user)).title;
 	}  else {
@@ -127,11 +193,23 @@ window.onload = function(){
 	} else {
 		hacker = false;
 	}
-	playerUser(user, name, pass, title, propic, totalGem, totalArtifact, totalDeath, totalGame, totalDeal, elaphant, steve, nixon, spiderman, loki, mario, riskPieces, linkk, pikachu, yoda, thanos, instructions, hacker);
+	console.log("one");
+}
+
+function create() {
+	if (creation == true) {
+		var gameInfo = localStorage.getItem(user);
+		pubnub.createSpace({id:user, name:gameInfo})
+		.then(response => {
+          console.log(response);
+        });
+	}
+	console.log("three");
 }
 	
 function playerUser(user, name, pass, title, propic, totalGem, totalArtifact, totalDeath, totalGame, totalDeal, elaphant, steve, nixon, spiderman, loki, mario, riskPieces, linkk, pikachu, yoda, thanos, instructions, hacker) {
 	localStorage.setItem(user, JSON.stringify({name:name, user:user, pass:pass, title:title, propic:propic, totalGem:totalGem, totalArtifact:totalArtifact, totalDeath:totalDeath, totalGame:totalGame, totalDeal:totalDeal, elaphant:elaphant, steve:steve, nixon:nixon, spiderman:spiderman, loki:loki, mario:mario, riskPieces:riskPieces, linkk:linkk, pikachu:pikachu, yoda:yoda, thanos:thanos, instructions:instructions, hacker:hacker}));
+	console.log("four");
 }
 
 
