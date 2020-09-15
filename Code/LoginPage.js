@@ -98,5 +98,6 @@ function openSelectionPage(user, name, pass){
   let newUser = new PlayerUser(user, name, pass);
   localStorage.setItem("pubnubUser", JSON.stringify(newUser));
   console.log("teeeeeeeeeeeeeeeeeast");
+  localStorage.setItem("playing", "false");
   window.open("ChooseGame.html","_self");
 }

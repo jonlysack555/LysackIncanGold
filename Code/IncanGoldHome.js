@@ -82,20 +82,23 @@ window.onload = function(){
 	document.getElementById("saveGame").style.display = "block";
 	name = JSON.parse(window.localStorage.getItem('pubnubUser')).name;
 	pass = JSON.parse(window.localStorage.getItem('pubnubUser')).custom.pass;
-	if (localStorage.getItem("signIn") == "true") {
-		pubnub.getSpace({spaceId: user})
-		.then(response => {
-			console.log(response);
-			responsee = response.data.name;
+	if (localStorage.getItem("playing") == "false") {
+		if (localStorage.getItem("signIn") == "true") {
+			pubnub.getSpace({spaceId: user})
+			.then(response => {
+				console.log(response);
+				responsee = response.data.name;
+				doIt();
+			})
+			.catch((error) => {
+			  creation = true;
+			  doIt();
+			});
+		} else {
+			creation = true;
 			doIt();
-		})
-		.catch((error) => {
-		  creation = true;
-		  doIt();
-		});
-	} else {
-		creation = true;
-		doIt();
+		}
+		localStorage.setItem("playing", "true");
 	}
 }
 
