@@ -17,6 +17,7 @@ var userArtifacts = 0;
 var userDeaths = 0;
 var userDeals = 0;
 var sams = false;
+var justDeathd = false;
 var host;
 var hostInfo;
 var hasDoneIt = false;
@@ -402,10 +403,17 @@ pubnub.addListener({
 		if (JSON.parse(event.message).hostLeft == true && host == "false") {
 			hostLeft();
 		}
+		if (JSON.parse(event.message).theEndGems == true) {
+			var tty = 1;
+			while (tty < 7) {
+				playerList[tty].totalGems = JSON.parse(event.message)[playerList[tty].userr];
+				tty += 1;
+			}
+		}
 		if (JSON.parse(event.message).won == true && JSON.parse(event.message).userr == userr) {
 			iWon = true;
 		}
-		if (JSON.parse(event.message).sentWins == true) {
+		if (JSON.parse(event.message).sentWins == true && host == "false") {
 			if (iWon == true) {
 				win();
 			} else {
@@ -467,6 +475,9 @@ pubnub.addListener({
 			distributeArtifact();
 		}
 		if (JSON.parse(event.message).sendingCard == true && host == "false") {
+			if (JSON.parse(event.message).justDeathed == true) {
+				document.getElementById("cardOne").src = "";
+			}
 			while (i < 35) {
 				cards[i] = JSON.parse(event.message).newCard;
 				i += 1;
@@ -541,15 +552,17 @@ function newCard() {
 	}
 	decided = 0;
 	if (eliminated == false) {
+		if (host == "true") {
+			distributeNewCard(cards[i]);
+		}
 		flipCard(cards[i], p);
 		setTimeout(newerCard, 3500);
 	} else {
 		eliminated = false;
+		if (host == "true") {
+			distributeNewCard(cards[i]);
+		}
 		newerCard();
-	}
-	if (outed == false) {
-		document.getElementById("userStaying").style.display = "block";
-		document.getElementById("userLeaving").style.display = "block";
 	}
 }
 
@@ -590,15 +603,13 @@ function userLeaving() {
 }
 
 function newerCard() {
+	console.log("newerCard");
 	var t = 0;
 	while (t < 7) {
 		playerList[t].justLeft = false;
 		t += 1;
 	}
 	r = 0;
-	if (host == "true") {
-		distributeNewCard(cards[i]);
-	}
 	if (p == 1) {
 		document.getElementById("cardOne").src = cards[i];
 		p += 1;
@@ -772,13 +783,20 @@ function newerCard() {
 	document.getElementById("cardPileOne").style.left = "0px";
 	document.getElementById("cardPileOne").style.left = "0px";
 	document.getElementById("cardPileOne").style.display = "block";
+	if (outed == false) {
+		document.getElementById("userStaying").style.display = "block";
+		document.getElementById("userLeaving").style.display = "block";
+	}
 }
 
 function distributeNewCard(newCard) {
 	pubnub.publish({
 		channel : hostInfo[0],
-		message : JSON.stringify({newCard:newCard, sendingCard:true})
+		message : JSON.stringify({newCard:newCard, sendingCard:true, justDeathed:justDeathd})
 	});
+	if (justDeathd == true) {
+		justDeathd = false;
+	}
 }
 
 function flipCard(newCard, position) {
@@ -845,17 +863,13 @@ function flipCard(newCard, position) {
 }
 
 function shuffle(array) {
-	var qwer = 0;
-	while (qwer < 5) {
-		var currentIndex = array.length, temporaryValue, randomIndex;
-		while (0 !== currentIndex) {
-			randomIndex = Math.floor(Math.random() * currentIndex);
-			currentIndex -= 1;
-			temporaryValue = array[currentIndex];
-			array[currentIndex] = array[randomIndex];
-			array[randomIndex] = temporaryValue;
+	var qwerq = 0;
+	while (qwerq < 4) {
+		for (let m = array.length - 1; m > 0; i--) {
+		let j = Math.floor(Math.random() * (m + 1));
+		[array[m], array[j]] = [array[j], array[m]];
 		}
-		qwer += 1;
+		qwerq += 1;
 	}
 	return array;
 }
@@ -915,6 +929,7 @@ function quadLayover() {
 }
 
 function eliminateCards() {
+	console.log("eliminating cards");
 	var dangers = 0;
 	document.getElementById("cardHoldTwo").style.left = "100px";
 	document.getElementById("cardHoldThree").style.left = "200px";
@@ -1375,7 +1390,7 @@ function eliminateCards() {
 }
 
 function cardType(newestCard) {
-	if (newestCard == "fire.jpg" || newestCard == "rocks.jpg" || newestCard == "mummy.jpg" || newestCard == "spiders.jpg" || newestCard == "snake.jpg") {
+	if ((newestCard == "fire.jpg" || newestCard == "rocks.jpg" || newestCard == "mummy.jpg" || newestCard == "spiders.jpg" || newestCard == "snake.jpg") && host == "true") {
 		setTimeout(checkRoundEnd, 500, newestCard);
 	} else if (newestCard == "artifact1.jpg" || newestCard == "artifact2.jpg" || newestCard == "artifact3.jpg" || newestCard == "artifact4.jpg" || newestCard == "artifact5.jpg") {
 		artifactNum += 1;
@@ -1439,6 +1454,7 @@ function checkRoundEnd(cardSource) {
 		if (playerUser.staying == true) {
 			userDeaths += 1;
 		}
+		justDeathd = true;
 		endRound();
 	}
 }
@@ -1853,6 +1869,7 @@ function distributeArtifact() {
 }
 
 function emptyArtifacts() {
+	console.log("emptying artifacts");
 	if (document.getElementById("cardOne").src.includes("artifact1.jpg")  || document.getElementById("cardOne").src.includes("artifact2.jpg")  || document.getElementById("cardOne").src.includes("artifact3.jpg")  || document.getElementById("cardOne").src.includes("artifact4.jpg")  || document.getElementById("cardOne").src.includes("artifact5.jpg")) {
 		document.getElementById("cardOne").src = document.getElementById("cardTwo").src;
 		document.getElementById("cardTwo").src = document.getElementById("cardThree").src;
@@ -2511,15 +2528,24 @@ function endCallGame() {
 			message : JSON.stringify({won:true, userr:playerSix.userr})
 		});	
 	}
+	console.log(JSON.stringify({[playerList[0].userr]: playerList[0].totalGems, [playerList[1].userr]: playerList[1].totalGems, [playerList[2].userr]: playerList[2].totalGems, [playerList[3].userr]: playerList[3].totalGems, [playerList[4].userr]: playerList[4].totalGems, [playerList[5].userr]: playerList[5].totalGems, [playerList[6].userr]: playerList[6].totalGems}));
 	pubnub.publish({
 		channel : hostInfo[0],
-		message : JSON.stringify({sentWins:true})
+		message : JSON.stringify({theEndGems: true, [playerList[0].userr]: playerList[0].totalGems, [playerList[1].userr]: playerList[1].totalGems, [playerList[2].userr]: playerList[2].totalGems, [playerList[3].userr]: playerList[3].totalGems, [playerList[4].userr]: playerList[4].totalGems, [playerList[5].userr]: playerList[5].totalGems, [playerList[6].userr]: playerList[6].totalGems})
 	});	
+	setTimeout(sends, 500);	
 	if (iWon == true) {
 		win();
 	} else {
 		lose();
 	}
+}
+
+function sends() {
+	pubnub.publish({
+		channel : hostInfo[0],
+		message : JSON.stringify({sentWins:true})
+	});	
 }
 
 function win() {
