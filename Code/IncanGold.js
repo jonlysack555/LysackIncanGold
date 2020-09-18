@@ -376,6 +376,8 @@ function callGame() {
 
 cards = shuffle(cards);
 
+console.log(cards);
+
 if (host == "true") {
 	//newCard();
 	setTimeout(newCard, 2000);
@@ -872,8 +874,9 @@ function shuffle(array) {
 			qwerq += 1;
 			console.log(qwerq);
 		}
-		return array;
 	}
+	console.log(array)
+	return array;
 }
 
 function layover() {
