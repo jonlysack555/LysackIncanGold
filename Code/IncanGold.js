@@ -66,15 +66,11 @@ pubnub.subscribe({
 });
 
 function subscribing() {
-	const pubnub = new PubNub({
-		publishKey: "pub-c-32276b33-4bb1-4f52-b507-84269bbd2b0b",
-		subscribeKey: "sub-c-67c10818-beed-11ea-a57f-4e41fc185ce6",
-		uuid: userr
-	});
 	pubnub.subscribe({
 		channels: [hostInfo[0]],
 		withPresence: true
 	});
+	console.log("thats a minute");
 	setTimeout(subscribing, 60000);
 }
 
@@ -124,8 +120,9 @@ function startGame () {
 	hostInfo = JSON.parse(window.localStorage.getItem('hostInfo'));
 	if (host == "false") {
 		var n = 0;
-		while (playerArray[n][0] != userr) {
-			n+= 1;
+		while (playerArray[n][0] != userr && n < 10) {
+			n += 1;
+			console.log (n);
 		}
 		playerArray[n][0] = hostInfo[0];
 		playerArray[n][1] = hostInfo[1];
@@ -276,6 +273,7 @@ function startGame () {
 	if (playerThree.name != "3") {
 		while (playerArray[qw][1] != playerThree.name && qw < (totalPlayers - 1) && (playerOne.userr == playerArray[qw][0] || playerOne.userr == "usea") && (playerTwo.userr == playerArray[qw][0] || playerTwo.userr == "useb")) {
 			qw += 1;
+			console.log(qw + " " + playerArray[qw][0]);
 		}
 		playerThree.userr = playerArray[qw][0];
 	}
@@ -393,8 +391,9 @@ pubnub.addListener({
 		}
 		if (JSON.parse(event.message).playerLeftt == true && JSON.parse(event.message).userr != userr) {
 			var asd = 0;
-			while (playerList[asd].userr != JSON.parse(event.message).userr) {
+			while (playerList[asd].userr != JSON.parse(event.message).userr && asd < 10) {
 				asd += 1;
+				console.log(asd);
 			}
 			playerList[asd].staying = false;
 			playerList[asd].justLeft = true;
@@ -427,7 +426,7 @@ pubnub.addListener({
 			//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA check who left and adjust
 			var zm = 0;
 			console.log(JSON.parse(event.message).userr);
-			while (JSON.parse(event.message).userr != playerArray[zm][0]) {
+			while (JSON.parse(event.message).userr != playerArray[zm][0] && zm < 10) {
 				console.log(playerArray[zm][0]);
 				zm += 1;
 			}
@@ -863,15 +862,18 @@ function flipCard(newCard, position) {
 }
 
 function shuffle(array) {
-	var qwerq = 0;
-	while (qwerq < 4) {
-		for (let m = array.length - 1; m > 0; i--) {
-		let j = Math.floor(Math.random() * (m + 1));
-		[array[m], array[j]] = [array[j], array[m]];
+	if (host == "true") {
+		var qwerq = 0;
+		while (qwerq < 4) {
+			for (let m = array.length - 1; m > 0; m--) {
+			let j = Math.floor(Math.random() * (m + 1));
+			[array[m], array[j]] = [array[j], array[m]];
+			}
+			qwerq += 1;
+			console.log(qwerq);
 		}
-		qwerq += 1;
+		return array;
 	}
-	return array;
 }
 
 function layover() {
@@ -1553,7 +1555,7 @@ function endRound() {
 		totalPlayers = totalPlayers - 1;
 		playersLeft = totalPlayers;
 		var qweqwe = 0;
-		while (playerArray[qweqwe][0] != hasLeft[aqa][0]) {
+		while (playerArray[qweqwe][0] != hasLeft[aqa][0] && qweqwe < 10) {
 			qweqwe += 1;
 		}
 		playerArray.splice(qweqwe, 1);
@@ -1851,7 +1853,7 @@ function leaving(playerNum) {
 function distributeArtifact() {
 	var k = 0;
 	if (r == 1) {
-		while (playerList[k].justLeft != true) {
+		while (playerList[k].justLeft != true && k < 10) {
 			k += 1;
 		}
 		playerList[k].totalGems += (5*artifactNum);
