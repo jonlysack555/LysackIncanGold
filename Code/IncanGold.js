@@ -259,7 +259,7 @@ function startGame () {
 	}
 	playerTwo.title = document.getElementById("playerTwoTitle").innerHTML;
 	if (playerTwo.name != "2") {
-		while (playerArray[qw][1] != playerTwo.name && qw < (totalPlayers - 1) && (playerOne.userr == playerArray[qw][0] || playerOne.userr == "usea")) {
+		while ((playerArray[qw][1] != playerTwo.name || playerOne.userr == playerArray[qw][0]) && qw < (totalPlayers - 1)) {
 			qw += 1;
 		}
 		playerTwo.userr = playerArray[qw][0];
@@ -271,7 +271,7 @@ function startGame () {
 	}
 	playerThree.title = document.getElementById("playerThreeTitle").innerHTML;
 	if (playerThree.name != "3") {
-		while (playerArray[qw][1] != playerThree.name && qw < (totalPlayers - 1) && (playerOne.userr == playerArray[qw][0] || playerOne.userr == "usea") && (playerTwo.userr == playerArray[qw][0] || playerTwo.userr == "useb")) {
+		while ((playerArray[qw][1] != playerThree.name || playerOne.userr == playerArray[qw][0] || playerTwo.userr == playerArray[qw][0]) && qw < (totalPlayers - 1)) {
 			qw += 1;
 			console.log(qw + " " + playerArray[qw][0]);
 		}
@@ -284,7 +284,7 @@ function startGame () {
 	}
 	playerFour.title = document.getElementById("playerFourTitle").innerHTML;
 	if (playerFour.name != "4") {
-		while (playerArray[qw][1] != playerFour.name && qw < (totalPlayers - 1) && (playerOne.userr == playerArray[qw][0] || playerOne.userr == "usea") && (playerTwo.userr == playerArray[qw][0] || playerTwo.userr == "useb") && (playerThree.userr == playerArray[qw][0] || playerThree.userr == "usec")) {
+		while ((playerArray[qw][1] != playerFour.name || playerOne.userr == playerArray[qw][0] || playerTwo.userr == playerArray[qw][0] || playerThree.userr == playerArray[qw][0]) && qw < (totalPlayers - 1)) {
 			qw += 1;
 		}
 		playerFour.userr = playerArray[qw][0];
@@ -296,7 +296,7 @@ function startGame () {
 	}
 	playerFive.title = document.getElementById("playerFiveTitle").innerHTML;
 	if (playerFive.name != "5") {
-		while (playerArray[qw][1] != playerFive.name && qw < (totalPlayers - 1) && (playerOne.userr == playerArray[qw][0] || playerOne.userr == "usea") && (playerTwo.userr == playerArray[qw][0] || playerTwo.userr == "useb") && (playerThree.userr == playerArray[qw][0] || playerThree.userr == "usec") && (playerFour.userr == playerArray[qw][0] || playerFour.userr == "used")) {
+		while ((playerArray[qw][1] != playerFive.name || playerOne.userr == playerArray[qw][0] || playerTwo.userr == playerArray[qw][0] || playerThree.userr == playerArray[qw][0] || playerFour.userr == playerArray[qw][0]) && qw < (totalPlayers - 1)) {
 			qw += 1;
 		}
 		playerFive.userr = playerArray[qw][0];
@@ -308,7 +308,7 @@ function startGame () {
 	}
 	playerSix.title = document.getElementById("playerSixTitle").innerHTML;
 	if (playerSix.name != "6") {
-		while (playerArray[qw][1] != playerSix.name && qw < (totalPlayers - 1) && (playerOne.userr == playerArray[qw][0] || playerOne.userr == "usea") && (playerTwo.userr == playerArray[qw][0] || playerTwo.userr == "useb") && (playerThree.userr == playerArray[qw][0] || playerThree.userr == "usec") && (playerFour.userr == playerArray[qw][0] || playerFour.userr == "used") && (playerFive.userr == playerArray[qw][0] || playerFive.userr == "usee")) {
+		while ((playerArray[qw][1] != playerSix.name || playerOne.userr == playerArray[qw][0] || playerTwo.userr == playerArray[qw][0] || playerThree.userr == playerArray[qw][0] || playerFour.userr == playerArray[qw][0] || playerFive.userr == playerArray[qw][0]) && qw < (totalPlayers - 1)) {
 			qw += 1;
 		}
 		playerSix.userr = playerArray[qw][0];
@@ -393,7 +393,7 @@ pubnub.addListener({
 		}
 		if (JSON.parse(event.message).playerLeftt == true && JSON.parse(event.message).userr != userr) {
 			var asd = 0;
-			while (playerList[asd].userr != JSON.parse(event.message).userr && asd < 10) {
+			while (playerList[asd].userr != JSON.parse(event.message).userr && asd < 7) {
 				asd += 1;
 				console.log(asd);
 			}
