@@ -2429,10 +2429,12 @@ function endGemGame(won) {
 			message : JSON.stringify({won:true, userr:playerSix.userr})
 		});	
 	}
+	console.log(JSON.stringify({[playerList[0].userr]: playerList[0].totalGems, [playerList[1].userr]: playerList[1].totalGems, [playerList[2].userr]: playerList[2].totalGems, [playerList[3].userr]: playerList[3].totalGems, [playerList[4].userr]: playerList[4].totalGems, [playerList[5].userr]: playerList[5].totalGems, [playerList[6].userr]: playerList[6].totalGems}));
 	pubnub.publish({
 		channel : hostInfo[0],
-		message : JSON.stringify({sentWins:true})
+		message : JSON.stringify({theEndGems: true, [playerList[0].userr]: playerList[0].totalGems, [playerList[1].userr]: playerList[1].totalGems, [playerList[2].userr]: playerList[2].totalGems, [playerList[3].userr]: playerList[3].totalGems, [playerList[4].userr]: playerList[4].totalGems, [playerList[5].userr]: playerList[5].totalGems, [playerList[6].userr]: playerList[6].totalGems})
 	});	
+	setTimeout(sends, 500);
 	if (iWon == true) {
 		win();
 	} else {
@@ -2481,10 +2483,12 @@ function endRoundGame() {
 			message : JSON.stringify({won:true, userr:playerSix.userr})
 		});	
 	}
+	console.log(JSON.stringify({[playerList[0].userr]: playerList[0].totalGems, [playerList[1].userr]: playerList[1].totalGems, [playerList[2].userr]: playerList[2].totalGems, [playerList[3].userr]: playerList[3].totalGems, [playerList[4].userr]: playerList[4].totalGems, [playerList[5].userr]: playerList[5].totalGems, [playerList[6].userr]: playerList[6].totalGems}));
 	pubnub.publish({
 		channel : hostInfo[0],
-		message : JSON.stringify({sentWins:true})
+		message : JSON.stringify({theEndGems: true, [playerList[0].userr]: playerList[0].totalGems, [playerList[1].userr]: playerList[1].totalGems, [playerList[2].userr]: playerList[2].totalGems, [playerList[3].userr]: playerList[3].totalGems, [playerList[4].userr]: playerList[4].totalGems, [playerList[5].userr]: playerList[5].totalGems, [playerList[6].userr]: playerList[6].totalGems})
 	});	
+	setTimeout(sends, 500);
 	if (iWon == true) {
 		win();
 	} else {
