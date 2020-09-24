@@ -14,7 +14,9 @@ const pubnub = new PubNub({
 
 var hostInfo = JSON.parse(window.localStorage.getItem('hostInfo'));
 var yayeet = hostInfo[0] + "group" + stamp;
-users = users.push(hostInfo);
+users.push(hostInfo);
+console.log(yayeet);
+console.log(users);
 
 pubnub.subscribe({
   channels: [hostInfo[0], yayeet],
@@ -55,7 +57,7 @@ function addMessage(sender, message){
     }
   }); */
   var aqv = 0;
-  while (users[aqv][0] != sender) {
+  while (users[aqv][0] != sender && aqv < JSON.parse(window.localStorage.getItem('numOfPlayers'))) {
 	  aqv += 1;
   }
   innerDiv.innerHTML = users[aqv][1];
