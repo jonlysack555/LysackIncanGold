@@ -49,11 +49,16 @@ function addMessage(sender, message){
     innerDiv.className = "leftTextName";
     msg.className = "leftText";
   }
-  users.forEach( u => {
+  /* users.forEach( u => {
     if(u[0] == sender){
       innerDiv.innerHTML = u[1];
     }
-  });
+  }); */
+  var aqv = 0;
+  while (users[aqv][0] != sender) {
+	  aqv += 1;
+  }
+  innerDiv.innerHTML = users[aqv][1];
   console.log("three");
   msg.innerHTML = message;
   innerDiv.appendChild(msg);
