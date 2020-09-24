@@ -1063,9 +1063,8 @@ window.addEventListener("beforeunload", function(e){
   });
 
 
-
-  var badge = document.getElementById("badge");
-  const openB = document.getElementById("openChat");
+var badge = document.getElementById("badge");
+const openB = document.getElementById("openChat");
 openB.addEventListener("click", function(){
   openB.style.visibility = "hidden";
   badge.style.visibility = "hidden";

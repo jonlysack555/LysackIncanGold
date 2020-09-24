@@ -1,5 +1,8 @@
 var userr = JSON.parse(window.localStorage.getItem('pubnubUser')).id;
 userr = userr + "i";
+var stamp = localStorage.getItem("gameStamp");
+stamp = stamp;
+var yayeet;
 var cards = ['fire.jpg', 'fire.jpg', 'fire.jpg', 'rocks.jpg', 'rocks.jpg', 'rocks.jpg', 'mummy.jpg', 'mummy.jpg', 'mummy.jpg', 'snake.jpg', 'snake.jpg', 'snake.jpg', 'spiders.jpg', 'spiders.jpg', 'spiders.jpg', 'artifact1.jpg', 'artifact2.jpg', 'artifact3.jpg', 'artifact4.jpg', 'artifact5.jpg', 'oneGem.jpg', 'twoGems.jpg', 'threeGems.jpg', 'fourGems.jpg', 'fiveGems.jpg', 'fiveGems.jpg', 'sevenGems.jpg', 'sevenGems.jpg', 'nineGems.jpg', 'elevenGems.jpg', 'elevenGems.jpg', 'thirteenGems.jpg', 'fourteenGems.jpg', 'fifteenGems.jpg', 'seventeenGems.jpg'];
 var playerUser = {name:"7", title:"j", userr:"useg", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
 var playerOne = {name:"1", title:"a", userr:"usea", staying:true, playerRoundGems:0, totalGems:0, justLeft: false};
@@ -61,7 +64,7 @@ const pubnub = new PubNub({
 });
 
 pubnub.subscribe({
-  channels: [hostInfo[0]],
+  channels: [hostInfo[0], yayeet],
   withPresence: true
 });
 
@@ -118,6 +121,7 @@ function startGame () {
 	host = window.localStorage.getItem('hosting');
 	playerArray = JSON.parse(window.localStorage.getItem('thePlayersIn'));
 	hostInfo = JSON.parse(window.localStorage.getItem('hostInfo'));
+	yayeet = hostInfo[0] + "group" + stamp;
 	if (host == "false") {
 		var n = 0;
 		while (playerArray[n][0] != userr && n < 10) {
@@ -336,6 +340,9 @@ function startGame () {
 		document.getElementById("callingButton").style.display = "block";
 		console.log("blocked");
 	}
+	if (chat == true) {
+		document.getElementById("chatBtn").style.display = "block";
+	}
 }
 
 document.getElementById("returnLoseButton").onclick = saveGame;
@@ -386,115 +393,117 @@ if (host == "true") {
 pubnub.addListener({
 	message: function(event) {
 		console.log(event.message);
-		if (JSON.parse(event.message).playerLeftt == true && JSON.parse(event.message).userr == userr) {
-			sams = true;
-			host = "fa";
-			window.open("IncanGoldHome.html", "_self");
-		}
-		if (JSON.parse(event.message).playerLeftt == true && JSON.parse(event.message).userr != userr) {
-			var asd = 0;
-			while (playerList[asd].userr != JSON.parse(event.message).userr && asd < 7) {
-				asd += 1;
-				console.log(asd);
+		if (event.message.tail != true) {
+			if (JSON.parse(event.message).playerLeftt == true && JSON.parse(event.message).userr == userr) {
+				sams = true;
+				host = "fa";
+				window.open("IncanGoldHome.html", "_self");
 			}
-			playerList[asd].staying = false;
-			playerList[asd].justLeft = true;
-			hasLeft.push([JSON.parse(event.message).userr, asd]);
-		}
-		if (JSON.parse(event.message).hostLeft == true && host == "false") {
-			hostLeft();
-		}
-		if (JSON.parse(event.message).theEndGems == true) {
-			var tty = 1;
-			while (tty < 7) {
-				playerList[tty].totalGems = JSON.parse(event.message)[playerList[tty].userr];
-				tty += 1;
-			}
-		}
-		if (JSON.parse(event.message).won == true && JSON.parse(event.message).userr == userr) {
-			iWon = true;
-		}
-		if (JSON.parse(event.message).sentWins == true && host == "false") {
-			if (iWon == true) {
-				win();
-			} else {
-				lose();
-			}
-		}
-		if (JSON.parse(event.message).stayingIn == true && host == "true") {
-			decided += 1;
-			checkAllDecided();
-		} else if (JSON.parse(event.message).stayingIn == false && host == "true") {
-			//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA check who left and adjust
-			var zm = 0;
-			console.log(JSON.parse(event.message).userr);
-			while (JSON.parse(event.message).userr != playerArray[zm][0] && zm < 10) {
-				console.log(playerArray[zm][0]);
-				zm += 1;
-			}
-			if (playerArray[zm][0] == playerOne.userr) {
-				leaving(1);
-			} else if (playerArray[zm][0] == playerTwo.userr) {
-				leaving(2);
-			} else if (playerArray[zm][0] == playerThree.userr) {
-				leaving(3);
-			} else if (playerArray[zm][0] == playerFour.userr) {
-				leaving(4);
-			} else if (playerArray[zm][0] == playerFive.userr) {
-				leaving(5);
-			} else if (playerArray[zm][0] == playerSix.userr) {
-				leaving(6);
-			}
-			/* zm += 1;
-			leaving(zm); */
-			if (playersLeft != 0 && jjust == false) {
-				checkAllDecided();
-			}
-			jjust = false
-		}
-		if (JSON.parse(event.message).insAndOuts == true && host == "false") {
-			var zz = 1;
-			var yaya;
-			/* while (JSON.parse(event.message).playerList[zz] != null) {
-				playerList[zz].staying = JSON.parse(event.message).playerList[zz].staying;
-				playerList[zz].justLeft = JSON.parse(event.message).playerList[zz].justLeft;
-				zz += 1;
-			} */
-			while (zz < 7) {
-				yaya = playerList[zz].userr;
-				console.log(yaya);
-				/* var coding = "if (JSON.parse(event.message)..staying == false) { leaving(zz); }";
-				var txtt = coding.slice(0, 30) + yaya + coding.slice(30);
-				console.log(JSON.stringify(txtt));
-				eval(JSON.stringify(txtt));  */
-				if (JSON.parse(event.message)[yaya].staying == false) {
-					leaving(zz);
-					console.log(yaya + " is leaving");
+			if (JSON.parse(event.message).playerLeftt == true && JSON.parse(event.message).userr != userr) {
+				var asd = 0;
+				while (playerList[asd].userr != JSON.parse(event.message).userr && asd < 7) {
+					asd += 1;
+					console.log(asd);
 				}
-				zz += 1;
+				playerList[asd].staying = false;
+				playerList[asd].justLeft = true;
+				hasLeft.push([JSON.parse(event.message).userr, asd]);
 			}
-			distributeArtifact();
-		}
-		if (JSON.parse(event.message).sendingCard == true && host == "false") {
-			if (JSON.parse(event.message).justDeathed == true) {
-				document.getElementById("cardOne").src = "";
+			if (JSON.parse(event.message).hostLeft == true && host == "false") {
+				hostLeft();
 			}
-			while (i < 35) {
+			if (JSON.parse(event.message).theEndGems == true) {
+				var tty = 1;
+				while (tty < 7) {
+					playerList[tty].totalGems = JSON.parse(event.message)[playerList[tty].userr];
+					tty += 1;
+				}
+			}
+			if (JSON.parse(event.message).won == true && JSON.parse(event.message).userr == userr) {
+				iWon = true;
+			}
+			if (JSON.parse(event.message).sentWins == true && host == "false") {
+				if (iWon == true) {
+					win();
+				} else {
+					lose();
+				}
+			}
+			if (JSON.parse(event.message).stayingIn == true && host == "true") {
+				decided += 1;
+				checkAllDecided();
+			} else if (JSON.parse(event.message).stayingIn == false && host == "true") {
+				//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA check who left and adjust
+				var zm = 0;
+				console.log(JSON.parse(event.message).userr);
+				while (JSON.parse(event.message).userr != playerArray[zm][0] && zm < 10) {
+					console.log(playerArray[zm][0]);
+					zm += 1;
+				}
+				if (playerArray[zm][0] == playerOne.userr) {
+					leaving(1);
+				} else if (playerArray[zm][0] == playerTwo.userr) {
+					leaving(2);
+				} else if (playerArray[zm][0] == playerThree.userr) {
+					leaving(3);
+				} else if (playerArray[zm][0] == playerFour.userr) {
+					leaving(4);
+				} else if (playerArray[zm][0] == playerFive.userr) {
+					leaving(5);
+				} else if (playerArray[zm][0] == playerSix.userr) {
+					leaving(6);
+				}
+				/* zm += 1;
+				leaving(zm); */
+				if (playersLeft != 0 && jjust == false) {
+					checkAllDecided();
+				}
+				jjust = false
+			}
+			if (JSON.parse(event.message).insAndOuts == true && host == "false") {
+				var zz = 1;
+				var yaya;
+				/* while (JSON.parse(event.message).playerList[zz] != null) {
+					playerList[zz].staying = JSON.parse(event.message).playerList[zz].staying;
+					playerList[zz].justLeft = JSON.parse(event.message).playerList[zz].justLeft;
+					zz += 1;
+				} */
+				while (zz < 7) {
+					yaya = playerList[zz].userr;
+					console.log(yaya);
+					/* var coding = "if (JSON.parse(event.message)..staying == false) { leaving(zz); }";
+					var txtt = coding.slice(0, 30) + yaya + coding.slice(30);
+					console.log(JSON.stringify(txtt));
+					eval(JSON.stringify(txtt));  */
+					if (JSON.parse(event.message)[yaya].staying == false) {
+						leaving(zz);
+						console.log(yaya + " is leaving");
+					}
+					zz += 1;
+				}
+				distributeArtifact();
+			}
+			if (JSON.parse(event.message).sendingCard == true && host == "false") {
+				if (JSON.parse(event.message).justDeathed == true) {
+					document.getElementById("cardOne").src = "";
+				}
+				while (i < 35) {
+					cards[i] = JSON.parse(event.message).newCard;
+					i += 1;
+				}
 				cards[i] = JSON.parse(event.message).newCard;
-				i += 1;
+				cards[0] = JSON.parse(event.message).newCard;
+				cards[1] = JSON.parse(event.message).newCard;
+				newCard();
 			}
-			cards[i] = JSON.parse(event.message).newCard;
-			cards[0] = JSON.parse(event.message).newCard;
-			cards[1] = JSON.parse(event.message).newCard;
-			newCard();
-		}
-		if (JSON.parse(event.message).roundDone == true && host == "false") {
-			endRound();
-		}
-		if (JSON.parse(event.message).ready == true && host == "true") {
-			startingRound += 1;
-			if (startingRound == (totalPlayers - 1)) {
-				setTimeout(newCard, 500);
+			if (JSON.parse(event.message).roundDone == true && host == "false") {
+				endRound();
+			}
+			if (JSON.parse(event.message).ready == true && host == "true") {
+				startingRound += 1;
+				if (startingRound == (totalPlayers - 1)) {
+					setTimeout(newCard, 500);
+				}
 			}
 		}
 	}
@@ -525,31 +534,37 @@ function newCard() {
 		document.getElementById("playerOneDecision").src = "staying.jpg";
 	} else {
 		document.getElementById("playerOneDecision").src = "leaving.jpg";
+		document.getElementById("playOne").style.backgroundColor = "black";
 	}
 	if (playerList[2].staying == true) {
 		document.getElementById("playerTwoDecision").src = "staying.jpg";
 	} else {
 		document.getElementById("playerTwoDecision").src = "leaving.jpg";
+		document.getElementById("playTwo").style.backgroundColor = "black";
 	}
 	if (playerList[3].staying == true) {
 		document.getElementById("playerThreeDecision").src = "staying.jpg";
 	} else {
 		document.getElementById("playerThreeDecision").src = "leaving.jpg";
+		document.getElementById("playThree").style.backgroundColor = "black";
 	}
 	if (playerList[4].staying == true) {
 		document.getElementById("playerFourDecision").src = "staying.jpg";
 	} else {
 		document.getElementById("playerFourDecision").src = "leaving.jpg";
+		document.getElementById("playFour").style.backgroundColor = "black";
 	}
 	if (playerList[5].staying == true) {
 		document.getElementById("playerFiveDecision").src = "staying.jpg";
 	} else {
 		document.getElementById("playerFiveDecision").src = "leaving.jpg";
+		document.getElementById("playFive").style.backgroundColor = "black";
 	}
 	if (playerList[6].staying == true) {
 		document.getElementById("playerSixDecision").src = "staying.jpg";
 	} else {
 		document.getElementById("playerSixDecision").src = "leaving.jpg";
+		document.getElementById("playSix").style.backgroundColor = "black";
 	}
 	decided = 0;
 	if (eliminated == false) {
@@ -2767,3 +2782,77 @@ window.addEventListener("beforeunload", function(e){
 		} 
 	}
 }, false);
+
+
+
+const openB = document.getElementById("chatBtn");
+openB.addEventListener("click", function(){
+  openB.style.visibility = "hidden";
+  console.log("temp");
+  var frame = document.createElement("iFrame");
+  frame.style.width = "280px";
+  frame.src="Chat.html";
+  frame.className="iFrameClass";
+  frame.id="iFrameID";
+  document.getElementById("tableSpace").appendChild(frame);
+  localStorage.setItem("chatUser", JSON.stringify(playerUser));
+  window.addEventListener('message', function(e) {
+  var eventName = e.data[0];
+  var data = e.data[1];
+  switch(eventName) {
+   case 'setHeight':
+   console.log("inside");
+   var height = String(data) + "px";
+   console.log(height);
+   frame.style.height = height;
+   break;
+   case 'close':
+   frame.parentNode.removeChild(frame);
+   openB.style.visibility = "visible";
+   break;
+   }
+   // Make the DIV element draggable:
+   dragElement(document.getElementById("iFrameID"));
+
+   function dragElement(elmnt) {
+     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+     if (document.getElementById(elmnt.id)) {
+       // if present, the header is where you move the DIV from:
+       document.getElementById(elmnt.id).onmousedown = dragMouseDown;
+     } else {
+       // otherwise, move the DIV from anywhere inside the DIV:
+       elmnt.onmousedown = dragMouseDown;
+     }
+
+     function dragMouseDown(e) {
+       e = e || window.event;
+       e.preventDefault();
+       // get the mouse cursor position at startup:
+       pos3 = e.clientX;
+       pos4 = e.clientY;
+       document.onmouseup = closeDragElement;
+       // call a function whenever the cursor moves:
+       document.onmousemove = elementDrag;
+     }
+
+     function elementDrag(e) {
+       e = e || window.event;
+       e.preventDefault();
+       // calculate the new cursor position:
+       pos1 = pos3 - e.clientX;
+       pos2 = pos4 - e.clientY;
+       pos3 = e.clientX;
+       pos4 = e.clientY;
+       // set the element's new position:
+       elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+       elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+     }
+
+     function closeDragElement() {
+       // stop moving when mouse button is released:
+       document.onmouseup = null;
+       document.onmousemove = null;
+     }
+   }
+ }, false);
+});

@@ -371,6 +371,9 @@ function startGame() {
 	console.log(playersIn);
 	window.localStorage.setItem('thePlayersIn', JSON.stringify(playersIn));
 	window.localStorage.setItem('hosting', true);
+	var d = new Date();
+	var n = d.getTime();
+	window.localStorage.setItem('gameStamp', n);
 	pubnub.publish({
     channel : 'availableGames',
     message : JSON.stringify({hostUserStart:userr, thePlayersIn:JSON.stringify(playersIn), startingGame:true})
