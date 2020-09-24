@@ -500,7 +500,7 @@ pubnub.addListener({
 			console.log(event.message);
 			if (JSON.parse(event.message).startingGame == true && JSON.parse(event.message).hostUserStart == hostUserBackup) {
 				console.log(JSON.parse(event.message).thePlayersIn);
-				window.localStorage.setItem('gameStamp', JSON.stringify(event.message).gameStamp);
+				window.localStorage.setItem('gameStamp', JSON.parse(event.message).gameStamp);
 				window.localStorage.setItem('thePlayersIn', JSON.parse(event.message).thePlayersIn);
 				window.localStorage.setItem('hosting', false);
 				window.localStorage.setItem('numOfPlayers', numnum);

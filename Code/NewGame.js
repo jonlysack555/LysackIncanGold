@@ -376,7 +376,7 @@ function startGame() {
 	window.localStorage.setItem('gameStamp', n);
 	pubnub.publish({
     channel : 'availableGames',
-    message : JSON.stringify({hostUserStart:userr, thePlayersIn:JSON.stringify(playersIn), startingGame:true, gameStamp: n})
+    message : JSON.stringify({hostUserStart:userr, thePlayersIn:JSON.stringify(playersIn), startingGame:true, gameStamp:n})
 	});
 	window.open("IncanGold.html","_self");
 }

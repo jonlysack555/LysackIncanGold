@@ -14,6 +14,7 @@ const pubnub = new PubNub({
 
 var hostInfo = JSON.parse(window.localStorage.getItem('hostInfo'));
 var yayeet = hostInfo[0] + "group" + stamp;
+users = users.push(hostInfo);
 
 pubnub.subscribe({
   channels: [hostInfo[0], yayeet],
