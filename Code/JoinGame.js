@@ -12,6 +12,9 @@ var waitingSlots = [document.getElementById("newPlayOne"), document.getElementBy
 var waitingSlotsInner = [document.getElementById("newPlayOneInner"), document.getElementById("newPlayTwoInner"), document.getElementById("newPlayThreeInner"), document.getElementById("newPlayFourInner"), document.getElementById("newPlayFiveInner"), document.getElementById("newPlaySixInner")];
 var u = 0;
 var numnum = 0;
+var chat;
+var insurance;
+var sellingHands;
 
 function joiningGameOne() {
 	document.getElementById("heading").innerHTML = "Wait for Players";
@@ -264,18 +267,24 @@ function joiningGame(game) {
 			document.getElementById("textEndGame").innerHTML = "Host will call the game to signify three rounds left";
 		}
 		if (gameOne.sellingHands == true) {
+			sellingHands = true;
 			document.getElementById("textSellingHands").innerHTML = "Selling hands is allowed";
 		} else {
+			sellingHands = false;
 			document.getElementById("textSellingHands").innerHTML = "Selling hands is not allowed";
 		}
 		if (gameOne.insurance == true) {
+			insurance = true;
 			document.getElementById("textInsurance").innerHTML = "Insurance is allowed";
 		} else {
+			insurance = false;
 			document.getElementById("textInsurance").innerHTML = "Insurance is not allowed";
 		}
 		if (gameOne.chat == true) {
+			chat = true;
 			document.getElementById("textChat").innerHTML = "Chat is included";
 		} else {
+			chat = false;
 			document.getElementById("textChat").innerHTML = "Chat is not included";
 		}
 		document.getElementById("hostAvatarPic").src = gameOne.host.propic;
@@ -301,18 +310,24 @@ function joiningGame(game) {
 			document.getElementById("textEndGame").innerHTML = "Host will call the game to signify three rounds left";
 		}
 		if (gameTwo.sellingHands == true) {
+			sellingHands = true;
 			document.getElementById("textSellingsHands").innerHTML = "Selling hands is allowed";
 		} else {
+			sellingHands = false;
 			document.getElementById("textSellingHands").innerHTML = "Selling hands is not allowed";
 		}
 		if (gameTwo.insurance == true) {
+			insurance = true;
 			document.getElementById("textInsurance").innerHTML = "Insurance is allowed";
 		} else {
+			insurance = false;
 			document.getElementById("textInsurance").innerHTML = "Insurance is not allowed";
 		}
 		if (gameTwo.chat == true) {
+			chat = true;
 			document.getElementById("textChat").innerHTML = "Chat is included";
 		} else {
+			chat = false;
 			document.getElementById("textChat").innerHTML = "Chat is not included";
 		}
 		document.getElementById("hostAvatarPic").src = gameTwo.host.propic;
@@ -338,18 +353,24 @@ function joiningGame(game) {
 			document.getElementById("textEndGame").innerHTML = "Host will call the game to signify three rounds left";
 		}
 		if (gameThree.sellingHands == true) {
+			sellingHands = true;
 			document.getElementById("textSellingsHands").innerHTML = "Selling hands is allowed";
 		} else {
+			sellingHands = false;
 			document.getElementById("textSellingHands").innerHTML = "Selling hands is not allowed";
 		}
 		if (gameThree.insurance == true) {
+			insurance = true;
 			document.getElementById("textInsurance").innerHTML = "Insurance is allowed";
 		} else {
+			insurance = false;
 			document.getElementById("textInsurance").innerHTML = "Insurance is not allowed";
 		}
 		if (gameThree.chat == true) {
+			chat = true;
 			document.getElementById("textChat").innerHTML = "Chat is included";
 		} else {
+			chat = false;
 			document.getElementById("textChat").innerHTML = "Chat is not included";
 		}
 		document.getElementById("hostAvatarPic").src = gameThree.host.propic;
@@ -375,18 +396,24 @@ function joiningGame(game) {
 			document.getElementById("textEndGame").innerHTML = "Host will call the game to signify three rounds left";
 		}
 		if (gameFour.sellingHands == true) {
+			sellingHands = true;
 			document.getElementById("textSellingsHands").innerHTML = "Selling hands is allowed";
 		} else {
+			sellingHands = false;
 			document.getElementById("textSellingHands").innerHTML = "Selling hands is not allowed";
 		}
 		if (gameFour.insurance == true) {
+			insurance = true;
 			document.getElementById("textInsurance").innerHTML = "Insurance is allowed";
 		} else {
+			insurance = false;
 			document.getElementById("textInsurance").innerHTML = "Insurance is not allowed";
 		}
 		if (gameFour.chat == true) {
+			chat = true;
 			document.getElementById("textChat").innerHTML = "Chat is included";
 		} else {
+			chat = false;
 			document.getElementById("textChat").innerHTML = "Chat is not included";
 		}
 		document.getElementById("hostAvatarPic").src = gameFour.host.propic;
@@ -473,9 +500,13 @@ pubnub.addListener({
 			console.log(event.message);
 			if (JSON.parse(event.message).startingGame == true && JSON.parse(event.message).hostUserStart == hostUserBackup) {
 				console.log(JSON.parse(event.message).thePlayersIn);
+				window.localStorage.setItem('gameStamp', JSON.stringify(event.message).gameStamp);
 				window.localStorage.setItem('thePlayersIn', JSON.parse(event.message).thePlayersIn);
 				window.localStorage.setItem('hosting', false);
 				window.localStorage.setItem('numOfPlayers', numnum);
+				window.localStorage.setItem('sellingHands', JSON.stringify(sellingHands));
+				window.localStorage.setItem('insurance', JSON.stringify(insurance));
+				window.localStorage.setItem('chat', JSON.stringify(chat));
 				var hosty;
 				if (document.getElementById("hostAvatarPic").src.includes("blankAvatar.jpg")) {
 					hosty = "blankAvatar.jpg";
