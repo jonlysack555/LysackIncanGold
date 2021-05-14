@@ -911,13 +911,17 @@ async function turnListener(){
     addInstructions(winner + " Wins!!");
   }
   var tempPlayers = [];
-  var c;
+  var c = game.turn;
+  var death = false;
   game.players.forEach(plr => {
     if (!whoOwnsAll.includes(plr.player)){
       for (c = 0; c < game.players.length; c++) {
        if (game.players[c]["uuid"] == plr.code) {
-        //game.turn = c; 
+        death = true;
        }
+      }
+      if (death == false) {
+       c = game.turn; 
       }
       addInfo("Player " + plr.player + " you lose.\nGood luck next time");
       if(plr.code == uuid){
