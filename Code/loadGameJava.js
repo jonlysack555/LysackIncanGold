@@ -487,6 +487,7 @@ async function playerTurn(player){
         freeMove()
           .then(()=>{
             game.turn += 1;
+            console.log(game.turn);
             turnSummary();
             return turnListener()
           })
@@ -926,6 +927,7 @@ async function turnListener(){
   var cheated = localStorage.getItem("iCheatedAtRisk");
   if(cheated == "true" && loaded){
     game.turn += 1;
+    console.log(game.turn);
     saveGame();
   }
   if(!loaded){
