@@ -913,11 +913,13 @@ async function turnListener(){
   var tempPlayers = [];
   var c = game.turn;
   var death = false;
+  var d = -2;
   game.players.forEach(plr => {
     if (!whoOwnsAll.includes(plr.player)){
       for (c = 0; c < game.players.length; c++) {
        if (game.players[c]["uuid"] == plr.code) {
         death = true;
+         d = c;
        }
       }
       if (death == false) {
@@ -932,7 +934,11 @@ async function turnListener(){
       tempPlayers.push(plr);
     }
   });
+  if (d == -2) {
   game.turn = c;
+  } else {
+    game.turn = d;
+  }
   console.log(tempPlayers);
   game.players = tempPlayers;
   var cheated = localStorage.getItem("iCheatedAtRisk");
