@@ -911,9 +911,9 @@ async function turnListener(){
     addInstructions(winner + " Wins!!");
   }
   var tempPlayers = [];
+  var c;
   game.players.forEach(plr => {
     if (!whoOwnsAll.includes(plr.player)){
-      var c;
       for (c = 0; c < game.players.length; c++) {
        if (game.players[c]["uuid"] == plr.code) {
         //game.turn = c; 
