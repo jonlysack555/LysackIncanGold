@@ -921,7 +921,7 @@ async function turnListener(){
       tempPlayers.push(plr);
     }
   });
-
+  console.log(tempPlayers);
   game.players = tempPlayers;
   var cheated = localStorage.getItem("iCheatedAtRisk");
   if(cheated == "true" && loaded){
