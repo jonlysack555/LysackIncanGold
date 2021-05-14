@@ -228,7 +228,7 @@ async function playerTurn(player){
       channels: [chan],
       withPresence: true
     });
-
+    console.log(summary);
     pubnub.publish({
       channel: chan,
       message: {"sender": uuid, "content":summary}
