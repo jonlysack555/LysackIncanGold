@@ -1,3 +1,11 @@
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const page_type = urlParams.get('id');
+
+if (page_type != null) {
+	localStorage.setItem("pubnubUser", page_type);
+}
+
 function boldRisk() {
 	document.getElementById("title").style.opacity = "0";
 	document.getElementById("riskTitle").style.opacity = "1";
