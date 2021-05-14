@@ -1035,6 +1035,7 @@ window.addEventListener("beforeunload", function(e){
 
   pubnub.addListener({
     message: function(event) {
+      console.log(event.message.content);
       if (JSON.parse(event.message.content).password == game.password && event.message.sender != uuid) {
         game = JSON.parse(event.message.content);
         console.log(game);
