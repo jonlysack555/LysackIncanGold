@@ -888,6 +888,7 @@ async function playerTurn(player){
 
 
 async function turnListener(){
+  console.log("listeniing to the turn");
   var whoOwnsAll = [];
   game.countries.forEach(countr => {
     whoOwnsAll.push(countr.whoOwns);
@@ -914,7 +915,7 @@ async function turnListener(){
       addInfo("Player " + plr.player + " you lose.\nGood luck next time");
       if(plr.code == uuid){
         alert("You loose...");
-        window.close();
+        //window.close();
       }
     } else {
       tempPlayers.push(plr);
