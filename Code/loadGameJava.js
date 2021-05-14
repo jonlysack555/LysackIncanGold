@@ -912,7 +912,7 @@ async function turnListener(){
   game.players.forEach(plr => {
     if (!whoOwnsAll.includes(plr.player)){
       addInfo("Player " + plr.player + " you lose.\nGood luck next time");
-      if(plr.code = uuid){
+      if(plr.code == uuid){
         alert("You loose...");
         window.close();
       }
