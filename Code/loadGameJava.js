@@ -225,16 +225,19 @@ async function playerTurn(player){
     var chan = "risk." + String(password) + "turns";
 
     pubnub.subscribe({
-      channels: [chan],
+      channels: [("risk." + String(password) + "turns")],
       withPresence: true
     });
     console.log(summary);
     pubnub.publish({
-      channel: chan,
+      channel: ("risk." + String(password) + "turns"),
       message: {"sender": uuid, "content":summary}
     }, function(status, response) {
 
       });
+    pubnub.unsubscribe({
+      channels: [("risk." + String(password) + "turns")]
+    });
   }
   async function placeReinforcements(reinforcements, countries, attackingCountry, freeMove) {//if attackingCountry == false then in turn start reinforcements
     return new Promise(resolve => {
